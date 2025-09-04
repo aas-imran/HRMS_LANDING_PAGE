@@ -32,13 +32,13 @@ const ContactUs = () => {
     {
       icon: EnvelopeIcon,
       title: "Email Us",
-      details: "support@hrms.com",
+      details: "contact@aasint.com",
       description: "Get in touch via email"
     },
     {
       icon: PhoneIcon,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
+      details: "+91 674257 1111",
       description: "Mon-Fri, 9AM-6PM EST"
     },
     {

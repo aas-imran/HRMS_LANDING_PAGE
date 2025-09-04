@@ -1,16 +1,21 @@
 "use client"
 import React, { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { createContact } from '@/utils/api';
+import { validateContactForm } from '@/utils/validation';
+import toast from 'react-hot-toast';
 
 const BookDemoModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
-    clientName: '',
-    industryType: '',
-    contactPersonName: '',
-    contactEmail: '',
-    contactMobile: '',
-    website: ''
+    fullName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    message: ''
   });
+
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,20 +25,44 @@ const BookDemoModal = ({ isOpen, onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    onClose();
-    // Reset form
-    setFormData({
-      clientName: '',
-      industryType: '',
-      contactPersonName: '',
-      contactEmail: '',
-      contactMobile: '',
-      website: ''
-    });
+    setError('');
+    setLoading(true);
+
+    try {
+      const validation = validateContactForm(formData);
+      if (!validation.isValid) {
+        const errorMessages = Object.values(validation.errors).join('\n');
+        setError(errorMessages);
+        return;
+      }
+
+      await createContact(formData);
+      toast.success('Demo booked successfully!', {
+        duration: 4000,
+        position: 'center',
+        style: {
+          background: '#a89456',
+          color: '#111826',
+          padding: '16px',
+          borderRadius: '8px',
+        },
+      });
+      onClose();
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        companyName: '',
+        message: ''
+      });
+    } catch (err) {
+      setError(err.message || 'Failed to submit form. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -63,106 +92,89 @@ const BookDemoModal = ({ isOpen, onClose }) => {
         
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {/* Client Name */}
+          {error && (
+            <div className="p-3 text-sm text-red-600 bg-red-50 rounded-lg">
+              {error}
+            </div>
+          )}
+          {/* Full Name */}
           <div>
             <label className="block text-sm font-medium text-[#111826] mb-2">
-              Client Name *
+              Full Name *
             </label>
             <input
               type="text"
-              name="clientName"
-              value={formData.clientName}
+              name="fullName"
+              value={formData.fullName}
               onChange={handleInputChange}
               required
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
-              placeholder="Enter client name"
+              placeholder="Enter your full name"
             />
           </div>
           
-          {/* Industry Type */}
+          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-[#111826] mb-2">
-              Industry Type *
-            </label>
-            <select
-              name="industryType"
-              value={formData.industryType}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826]"
-            >
-              <option value="" className="text-gray-500">Select industry</option>
-              <option value="Technology" className="text-[#111826]">Technology</option>
-              <option value="Healthcare" className="text-[#111826]">Healthcare</option>
-              <option value="Finance" className="text-[#111826]">Finance</option>
-              <option value="Manufacturing" className="text-[#111826]">Manufacturing</option>
-              <option value="Retail" className="text-[#111826]">Retail</option>
-              <option value="Education" className="text-[#111826]">Education</option>
-              <option value="Other" className="text-[#111826]">Other</option>
-            </select>
-          </div>
-          
-          {/* Contact Person Name */}
-          <div>
-            <label className="block text-sm font-medium text-[#111826] mb-2">
-              Contact Person Name *
-            </label>
-            <input
-              type="text"
-              name="contactPersonName"
-              value={formData.contactPersonName}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
-              placeholder="Enter contact person name"
-            />
-          </div>
-          
-          {/* Contact Email */}
-          <div>
-            <label className="block text-sm font-medium text-[#111826] mb-2">
-              Contact Email *
+              Email *
             </label>
             <input
               type="email"
-              name="contactEmail"
-              value={formData.contactEmail}
+              name="email"
+              value={formData.email}
               onChange={handleInputChange}
               required
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
-              placeholder="Enter email address"
+              placeholder="Enter your email address"
             />
           </div>
           
-          {/* Contact Mobile */}
+          {/* Phone */}
           <div>
             <label className="block text-sm font-medium text-[#111826] mb-2">
-              Contact Mobile No *
+              Phone *
             </label>
             <input
               type="tel"
-              name="contactMobile"
-              value={formData.contactMobile}
+              name="phone"
+              value={formData.phone}
               onChange={handleInputChange}
               required
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
-              placeholder="Enter mobile number"
+              placeholder="Enter your phone number"
             />
           </div>
           
-          {/* Website */}
+          {/* Company Name */}
           <div>
             <label className="block text-sm font-medium text-[#111826] mb-2">
-              Website (Optional)
+              Company Name *
             </label>
             <input
-              type="url"
-              name="website"
-              value={formData.website}
+              type="text"
+              name="companyName"
+              value={formData.companyName}
               onChange={handleInputChange}
+              required
               className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
-              placeholder="Enter website URL"
+              placeholder="Enter your company name"
             />
+          </div>
+          
+          {/* Message */}
+          <div>
+            <label className="block text-sm font-medium text-[#111826] mb-2">
+              Message *
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+              rows="4"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#a89456] focus:border-transparent outline-none transition-all duration-200 text-[#111826] placeholder:text-gray-500"
+              placeholder="Enter your message"
+            ></textarea>
           </div>
           
           {/* Submit Button */}
@@ -172,12 +184,17 @@ const BookDemoModal = ({ isOpen, onClose }) => {
               className="w-full bg-[#a89456] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center justify-center">
-                Book Demo
-                <span className="ml-2 flex space-x-1">
-                  <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
-                  <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
-                  <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+                {loading ? (
+                <span className="flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Submitting...
                 </span>
+              ) : (
+                <span>Book Demo</span>
+              )}
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#a89456] to-[#a89456] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>

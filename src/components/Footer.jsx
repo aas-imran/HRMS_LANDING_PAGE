@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   BuildingOfficeIcon,
   EnvelopeIcon,
@@ -28,10 +29,8 @@ const Footer = () => {
     ],
     resources: [
       { name: 'Help Center', href: '#help' },
-      { name: 'Blog', href: '#blog' },
-     
-      { name: 'Case Studies', href: '#cases' },
-     
+      { name: 'Blog', href: '/blog' },
+      { name: 'Case Studies', href: '/case-studies' }
     ]
   };
 
@@ -80,13 +79,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-base hover:text-blue-400 transition-colors duration-300" 
-                    style={{color: '#9ca3af'}}
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link 
+                      href={link.href}
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -98,13 +107,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-base hover:text-blue-400 transition-colors duration-300" 
-                    style={{color: '#9ca3af'}}
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link 
+                      href={link.href}
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -116,13 +135,23 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-base hover:text-blue-400 transition-colors duration-300" 
-                    style={{color: '#9ca3af'}}
-                  >
-                    {link.name}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link 
+                      href={link.href}
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href} 
+                      className="text-base hover:text-blue-400 hover:underline transition-colors duration-300 cursor-pointer"
+                      style={{color: '#9ca3af'}}
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -187,18 +216,18 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex flex-wrap gap-8">
-              <a href="#privacy" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+              <Link href="#privacy" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 Privacy Policy
-              </a>
-              <a href="#terms" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+              </Link>
+              <Link href="#terms" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 Terms of Service
-              </a>
-              <a href="#status" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+              </Link>
+              <Link href="#status" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 System Status
-              </a>
-              <a href="#accessibility" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+              </Link>
+              <Link href="#accessibility" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 Accessibility
-              </a>
+              </Link>
             </div>
           </div>
         </div>

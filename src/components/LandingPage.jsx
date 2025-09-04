@@ -24,13 +24,12 @@ const LandingPage = () => {
       <HowItWorks />
       {/* Replaced Testimonials with Pricing */}
       <Benefits />
-    
-     
+  
       <div >
         <FAQ />
       </div>
       <ContactUs />
-      <Footer />
+   
     </div>
   );
 };

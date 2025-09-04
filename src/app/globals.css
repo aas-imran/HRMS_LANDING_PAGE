@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eef1f6;
+  --foreground: #111826;
+  --primary: #111826;
+  --secondary: #a89456;
+  --accent: #3b82f6;
+  --cta-blue: #2563eb;
 }
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-cta-blue: var(--cta-blue);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,5 +32,123 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Theme Color Utility Classes */
+.text-primary {
+  color: #111826;
+}
+
+.text-secondary {
+  color: #a89456;
+}
+
+.bg-primary {
+  background-color: #111826;
+}
+
+.bg-secondary {
+  background-color: #a89456;
+}
+
+.border-primary {
+  border-color: #111826;
+}
+
+.border-secondary {
+  border-color: #a89456;
+}
+
+/* CTA Button Styles */
+.btn-cta {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cta:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+}
+
+/* Manrope font utility classes */
+.manrope-light {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.manrope-regular {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.manrope-medium {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.manrope-semibold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.manrope-bold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.manrope-extrabold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+/* Add these lines to your existing globals.css */
+
+/* Lenis smooth scroll enhancements */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Improve scroll performance */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Disable scroll behavior when Lenis is active */
+html.lenis {
+  scroll-behavior: auto;
 }

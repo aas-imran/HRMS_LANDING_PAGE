@@ -1,0 +1,210 @@
+import React from 'react';
+import {
+  BuildingOfficeIcon,
+  EnvelopeIcon,
+  PhoneIcon,
+  MapPinIcon,
+  GlobeAltIcon
+} from '@heroicons/react/24/outline';
+import {
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook,
+  FaYoutube
+} from 'react-icons/fa';
+
+const Footer = () => {
+  const footerLinks = {
+    product: [
+      { name: 'Features', href: '#features' },
+      { name: 'Pricing', href: '#pricing' },
+     
+    ],
+    company: [
+      { name: 'About Us', href: '#about' },
+     
+
+      { name: 'Contact', href: '#contact' }
+    ],
+    resources: [
+      { name: 'Help Center', href: '#help' },
+      { name: 'Blog', href: '#blog' },
+     
+      { name: 'Case Studies', href: '#cases' },
+     
+    ]
+  };
+
+  const socialLinks = [
+    { name: 'LinkedIn', icon: FaLinkedin, href: '#linkedin' },
+    { name: 'Twitter', icon: FaTwitter, href: '#twitter' },
+    { name: 'Facebook', icon: FaFacebook, href: '#facebook' },
+    { name: 'YouTube', icon: FaYoutube, href: '#youtube' }
+  ];
+
+  return (
+    <footer className="text-white py-20" style={{backgroundColor: '#111826'}}>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Main Footer Content */}
+        <div className="grid lg:grid-cols-5 gap-12  ml-15 mb-16">
+          {/* Company Info - Takes 2 columns */}
+          <div className="lg:col-span-2 pr-8">
+            <h3 className="text-4xl font-bold mb-6" style={{color: '#a89456'}}>HRMS</h3>
+            <p className="text-lg leading-relaxed mb-8 max-w-md" style={{color: '#9ca3af'}}>
+              Streamline your HR operations with our comprehensive human resource management system. 
+              Trusted by thousands of businesses worldwide.
+            </p>
+            
+            {/* Social Media Icons */}
+            <div className="flex space-x-6">
+              {socialLinks.map((social, index) => {
+                const IconComponent = social.icon;
+                return (
+                  <a 
+                    key={index} 
+                    href={social.href} 
+                    className="text-2xl hover:transform hover:-translate-y-1 hover:scale-110 transition-all duration-300"
+                    style={{color: '#a89456'}}
+                    aria-label={social.name}
+                  >
+                    <IconComponent />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+          
+          {/* Product Links */}
+          <div className="">
+            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Product</h4>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.href} 
+                    className="text-base hover:text-blue-400 transition-colors duration-300" 
+                    style={{color: '#9ca3af'}}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Company Links */}
+          <div className="">
+            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.href} 
+                    className="text-base hover:text-blue-400 transition-colors duration-300" 
+                    style={{color: '#9ca3af'}}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Resources Links */}
+          <div className="">
+            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.href} 
+                    className="text-base hover:text-blue-400 transition-colors duration-300" 
+                    style={{color: '#9ca3af'}}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        
+        {/* Our Offices Section */}
+        <div className="mb-12">
+          <h4 className="text-2xl font-bold text-center mb-8" style={{color: '#a89456'}}>Our Offices</h4>
+          <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-600">
+            <div className="px-6 py-4">
+              <div className="flex items-center mb-4">
+                <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
+                  <BuildingOfficeIcon className="w-6 h-6 text-white" />
+                </div>
+                <div className="ml-4">
+                  <h5 className="font-bold text-sm" style={{color: '#a89456'}}>REGISTERED OFFICE</h5>
+                  <span className="text-xs" style={{color: '#9ca3af'}}>India</span>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed" style={{color: '#9ca3af'}}>
+                Plot No. 242/3003, Sanra, Tirtol, Nalibar, Jagatsinghapur, Jagatsinghapur, Orissa, India, 754104.
+              </p>
+            </div>
+            <div className="px-6 py-4">
+              <div className="flex items-center mb-4">
+                <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
+                  <MapPinIcon className="w-6 h-6 text-white" />
+                </div>
+                <div className="ml-4">
+                  <h5 className="font-bold text-sm" style={{color: '#a89456'}}>BHUBANESWAR OFFICE</h5>
+                  <span className="text-xs" style={{color: '#9ca3af'}}>India</span>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed" style={{color: '#9ca3af'}}>
+                Plot 52, 2nd floor, Bapuji Nagar, Unit 1 Main St, above State Bank of India BHADRASAHI, Forest Park, Bhubaneswar, Odisha 751009
+              </p>
+            </div>
+            <div className="px-6 py-4">
+              <div className="flex items-center mb-4">
+                <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
+                  <GlobeAltIcon className="w-6 h-6 text-white" />
+                </div>
+                <div className="ml-4">
+                  <h5 className="font-bold text-sm" style={{color: '#a89456'}}>DUBAI OFFICE</h5>
+                  <span className="text-xs" style={{color: '#9ca3af'}}>UAE</span>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed" style={{color: '#9ca3af'}}>
+                176 Ras Al Khor Rd - Ras Al Khor Industrial Area - Ras Al Khor Industrial Area 2 - Dubai - United Arab Emirates - 45371
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Bottom Section */}
+        <div className="border-t pt-8" style={{borderColor: '#374151'}}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="">
+              <p className="text-base" style={{color: '#9ca3af'}}>
+                &copy; 2024 HRMS. All rights reserved.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-8">
+              <a href="#privacy" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+                Privacy Policy
+              </a>
+              <a href="#terms" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+                Terms of Service
+              </a>
+              <a href="#status" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+                System Status
+              </a>
+              <a href="#accessibility" className="hover:text-blue-400 text-base transition-colors duration-300" style={{color: '#9ca3af'}}>
+                Accessibility
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

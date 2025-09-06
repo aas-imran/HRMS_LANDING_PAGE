@@ -1,27 +1,70 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   HomeIcon,
   UsersIcon,
   UserPlusIcon,
   BriefcaseIcon,
-  SpeakerWaveIcon,
-  ChatBubbleLeftRightIcon,
+
   ClockIcon,
   CalendarDaysIcon,
   ChartBarIcon,
   ExclamationTriangleIcon,
   CurrencyDollarIcon,
-  Cog6ToothIcon
+ 
 } from '@heroicons/react/24/outline';
 
-// Add these imports at the top of the file
-import { BoltIcon, ShieldCheckIcon, PresentationChartBarIcon } from '@heroicons/react/24/outline';
+
 import BookDemoModal from './BookDemoModal';
 
 const FeaturesShowcase = () => {
   const [activeModule, setActiveModule] = useState('dashboard');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (activeModule === 'onboarding') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'recruitment') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 5);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'attendance') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'payroll') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 3);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'user-management') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 2);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'leave-management') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 2);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'performance') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 2);
+      }, 3000);
+      return () => clearInterval(interval);
+    } else if (activeModule === 'grievance') {
+      const interval = setInterval(() => {
+        setImageIndex((prev) => (prev + 1) % 2);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [activeModule]);
 
   const modules = [
     {
@@ -29,10 +72,11 @@ const FeaturesShowcase = () => {
       name: 'Dashboard',
       icon: HomeIcon,
       features: [
-        'Real-time HR metrics and KPIs',
-        'Employee overview and analytics',
-        'Quick access to all modules',
-        'Customizable widgets'
+        'Module-wise creation and entry widgets for jobs, attendance, and notices',
+        'HR insights with comprehensive analytics and metrics',
+        'Quick actions panel for frequent tasks',
+        'Team calendar with events and schedules',
+        'Resource center for document management and official notices'
       ]
     },
     {
@@ -40,10 +84,11 @@ const FeaturesShowcase = () => {
       name: 'User Management',
       icon: UsersIcon,
       features: [
-        'Employee database management',
-        'Role-based access control',
-        'Department organization',
-        'Bulk import/export'
+        'Add and manage user accounts for HRMS access',
+        'Control user permissions and access levels',
+        'Reset and manage user passwords and email settings',
+        'Block/unblock user access to the system',
+        'Comprehensive user activity monitoring'
       ]
     },
     {
@@ -51,10 +96,10 @@ const FeaturesShowcase = () => {
       name: 'Onboarding',
       icon: UserPlusIcon,
       features: [
-        'Automated workflows',
-        'Digital document collection',
-        'Task assignment tracking',
-        'Progress monitoring'
+        'Employee onboarding form with comprehensive data collection',
+        'Digital ID card generation with QR code',
+        'Employee profile management with edit/block functionality',
+        'Document verification and storage system'
       ]
     },
     {
@@ -62,43 +107,45 @@ const FeaturesShowcase = () => {
       name: 'Recruitment',
       icon: BriefcaseIcon,
       features: [
-        'Job posting management',
-        'Candidate tracking',
-        'Resume screening',
-        'Interview scheduling'
+        'Post job openings on company website with detailed requirements',
+        'Track candidate applications and schedule interviews',
+        'Multi-round interview process with candidate evaluation',
+        'Automated shortlisting and offer letter generation',
+        'Complete recruitment workflow from posting to hiring'
       ]
     },
-    {
-      id: 'notice',
-      name: 'Notice Board',
-      icon: SpeakerWaveIcon,
-      features: [
-        'Company announcements',
-        'Department notices',
-        'Priority notifications',
-        'Read receipt tracking'
-      ]
-    },
-    {
-      id: 'interview',
-      name: 'Interview',
-      icon: ChatBubbleLeftRightIcon,
-      features: [
-        'Interview scheduling',
-        'Panel management',
-        'Evaluation forms',
-        'Feedback collection'
-      ]
-    },
+    // {
+    //   id: 'notice',
+    //   name: 'Notice Board',
+    //   icon: SpeakerWaveIcon,
+    //   features: [
+    //     'Company announcements',
+    //     'Department notices',
+    //     'Priority notifications',
+    //     'Read receipt tracking'
+    //   ]
+    // },
+    // {
+    //   id: 'interview',
+    //   name: 'Interview',
+    //   icon: ChatBubbleLeftRightIcon,
+    //   features: [
+    //     'Interview scheduling',
+    //     'Panel management',
+    //     'Evaluation forms',
+    //     'Feedback collection'
+    //   ]
+    // },
     {
       id: 'attendance',
       name: 'Attendance',
       icon: ClockIcon,
       features: [
-        'Biometric integration',
-        'Real-time monitoring',
-        'Overtime calculation',
-        'Mobile check-in/out'
+        'Comprehensive attendance management with CSV export',
+        'View and analyze past attendance records',
+        'QR code and facial recognition for attendance marking',
+        'Track lunch breaks and work hours',
+        'Self and team attendance monitoring'
       ]
     },
     {
@@ -106,10 +153,11 @@ const FeaturesShowcase = () => {
       name: 'Leave Management',
       icon: CalendarDaysIcon,
       features: [
-        'Leave application workflow',
-        'Balance tracking',
-        'Holiday calendar',
-        'Approval dashboard'
+        'View and manage all employee leave requests',
+        'Track available leave balances by type',
+        'Approve or reject leave based on availability',
+        'Automated leave balance calculations',
+        'Leave history and reporting features'
       ]
     },
     {
@@ -117,10 +165,11 @@ const FeaturesShowcase = () => {
       name: 'Performance',
       icon: ChartBarIcon,
       features: [
-        'Goal setting and tracking',
-        '360-degree feedback',
-        'Review cycles',
-        'KPI monitoring'
+        'Assign and track employee tasks with deadlines',
+        'Monitor task completion and performance metrics',
+        'Rate employee performance with detailed feedback',
+        'Generate performance reports and analytics',
+        'Set and track individual and team goals'
       ]
     },
     {
@@ -128,10 +177,11 @@ const FeaturesShowcase = () => {
       name: 'Grievance',
       icon: ExclamationTriangleIcon,
       features: [
-        'Anonymous submissions',
-        'Tracking and resolution',
-        'Escalation workflow',
-        'Timeline monitoring'
+        'View and manage all employee grievances',
+        'Track complaint status and resolution progress',
+        'Escalate issues to higher management',
+        'Handle sensitive matters confidentially',
+        'Monitor resolution timelines'
       ]
     },
     {
@@ -139,23 +189,14 @@ const FeaturesShowcase = () => {
       name: 'Payroll',
       icon: CurrencyDollarIcon,
       features: [
-        'Automated calculations',
-        'Tax management',
-        'Payslip generation',
-        'Bank integration'
+        'Run and hold payroll for individual or group employees',
+        'Create and manage multiple salary templates',
+        'Add and manage employee bonuses and incentives',
+        'Automated tax calculations and deductions',
+        'Generate detailed payslips with customizable components'
       ]
     },
-    {
-      id: 'settings',
-      name: 'Settings',
-      icon: Cog6ToothIcon,
-      features: [
-        'Company configuration',
-        'User permissions',
-        'System backup',
-        'Integration settings'
-      ]
-    }
+ 
   ];
 
   const activeModuleData = modules.find(module => module.id === activeModule);
@@ -172,7 +213,7 @@ const FeaturesShowcase = () => {
 
       {/* Primary Card Container */}
       <div className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white rounded-4xl shadow-xl overflow-hidden">
           {/* HRMS Interface Layout - Compact */}
           <div className="flex h-[600px]">
             {/* Compact Sidebar */}
@@ -215,7 +256,7 @@ const FeaturesShowcase = () => {
             {/* Main Content Area - Compact */}
             <div className="flex-1 flex flex-col">
               {/* Module Header */}
-              <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
+              <div className="bg-[#eeef] border-b border-gray-200 px-6 py-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-xl font-bold text-[#111826] flex items-center">
@@ -224,19 +265,7 @@ const FeaturesShowcase = () => {
                     </h2>
                     <p className="text-gray-600 text-sm">Module Overview</p>
                   </div>
-                  {/* <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="bg-[#a89456] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden group flex items-center"
-                  >
-                    <span className="relative z-10 flex items-center">
-                      Book Demo
-                      <span className="ml-2 flex space-x-1">
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
-                      </span>
-                    </span>
-                  </button> */}
+           
                 </div>
               </div>
 
@@ -249,11 +278,147 @@ const FeaturesShowcase = () => {
                       <h3 className="text-lg font-bold text-gray-700 mb-4">{activeModuleData?.name}</h3>
                       <div className="bg-white/50 rounded-lg p-4">
                         <div className="relative h-[380px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden">
-                          <img 
-                            src="/hrms-dash.png" 
-                            alt="HRMS Dashboard" 
-                            className="w-full h-full object-contain"
-                          />
+                          {activeModule === 'onboarding' ? (
+                            <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/emp-onb.png" 
+                                alt="Employee Onboarding" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/emp-view.png" 
+                                alt="Employee View" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/man-emp.png" 
+                                alt="Employee Management" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'recruitment' ? (
+                            <div className="flex w-[100%] [380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/JO-Notice.png" 
+                                alt="Job Opening Notice" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/all-job.png" 
+                                alt="All Jobs" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/job-view.png" 
+                                alt="Job View" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/applicant.png" 
+                                alt="Applicant List" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/appli-view.png" 
+                                alt="Applicant View" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'attendance' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/all-atd.png" 
+                                alt="All Attendance" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/id-qr.png" 
+                                alt="ID QR Code" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/face-qr.png" 
+                                alt="Face Recognition" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'payroll' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/run-payroll.png" 
+                                alt="Run Payroll" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/hold-payroll.png" 
+                                alt="Hold Payroll" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/bonus.png" 
+                                alt="Bonus Management" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'user-management' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/add-users.png" 
+                                alt="Add Users" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/users.png" 
+                                alt="Manage Users" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'leave-management' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/all-leave.png" 
+                                alt="All Leave Requests" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/accept-leave.png" 
+                                alt="Accept Leave" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'performance' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/all-task.png" 
+                                alt="All Tasks" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/view-task.png" 
+                                alt="View Task" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : activeModule === 'grievance' ? (
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/all-grv.png" 
+                                alt="All Grievances" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                              <img 
+                                src="/all-grv.png" 
+                                alt="Grievance Details" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
+                          ) : (
+                            <img 
+                              src="/hrms-dash.png" 
+                              alt="HRMS Dashboard" 
+                              className="w-full h-full object-contain"
+                            />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -265,55 +430,51 @@ const FeaturesShowcase = () => {
                     onClose={() => setIsModalOpen(false)} 
                   />
 
-                  {/* Features List - Decreased to 2 columns */}
-                  <div className="lg:col-span-2 flex flex-col">
+                  {/* Features List - Static and Compact */}
+                  <div className="lg:col-span-2 flex flex-col h-[380px]">
                     {/* Key Features Section */}
-                    <div className="flex-grow">
-                      <h3 className="text-base font-bold text-[#111826] flex items-center mb-4">
+                    <div className="h-[250px]">
+                      <h3 className="text-base font-bold text-[#111826] flex items-center mb-3">
                         <span className="w-5 h-5 bg-[#a89456] rounded-lg flex items-center justify-center mr-2">
                           <span className="text-white font-bold text-xs">✓</span>
                         </span>
                         Key Features
                       </h3>
-                      <div className="space-y-3">
+                      <div className="grid gap-2">
                         {activeModuleData?.features.map((feature, index) => (
-                          <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                            <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                            </div>
-                            <p className="text-gray-700 text-sm leading-relaxed">{feature}</p>
+                          <div key={index} className="flex items-start space-x-2">
+                            <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0 mt-1.5"></div>
+                            <p className="text-gray-700 text-sm line-clamp-2">{feature}</p>
                           </div>
                         ))}
                       </div>
                     </div>
-                  
-                    {/* Quick Benefits - At the bottom */}
-                    <div className="bg-gradient-to-r from-[#111826] to-gray-800 rounded-lg p-4 text-white mt-4">
-                      <h4 className="font-bold mb-3 text-sm">Why Choose This Module?</h4>
-                      <div className="grid grid-cols-3 gap-2 text-center">
-                        <div className="p-2">
-                          <div className="text-[#a89456] mb-1">
-                            <BoltIcon className="w-6 h-6 mx-auto" />
-                          </div>
-                          <p className="text-sm font-medium">Fast</p>
-                          <p className="text-xs text-gray-300">Quick Response</p>
-                        </div>
-                        <div className="p-2">
-                          <div className="text-[#a89456] mb-1">
-                            <ShieldCheckIcon className="w-6 h-6 mx-auto" />
-                          </div>
-                          <p className="text-sm font-medium">Secure</p>
-                          <p className="text-xs text-gray-300">Data Protected</p>
-                        </div>
-                        <div className="p-2">
-                          <div className="text-[#a89456] mb-1">
-                            <PresentationChartBarIcon className="w-6 h-6 mx-auto" />
-                          </div>
-                          <p className="text-sm font-medium">Smart</p>
-                          <p className="text-xs text-gray-300">AI Powered</p>
-                        </div>
+                    {(activeModule === 'dashboard' || activeModule === 'onboarding' || activeModule === 'recruitment' || activeModule === 'attendance' || activeModule === 'payroll' || activeModule === 'user-management' || activeModule === 'leave-management' || activeModule === 'performance' || activeModule === 'grievance') && (
+                      <div className="h-[130px] mt-10">
+                        <h4 className="text-lg font-medium text-gray-500 mb-2">Description</h4>
+                        <p className="text-gray-600 text-sm">
+                          {activeModule === 'onboarding' ? (
+                            "Streamline your employee onboarding process with our comprehensive system. From initial data collection to ID card generation, manage employee profiles efficiently with full control over access and permissions."
+                          ) : activeModule === 'recruitment' ? (
+                            "Efficiently manage your recruitment process from job posting to hiring. Post job openings on your company website, track applications, conduct multi-round interviews, evaluate candidates, and generate offer letters - all in one integrated system."
+                          ) : activeModule === 'payroll' ? (
+                            "Comprehensive payroll management system with flexible control over employee compensation. Process payroll runs, manage salary templates, handle bonuses, and automate tax calculations. Hold or release payroll for specific employees or groups while maintaining accurate records and generating detailed payslips."
+                          ) : activeModule === 'user-management' ? (
+                            "Centralized user management system for controlling HRMS access. Create and manage user accounts, set permissions, handle password resets, and monitor user activities. Maintain system security by controlling user access and managing authentication settings."
+                          ) : activeModule === 'leave-management' ? (
+                            "Comprehensive leave management system for HR to efficiently handle employee leave requests. View all leave applications, check available balances, and make informed decisions on approvals or rejections. Track leave history and generate reports for better workforce planning."
+                          ) : activeModule === 'performance' ? (
+                            "Advanced performance management system for tracking employee tasks and evaluating work quality. HR can assign tasks with deadlines, monitor progress, provide ratings and feedback, and generate comprehensive performance reports. The system helps maintain clear performance standards and facilitates employee development."
+                          ) : activeModule === 'grievance' ? (
+                            "Comprehensive grievance management system that enables HR to efficiently handle employee complaints and concerns. View all grievances, track their status, escalate issues when needed, and ensure timely resolution. The system maintains confidentiality while facilitating effective communication between all parties involved."
+                          ) : activeModule === 'dashboard' ? (
+                            "Centralized dashboard providing quick access to essential HR functions and real-time insights. Features module-wise widgets for creating jobs, tracking attendance, and managing notices. Includes HR analytics, quick action buttons, team calendar, and a resource center for document management. Streamlines daily HR operations with an intuitive interface."
+                          ) : (
+                            "Advanced attendance tracking system with multiple check-in methods including QR code scanning and facial recognition. Monitor attendance records, manage breaks, and generate detailed reports with CSV export functionality."
+                          )}
+                        </p>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -342,11 +503,6 @@ const FeaturesShowcase = () => {
         </div>
       </div>
 
-      {/* Book Demo Modal */}
-      <BookDemoModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 };

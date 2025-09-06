@@ -47,7 +47,7 @@ const Navbar = () => {
   // Navigation items
   const navItems = [
     { name: 'Features', href: '/features', id: 'features' },
-    { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
+    // { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
     { name: 'Contact', href: '#contact-us', id: 'contact-us' }
   ];
 

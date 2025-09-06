@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import RevealAnimation from './RevealAnimation';
 
 const HeroSection = () => {
   const scrollToFeatures = () => {
@@ -18,14 +19,19 @@ const HeroSection = () => {
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              Streamline Your HR Operations with Our Comprehensive <span style={{color: '#a89456'}}>HRMS</span>
-            </h1>
-            <p className="text-xl text-black text-opacity-90 leading-relaxed">
-              Manage employees, payroll, attendance, and performance all in one powerful platform. 
-              Boost productivity and reduce administrative overhead with our intuitive HR management system.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <RevealAnimation direction="left">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                Because People <span style={{color: '#a89456'}}>Deserve</span>  More Than <span style={{color: '#a89456'}}>Paperwork.</span>  
+              </h1>
+            </RevealAnimation>
+            <RevealAnimation direction="left" delay={0.2}>
+              <p className="text-xl text-black text-opacity-90 leading-relaxed">
+                Manage employees, payroll, attendance, and performance all in one powerful platform. 
+                Boost productivity and reduce administrative overhead with our intuitive HR management system.
+              </p>
+            </RevealAnimation>
+            <RevealAnimation direction="left" delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={scrollToFeatures}
                 className="text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group" 
@@ -48,16 +54,19 @@ const HeroSection = () => {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{backgroundColor: '#a89456'}}></div>
               </button> */}
             </div>
+          </RevealAnimation>
           </div>
            <div className="flex justify-center">
-            <div className=" bg-opacity-10 backdrop-blur-sm rounded-xl h-120 w-full flex items-center justify-center">
+            <RevealAnimation direction="right">
+              <div className=" bg-opacity-10 backdrop-blur-sm rounded-xl h-120 w-full flex items-center justify-center">
               <DotLottieReact
-                src="https://lottie.host/a3b4f7e9-e2d5-4205-b234-de67ea8acf34/OV9HXzFlrp.lottie"
+                src="https://lottie.host/b54a556b-c540-48df-b70c-fc9d08d911c9/miioGUaqcU.lottie"
                 loop
                 autoplay
                 style={{ width: '100%', height: '100%' }}
               />
             </div>
+            </RevealAnimation>
           </div>
         </div>
       </div>

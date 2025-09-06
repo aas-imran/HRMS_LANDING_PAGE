@@ -9,6 +9,7 @@ import {
   ArrowTrendingUpIcon,
   LockClosedIcon
 } from '@heroicons/react/24/outline';
+import RevealAnimation from './RevealAnimation';
 
 const Benefits = () => {
   const benefits = [
@@ -28,7 +29,7 @@ const Benefits = () => {
     },
     {
       title: "Ensure Compliance",
-      description: "Stay compliant with labor laws and regulations with automated updates. Never miss important deadlines or regulatory changes.",
+      description: "Stay compliant with payroll, tax, and labor regulations through automated and up-to-date processes. ",
       metric: "100% Compliance",
       icon: ShieldCheckIcon,
       color: "bg-blue-500"
@@ -49,7 +50,7 @@ const Benefits = () => {
     },
     {
       title: "Enhanced Security & Privacy",
-      description: "Enterprise-grade security keeps your sensitive HR data protected. Multi-layer encryption and regular security audits ensure peace of mind.",
+      description: "Protect sensitive data with enterprise-level encryption, role-based access, and privacy compliance. ",
       metric: "Bank-level Security",
       icon: LockClosedIcon,
       color: "bg-cyan-500"
@@ -61,15 +62,21 @@ const Benefits = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
-            <span className="text-blue-600 font-semibold text-sm">✨ Benefits for Businesses</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Transform Your Business with Our <span className="text-[#a89456]">HRMS Software</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover how our comprehensive HRMS solution delivers measurable results and drives business growth
-          </p>
+          <RevealAnimation>
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
+              <span className="text-blue-600 font-semibold text-sm">✨ Benefits for Businesses</span>
+            </div>
+          </RevealAnimation>
+          <RevealAnimation delay={0.2}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Transform Your Business with Our <span className="text-[#a89456]">HRMS Software</span>
+            </h2>
+          </RevealAnimation>
+          <RevealAnimation delay={0.4}>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover how our comprehensive HRMS solution delivers measurable results and drives business growth
+            </p>
+          </RevealAnimation>
         </div>
 
         {/* Benefits Grid */}
@@ -77,43 +84,45 @@ const Benefits = () => {
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-              >
+              <RevealAnimation key={index} delay={index * 0.1}>
+                <div
+                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+                >
                 {/* Number Badge */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#a89456] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                  {index + 1}
-                </div>
-
-                {/* Icon */}
-                <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-
-                {/* Content */}
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                  
-                  {/* Metric Badge */}
-                  <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full">
-                    <span className="text-2xl mr-2">✨</span>
-                    <span className="font-bold text-gray-900">{benefit.metric}</span>
-                  </div>
-                </div>
-              </div>
+                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#a89456] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                   {index + 1}
+                 </div>
+ 
+                 {/* Icon */}
+                 <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                   <IconComponent className="w-8 h-8 text-white" />
+                 </div>
+ 
+                 {/* Content */}
+                 <div>
+                   <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+                     {benefit.title}
+                   </h3>
+                   <p className="text-gray-600 mb-6 leading-relaxed">
+                     {benefit.description}
+                   </p>
+                   
+                   {/* Metric Badge */}
+                   <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full">
+                     <span className="text-2xl mr-2">✨</span>
+                     <span className="font-bold text-gray-900">{benefit.metric}</span>
+                   </div>
+                 </div>
+               </div>
+              </RevealAnimation>
             );
           })}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
+          <RevealAnimation delay={0.6}>
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Ready to Experience These Benefits?
             </h3>
@@ -127,6 +136,7 @@ const Benefits = () => {
               </button>
             </Link>
           </div>
+          </RevealAnimation>
         </div>
       </div>
     </section>

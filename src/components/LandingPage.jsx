@@ -25,10 +25,11 @@ const LandingPage = () => {
       {/* Replaced Testimonials with Pricing */}
       <Benefits />
   
-      <div >
+      <div key="faq">
         <FAQ />
       </div>
       <ContactUs />
+     
    
     </div>
   );

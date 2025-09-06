@@ -5,11 +5,13 @@ import {
   ClockIcon,
   ShieldCheckIcon
 } from '@heroicons/react/24/outline';
+import RevealAnimation from './RevealAnimation';
 
 const StatsSection = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="relative -mt-2 bg-[#eeeff1] z-10">
+      <RevealAnimation>
+      <div className="max-w-6xl mx-auto px-4 pb-16">
         {/* Stats Section */}
         <div className="bg-[#f6f8fc] p-12 rounded-3xl border border-gray-100 shadow-xl">
           <div className="text-center mb-12">
@@ -31,6 +33,7 @@ const StatsSection = () => {
               const IconComponent = stat.icon;
               return (
                 <div key={index} className="text-center group">
+                  <RevealAnimation>
                   <div className="bg-white p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 transform group-hover:-translate-y-2 border border-gray-200 relative overflow-hidden shadow-lg">
                     {/* Subtle background accent */}
                     <div 
@@ -48,12 +51,14 @@ const StatsSection = () => {
                       <div className="text-[#a89456] text-sm font-medium">{stat.label}</div>
                     </div>
                   </div>
+                  </RevealAnimation>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
+      </RevealAnimation>
     </section>
   );
 };

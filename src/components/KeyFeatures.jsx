@@ -7,6 +7,7 @@ import {
   UserPlusIcon, 
   PresentationChartLineIcon 
 } from '@heroicons/react/24/outline';
+import RevealAnimation from './RevealAnimation';
 
 const KeyFeatures = () => {
   const features = [
@@ -59,15 +60,21 @@ const KeyFeatures = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-gray-50 rounded-full mb-6">
-            <span className="font-semibold text-sm" style={{color: '#a89456'}}>KEY FEATURES</span>
-          </div>
-          <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
-            Powerful <span style={{color: '#a89456'}}>Features</span> for Modern HR
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
-            Everything you need to manage your workforce efficiently with cutting-edge technology
-          </p>
+          <RevealAnimation>
+            <div className="inline-flex items-center px-4 py-2 bg-gray-50 rounded-full mb-6">
+              <span className="font-semibold text-sm" style={{color: '#a89456'}}>KEY FEATURES</span>
+            </div>
+          </RevealAnimation>
+          <RevealAnimation delay={0.2}>
+            <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+              Powerful <span style={{color: '#a89456'}}>Features</span> for Modern HR
+            </h2>
+          </RevealAnimation>
+          <RevealAnimation delay={0.4}>
+            <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
+              Everything you need to manage your workforce efficiently with cutting-edge technology
+            </p>
+          </RevealAnimation>
         </div>
 
         {/* Features Grid */}
@@ -75,10 +82,11 @@ const KeyFeatures = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <div 
-                key={index} 
-                className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden"
-              >
+              <RevealAnimation delay={index * 0.1}>
+                <div 
+                  key={index} 
+                  className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
+                >
                 {/* Gradient Background on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
@@ -102,18 +110,21 @@ const KeyFeatures = () => {
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-opacity-20 rounded-2xl transition-all duration-300" style={{borderColor: '#a89456'}}></div>
               </div>
+              </RevealAnimation>
             );
           })}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-50 rounded-full">
+          <RevealAnimation delay={0.6}>
+            <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-50 rounded-full">
             <span className="text-gray-600">Want to see more features?</span>
             <a href="/features" className="font-semibold transition-colors duration-300 hover:text-opacity-80" style={{color: '#a89456'}}>
               Explore All Features →
             </a>
           </div>
+          </RevealAnimation>
         </div>
       </div>
     </section>

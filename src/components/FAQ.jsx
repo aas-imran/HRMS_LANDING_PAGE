@@ -5,38 +5,47 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "How long does it take to implement the HRMS?",
-      answer: "Implementation typically takes 2-4 weeks depending on your organization size and complexity. Our dedicated implementation team will guide you through every step of the process."
+      question: "Do you handle payroll processing and salary calculations?",
+      answer: "Yes, the platform includes a comprehensive payroll module that automates salary calculations based on attendance, leave balances, benefits, and predefined salary structures."
     },
     {
-      question: "Is my data secure with your HRMS?",
-      answer: "Yes, we use enterprise-grade security measures including 256-bit SSL encryption, regular security audits, and compliance with GDPR, SOC 2, and other industry standards. Your data is stored in secure, redundant data centers."
+      question: "Can the system manage tax deductions and generate payslips?",
+      answer: "Absolutely. The system automatically applies tax deductions based on the current income tax slabs as per Indian government regulations, and generates downloadable payslips for each payroll cycle."
     },
     {
-      question: "Can I migrate data from my current HR system?",
-      answer: "Absolutely! We provide free data migration services for all new customers. Our team will help you transfer employee records, payroll history, and other important data seamlessly."
+      question: "Is there any provision to handle reimbursements?",
+      answer: "Yes, employees can submit reimbursement claims through the platform, which can be reviewed, approved, and tracked by authorized personnel."
     },
     {
-      question: "Do you offer mobile access?",
-      answer: "Yes, our HRMS includes mobile apps for both iOS and Android, plus a responsive web interface that works perfectly on all devices. Employees can access their information anytime, anywhere."
+      question: "How can I onboard new employees in the system?",
+      answer: "Only authorized personnel, such as HR administrators, can onboard new employees. Once the verification and approval process are complete, the system auto generates Employee ID and grants access to the platform."
     },
     {
-      question: "What kind of support do you provide?",
-      answer: "We offer 24/7 customer support via phone, email, and live chat. Plus, you'll get access to our comprehensive knowledge base, video tutorials, and dedicated customer success manager."
+      question: "Can attendance be tracked through biometric or manual entry?",
+      answer: "The system supports biometric attendance through QR scanning and facial recognition only. Additionally, attendance can only be recorded at designated locations using geofencing restrictions."
     },
     {
-      question: "Can the system handle multiple locations?",
-      answer: "Yes, our HRMS is designed for multi-location businesses. You can manage different offices, departments, and even countries with location-specific settings, compliance rules, and reporting."
+      question: "Is there an option to generate leave and attendance reports?",
+      answer: "Yes, detailed reports for leave and attendance can be generated with filters for departments, dates, and employee types. These reports are exportable in both CSV and Excel formats."
     },
     {
-      question: "Is there a free trial available?",
-      answer: "Yes, we offer a 14-day free trial with full access to all features. No credit card required. You can also schedule a personalized demo to see how the system works for your specific needs."
+      question: "Is there support for document circulation and internal notices?",
+      answer: "Yes, the platform includes a Resource Centre to store policies, guidelines, and employee handbooks. Additionally, internal notices can be created, published, and managed via the built-in Notice Board module."
     },
     {
-      question: "How much does the HRMS cost?",
-      answer: "Our pricing is based on the number of employees and features you need. Plans start at $5 per employee per month. Contact us for a custom quote based on your specific requirements."
+      question: "Is there a free trial or demo available?",
+      answer: "Yes, we offer personalized demos to help you explore the platform and its capabilities. Demo sessions must be booked in advance through our demo request form or sales team."
+    },
+    {
+      question: "Can the HRMS be customized to match my organization's policies?",
+      answer: "Yes, the platform can be tailored to fit your organization's policies, workflows, and approval structures. However, customization features are offered under specific plans. To explore customization options and eligibility, please get connect with our sales team."
+    },
+    {
+      question: "Are there any hidden charges beyond the subscription fee?",
+      answer: "No, there are no hidden charges. We maintain complete transparency. Please refer to the official pricing catalogue provided by our sales representative, which clearly outlines the features and services included in your selected plan."
     }
-  ];
+  ]
+
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);

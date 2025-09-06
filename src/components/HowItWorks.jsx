@@ -1,5 +1,6 @@
 import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import RevealAnimation from './RevealAnimation';
 
 const HowItWorks = () => {
   const steps = [
@@ -21,7 +22,7 @@ const HowItWorks = () => {
     {
       step: "02",
       title: "Add Employee Data",
-      description: "Seamlessly migrate existing employee information or add new team members with bulk import capabilities.",
+      description: "Onboard candidate through guided forms with auto employee Id generation. ",
       svgIcon: (
         <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="32" cy="32" r="30" fill="#10B981" fillOpacity="0.1"/>
@@ -74,8 +75,8 @@ const HowItWorks = () => {
     },
      {
       step: "08",
-       title: "Complete HR Ecosystem",
-      description: " Integrated HR management with unified onboarding, performance trackin and payroll.",
+       title: "Full HR Ecosystem",
+      description: " Manage everything from core HR processes to notices, events and grievance reports within one unified platform. ",
       svgIcon: (
         <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="32" cy="32" r="30" fill="#a89456" fillOpacity="0.1"/>
@@ -155,7 +156,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="how-it-works" className="py-24 bg-gradient-to-br from-gray-50  to-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
@@ -166,18 +167,24 @@ const HowItWorks = () => {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header Section with Lottie */}
-        <div className="flex items-center justify-between mb-20">
-          {/* Left side - Text Content */}
-          <div className="flex-1 text-left">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
-              <span className="text-blue-600 font-semibold text-sm">COMPLETE PROCESS</span>
-            </div>
-            <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
-              How It <span style={{color: '#a89456'}}>Works</span>
-            </h2>
-            <p className="text-xl max-w-2xl leading-relaxed" style={{color: '#6b7280'}}>
-              Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
-            </p>
+        <div className="flex flex-col items-center text-center mb-20">
+          {/* Header Content */}
+          <div className="flex flex-col items-center">
+            <RevealAnimation>
+              <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
+                 <span className="text-blue-600 font-semibold text-sm">COMPLETE PROCESS</span>
+               </div>
+             </RevealAnimation>
+            <RevealAnimation delay={0.2}>
+              <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+                How It <span style={{color: '#a89456'}}>Works</span>
+              </h2>
+            </RevealAnimation>
+            <RevealAnimation delay={0.4}>
+              <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7280'}}>
+                Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
+              </p>
+            </RevealAnimation>
           </div>
           
           {/* Right side - Lottie Animation */}
@@ -191,60 +198,65 @@ const HowItWorks = () => {
             </div>
           </div> */}
         </div>
+        </div>
 
         {/* Process Flow */}
-        <div className="relative">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            {steps.map((step, index) => (
-              <div key={index} className="group relative">
-                {/* Step Card - Fixed Height */}
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative h-80 flex flex-col">
-                  {/* Step Number Badge */}
-                  <div 
-                    className="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-30"
-                    style={{backgroundColor: step.color}}
-                  >
-                    {step.step}
-                  </div>
-                  
-                  {/* Icon */}
-                  <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                    {step.svgIcon}
-                  </div>
-                  
-                  {/* Content - Flexible */}
-                  <div className="flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold mb-4" style={{color: '#111826'}}>
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm flex-1">
-                      {step.description}
-                    </p>
-                  </div>
-                  
-                  {/* Progress Indicator - Fixed at bottom */}
-                  <div className="mt-6 flex items-center flex-shrink-0">
-                    <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          backgroundColor: step.color,
-                          width: '100%',
-                          transform: 'translateX(-100%)',
-                          animation: `slideIn 1s ease-out ${index * 0.2}s forwards`
-                        }}
-                      ></div>
-                    </div>
-                    <span className="ml-3 text-xs font-semibold" style={{color: step.color}}>
-                      Step {step.step}
-                    </span>
-                  </div>
-                </div>
+ {/* Process Flow */}
+<div className="max-w-7xl mx-auto px-4 relative">
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+    {steps.map((step, index) => (
+      <RevealAnimation key={index} delay={index * 0.1}>
+        <div className="group relative">
+          {/* Step Card - Fixed Height */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative h-80 flex flex-col">
+            
+            {/* Step Number Badge */}
+            <div 
+              className="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-30"
+              style={{ backgroundColor: step.color }}
+            >
+              {step.step}
+            </div>
+            
+            {/* Icon */}
+            <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+              {step.svgIcon}
+            </div>
+            
+            {/* Content - Flexible */}
+            <div className="flex-1 flex flex-col">
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#111826' }}>
+                {step.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed text-sm flex-1">
+                {step.description}
+              </p>
+            </div>
+            
+            {/* Progress Indicator - Fixed at bottom */}
+            <div className="mt-6 flex items-center flex-shrink-0">
+              <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full rounded-full transition-all duration-1000 ease-out"
+                  style={{
+                    backgroundColor: step.color,
+                    width: '100%',
+                    transform: 'translateX(-100%)',
+                    animation: `slideIn 1s ease-out ${index * 0.2}s forwards`
+                  }}
+                ></div>
               </div>
-            ))}
+              <span className="ml-3 text-xs font-semibold" style={{ color: step.color }}>
+                Step {step.step}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </RevealAnimation>
+    ))}
+  </div>
+</div>
+ 
 
       {/* Custom CSS for animations */}
       <style jsx>{`

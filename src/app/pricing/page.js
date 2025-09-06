@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Pricing from '../../components/Pricing';
-import Footer from '../../components/Footer';
+
 
 const PricingPage = () => {
   return (
@@ -11,7 +11,7 @@ const PricingPage = () => {
       <main className="pt-20">
         <Pricing />
       </main>
-      <Footer />
+  
     </div>
   );
 };

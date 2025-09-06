@@ -13,6 +13,7 @@ import {
   FaFacebook,
   FaYoutube
 } from 'react-icons/fa';
+import RevealAnimation from './RevealAnimation';
 
 const Footer = () => {
   const footerLinks = {
@@ -48,14 +49,19 @@ const Footer = () => {
         <div className="grid lg:grid-cols-5 gap-12  ml-15 mb-16">
           {/* Company Info - Takes 2 columns */}
           <div className="lg:col-span-2 pr-8">
-            <h3 className="text-4xl font-bold mb-6" style={{color: '#a89456'}}>HRMS</h3>
-            <p className="text-lg leading-relaxed mb-8 max-w-md" style={{color: '#9ca3af'}}>
-              Streamline your HR operations with our comprehensive human resource management system. 
-              Trusted by thousands of businesses worldwide.
-            </p>
+            <RevealAnimation>
+              <h3 className="text-4xl font-bold mb-6" style={{color: '#a89456'}}>HRMS</h3>
+            </RevealAnimation>
+            <RevealAnimation delay={0.2}>
+              <p className="text-lg leading-relaxed mb-8 max-w-md" style={{color: '#9ca3af'}}>
+                Streamline your HR operations with our comprehensive human resource management system. 
+                Trusted by thousands of businesses worldwide.
+              </p>
+            </RevealAnimation>
             
             {/* Social Media Icons */}
-            <div className="flex space-x-6">
+            <RevealAnimation delay={0.4}>
+              <div className="flex space-x-6">
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
                 return (
@@ -70,12 +76,15 @@ const Footer = () => {
                   </a>
                 );
               })}
-            </div>
+                </div>
+            </RevealAnimation>
+          
           </div>
           
           {/* Product Links */}
           <div className="">
-            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Product</h4>
+            <RevealAnimation delay={0.2}>
+              <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
@@ -99,11 +108,13 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            </RevealAnimation>
           </div>
           
           {/* Company Links */}
           <div className="">
-            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Company</h4>
+            <RevealAnimation delay={0.3}>
+              <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
@@ -127,11 +138,13 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            </RevealAnimation>
           </div>
           
           {/* Resources Links */}
           <div className="">
-            <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Resources</h4>
+            <RevealAnimation delay={0.4}>
+              <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
@@ -155,14 +168,17 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            </RevealAnimation>
           </div>
         </div>
         
         {/* Our Offices Section */}
         <div className="mb-12">
-          <h4 className="text-2xl font-bold text-center mb-8" style={{color: '#a89456'}}>Our Offices</h4>
+          <RevealAnimation delay={0.6}>
+            <h4 className="text-2xl font-bold text-center mb-8" style={{color: '#a89456'}}>Our Offices</h4>
           <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-600">
-            <div className="px-6 py-4">
+            <RevealAnimation delay={0.7}>
+              <div className="px-6 py-4">
               <div className="flex items-center mb-4">
                 <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
                   <BuildingOfficeIcon className="w-6 h-6 text-white" />
@@ -176,6 +192,7 @@ const Footer = () => {
                 Plot No. 242/3003, Sanra, Tirtol, Nalibar, Jagatsinghapur, Jagatsinghapur, Orissa, India, 754104.
               </p>
             </div>
+            </RevealAnimation>
             <div className="px-6 py-4">
               <div className="flex items-center mb-4">
                 <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
@@ -205,31 +222,28 @@ const Footer = () => {
               </p>
             </div>
           </div>
+          </RevealAnimation>
         </div>
         
         {/* Bottom Section */}
         <div className="border-t pt-8" style={{borderColor: '#374151'}}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="">
               <p className="text-base" style={{color: '#9ca3af'}}>
                 &copy; 2024 HRMS. All rights reserved.
               </p>
             </div>
             <div className="flex flex-wrap gap-8">
-              <Link href="#privacy" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
+              <Link href="/privacy-policy" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 Privacy Policy
               </Link>
-              <Link href="#terms" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
+              <Link href="/terms-of-service" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
                 Terms of Service
-              </Link>
-              <Link href="#status" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
-                System Status
-              </Link>
-              <Link href="#accessibility" className="hover:text-blue-400 hover:underline text-base transition-colors duration-300 cursor-pointer" style={{color: '#9ca3af'}}>
-                Accessibility
               </Link>
             </div>
           </div>
+       
         </div>
       </div>
     </footer>

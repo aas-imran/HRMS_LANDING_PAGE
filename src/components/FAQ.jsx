@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import RevealAnimation from './RevealAnimation';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -63,26 +64,30 @@ const FAQ = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div 
-                  className="p-6 cursor-pointer hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <h3 className="text-lg font-semibold pr-4" style={{color: '#111826'}}>{faq.question}</h3>
-                  <span className="text-2xl font-bold text-blue-600 flex-shrink-0">
-                    {activeIndex === index ? '−' : '+'}
-                  </span>
-                </div>
-                {activeIndex === index && (
-                  <div className="px-6 pb-6 border-t border-gray-200">
-                    <p className="leading-relaxed pt-4" style={{color: '#6b7280'}}>{faq.answer}</p>
+              <RevealAnimation key={index} delay={index * 0.05}>
+                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div 
+                    className="p-6 cursor-pointer hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center"
+                    onClick={() => toggleFAQ(index)}
+                  >
+                    <h3 className="text-lg font-semibold pr-4" style={{color: '#111826'}}>{faq.question}</h3>
+                    <span className="text-2xl font-bold text-blue-600 flex-shrink-0">
+                      {activeIndex === index ? '−' : '+'}
+                    </span>
                   </div>
-                )}
-              </div>
+                  {activeIndex === index && (
+                    <div className="px-6 pb-6 border-t border-gray-200">
+                      <p className="leading-relaxed pt-4" style={{color: '#6b7280'}}>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              </RevealAnimation>
+              
             ))}
           </div>
           <div className="lg:col-span-1">
-            <div className="bg-white p-8 rounded-xl shadow-lg text-center sticky top-8">
+            <RevealAnimation delay={0.1}>
+              <div className="bg-white p-8 rounded-xl shadow-lg text-center sticky top-8">
               <h3 className="text-2xl font-bold mb-4" style={{color: '#111826'}}>Still have questions?</h3>
               <p className="mb-6 leading-relaxed" style={{color: '#6b7280'}}>
                 Our team is here to help you find the right solution for your business.
@@ -96,6 +101,7 @@ const FAQ = () => {
                 </button>
               </div>
             </div>
+            </RevealAnimation>
           </div>
         </div>
       </div>

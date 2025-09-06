@@ -3,6 +3,8 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import RevealAnimation from './RevealAnimation';
 
 const HowItWorks = () => {
+  // No need for mobile detection since we're using a fixed order
+
   const steps = [
     {
       step: "01",
@@ -74,43 +76,24 @@ const HowItWorks = () => {
      
     },
      {
-      step: "08",
-       title: "Full HR Ecosystem",
-      description: " Manage everything from core HR processes to notices, events and grievance reports within one unified platform. ",
+      step: "05",
+            title: "Payroll & Compliance",
+      description: "Automate payroll processing, tax calculations, and ensure compliance with labor laws and regulatory requirements.",
       svgIcon: (
         <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" fill="#a89456" fillOpacity="0.1"/>
-          <circle cx="32" cy="32" r="20" fill="#a89456" fillOpacity="0.2"/>
-          <circle cx="32" cy="20" r="4" fill="#a89456"/>
-          <circle cx="44" cy="32" r="4" fill="#a89456"/>
-          <circle cx="32" cy="44" r="4" fill="#a89456"/>
-          <circle cx="20" cy="32" r="4" fill="#a89456"/>
-          <circle cx="38" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
-          <circle cx="38" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
-          <circle cx="26" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
-          <circle cx="26" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
-          <circle cx="32" cy="32" r="6" fill="#a89456"/>
-          <path d="M29 32L31 34L35 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="32" cy="32" r="30" fill="#84CC16" fillOpacity="0.1"/>
+          <rect x="20" y="16" width="24" height="32" rx="4" fill="#84CC16" fillOpacity="0.2"/>
+          <circle cx="32" cy="28" r="6" fill="#84CC16" fillOpacity="0.3"/>
+          <path d="M29 28L31 30L35 26" stroke="#84CC16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <rect x="24" y="36" width="16" height="2" fill="#84CC16"/>
+          <rect x="24" y="40" width="12" height="2" fill="#84CC16"/>
+          <circle cx="32" cy="28" r="3" fill="#84CC16"/>
         </svg>
       ),
-      color: "#a89456"
+      color: "#84CC16"
+   
     },
       {
-      step: "07",
-            title: "Go Live & Manage",
-      description: "Launch your HR operations with confidence and manage your workforce through intelligent automation and analytics.",
-      svgIcon: (
-        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" fill="#F59E0B" fillOpacity="0.1"/>
-          <path d="M32 8L36 20L48 20L39 29L43 41L32 35L21 41L25 29L16 20L28 20L32 8Z" fill="#F59E0B" fillOpacity="0.3"/>
-          <circle cx="32" cy="32" r="8" fill="#F59E0B"/>
-          <path d="M28 32L30 34L36 28" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-      color: "#F59E0B"
-
-    },
-     {
       step: "06",
       
      title: "Configure Workflows",
@@ -132,23 +115,45 @@ const HowItWorks = () => {
       color: "#8B5CF6"
     
     },
-    {
-      step: "05",
-            title: "Payroll & Compliance",
-      description: "Automate payroll processing, tax calculations, and ensure compliance with labor laws and regulatory requirements.",
+
+      {
+      step: "07",
+            title: "Go Live & Manage",
+      description: "Launch your HR operations with confidence and manage your workforce through intelligent automation and analytics.",
       svgIcon: (
         <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="30" fill="#84CC16" fillOpacity="0.1"/>
-          <rect x="20" y="16" width="24" height="32" rx="4" fill="#84CC16" fillOpacity="0.2"/>
-          <circle cx="32" cy="28" r="6" fill="#84CC16" fillOpacity="0.3"/>
-          <path d="M29 28L31 30L35 26" stroke="#84CC16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <rect x="24" y="36" width="16" height="2" fill="#84CC16"/>
-          <rect x="24" y="40" width="12" height="2" fill="#84CC16"/>
-          <circle cx="32" cy="28" r="3" fill="#84CC16"/>
+          <circle cx="32" cy="32" r="30" fill="#F59E0B" fillOpacity="0.1"/>
+          <path d="M32 8L36 20L48 20L39 29L43 41L32 35L21 41L25 29L16 20L28 20L32 8Z" fill="#F59E0B" fillOpacity="0.3"/>
+          <circle cx="32" cy="32" r="8" fill="#F59E0B"/>
+          <path d="M28 32L30 34L36 28" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      color: "#84CC16"
+      color: "#F59E0B"
+
+    },
    
+ 
+         {
+      step: "08",
+       title: "Full HR Ecosystem",
+      description: " Manage everything from core HR processes to notices, events and grievance reports within one unified platform. ",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#a89456" fillOpacity="0.1"/>
+          <circle cx="32" cy="32" r="20" fill="#a89456" fillOpacity="0.2"/>
+          <circle cx="32" cy="20" r="4" fill="#a89456"/>
+          <circle cx="44" cy="32" r="4" fill="#a89456"/>
+          <circle cx="32" cy="44" r="4" fill="#a89456"/>
+          <circle cx="20" cy="32" r="4" fill="#a89456"/>
+          <circle cx="38" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="38" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="26" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="26" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="32" cy="32" r="6" fill="#a89456"/>
+          <path d="M29 32L31 34L35 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      color: "#a89456"
     },
    
   
@@ -204,7 +209,7 @@ const HowItWorks = () => {
  {/* Process Flow */}
 <div className="max-w-7xl mx-auto px-4 relative">
   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-    {steps.map((step, index) => (
+    {[...steps.slice(0, 4), steps[4], steps[5], steps[6], steps[7]].map((step, index) => (
       <RevealAnimation key={index} delay={index * 0.1}>
         <div className="group relative">
           {/* Step Card - Fixed Height */}

@@ -86,7 +86,7 @@ const Benefits = () => {
             return (
               <RevealAnimation key={index} delay={index * 0.1}>
                 <div
-                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100 min-h-[380px] min-w-[300px]"
                 >
                 {/* Number Badge */}
                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#a89456] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">

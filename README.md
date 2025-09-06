@@ -1,519 +1,294 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import {
-  HomeIcon,
-  UsersIcon,
-  UserPlusIcon,
-  BriefcaseIcon,
-  SpeakerWaveIcon,
-  ChatBubbleLeftRightIcon,
-  ClockIcon,
-  CalendarDaysIcon,
-  ChartBarIcon,
-  ExclamationTriangleIcon,
-  CurrencyDollarIcon,
-  Cog6ToothIcon
-} from '@heroicons/react/24/outline';
+import React from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import RevealAnimation from './RevealAnimation';
 
-// Add these imports at the top of the file
-import { BoltIcon, ShieldCheckIcon, PresentationChartBarIcon } from '@heroicons/react/24/outline';
-import BookDemoModal from './BookDemoModal';
+const HowItWorks = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
 
-const FeaturesShowcase = () => {
-  const [activeModule, setActiveModule] = useState('dashboard');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
+ React.useEffect(() => {
+  setIsMobile(window.innerWidth < 768);
+}, []);
 
-  useEffect(() => {
-    if (activeModule === 'onboarding') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'recruitment') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 5);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'attendance') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'payroll') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 3);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'user-management') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 2);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'leave-management') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 2);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'performance') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 2);
-      }, 3000);
-      return () => clearInterval(interval);
-    } else if (activeModule === 'grievance') {
-      const interval = setInterval(() => {
-        setImageIndex((prev) => (prev + 1) % 2);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [activeModule]);
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-  const modules = [
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const steps = [
     {
-      id: 'dashboard',
-      name: 'Dashboard',
-      icon: HomeIcon,
-      features: [
-        'Module-wise creation and entry widgets for jobs, attendance, and notices',
-        'HR insights with comprehensive analytics and metrics',
-        'Quick actions panel for frequent tasks',
-        'Team calendar with events and schedules',
-        'Resource center for document management and official notices'
-      ]
+      step: "01",
+      title: "Sign Up & Setup",
+      description: "Create your account and configure your organization settings in minutes with our intuitive onboarding process.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#3B82F6" fillOpacity="0.1"/>
+          <path d="M32 8L40 16H24L32 8Z" fill="#3B82F6"/>
+          <rect x="20" y="16" width="24" height="32" rx="2" fill="#3B82F6" fillOpacity="0.2"/>
+          <circle cx="32" cy="32" r="8" fill="#3B82F6"/>
+          <path d="M28 32L30 34L36 28" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      color: "#3B82F6"
     },
     {
-      id: 'user-management',
-      name: 'User Management',
-      icon: UsersIcon,
-      features: [
-        'Add and manage user accounts for HRMS access',
-        'Control user permissions and access levels',
-        'Reset and manage user passwords and email settings',
-        'Block/unblock user access to the system',
-        'Comprehensive user activity monitoring'
-      ]
+      step: "02",
+      title: "Add Employee Data",
+      description: "Onboard candidate through guided forms with auto employee Id generation. ",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#10B981" fillOpacity="0.1"/>
+          <rect x="16" y="12" width="32" height="40" rx="4" fill="#10B981" fillOpacity="0.2"/>
+          <rect x="20" y="20" width="24" height="2" fill="#10B981"/>
+          <rect x="20" y="26" width="20" height="2" fill="#10B981"/>
+          <rect x="20" y="32" width="16" height="2" fill="#10B981"/>
+          <circle cx="24" cy="42" r="3" fill="#10B981"/>
+          <rect x="30" y="40" width="12" height="2" fill="#10B981"/>
+          <rect x="30" y="44" width="8" height="2" fill="#10B981"/>
+        </svg>
+      ),
+      color: "#10B981"
     },
     {
-      id: 'onboarding',
-      name: 'Onboarding',
-      icon: UserPlusIcon,
-      features: [
-        'Employee onboarding form with comprehensive data collection',
-        'Digital ID card generation with QR code',
-        'Employee profile management with edit/block functionality',
-        'Document verification and storage system'
-      ]
-    },
-    {
-      id: 'recruitment',
-      name: 'Recruitment',
-      icon: BriefcaseIcon,
-      features: [
-        'Post job openings on company website with detailed requirements',
-        'Track candidate applications and schedule interviews',
-        'Multi-round interview process with candidate evaluation',
-        'Automated shortlisting and offer letter generation',
-        'Complete recruitment workflow from posting to hiring'
-      ]
-    },
-    // {
-    //   id: 'notice',
-    //   name: 'Notice Board',
-    //   icon: SpeakerWaveIcon,
-    //   features: [
-    //     'Company announcements',
-    //     'Department notices',
-    //     'Priority notifications',
-    //     'Read receipt tracking'
-    //   ]
-    // },
-    // {
-    //   id: 'interview',
-    //   name: 'Interview',
-    //   icon: ChatBubbleLeftRightIcon,
-    //   features: [
-    //     'Interview scheduling',
-    //     'Panel management',
-    //     'Evaluation forms',
-    //     'Feedback collection'
-    //   ]
-    // },
-    {
-      id: 'attendance',
-      name: 'Attendance',
-      icon: ClockIcon,
-      features: [
-        'Comprehensive attendance management with CSV export',
-        'View and analyze past attendance records',
-        'QR code and facial recognition for attendance marking',
-        'Track lunch breaks and work hours',
-        'Self and team attendance monitoring'
-      ]
-    },
-    {
-      id: 'leave-management',
-      name: 'Leave Management',
-      icon: CalendarDaysIcon,
-      features: [
-        'View and manage all employee leave requests',
-        'Track available leave balances by type',
-        'Approve or reject leave based on availability',
-        'Automated leave balance calculations',
-        'Leave history and reporting features'
-      ]
-    },
-    {
-      id: 'performance',
-      name: 'Performance',
-      icon: ChartBarIcon,
-      features: [
-        'Assign and track employee tasks with deadlines',
-        'Monitor task completion and performance metrics',
-        'Rate employee performance with detailed feedback',
-        'Generate performance reports and analytics',
-        'Set and track individual and team goals'
-      ]
-    },
-    {
-      id: 'grievance',
-      name: 'Grievance',
-      icon: ExclamationTriangleIcon,
-      features: [
-        'View and manage all employee grievances',
-        'Track complaint status and resolution progress',
-        'Escalate issues to higher management',
-        'Handle sensitive matters confidentially',
-        'Monitor resolution timelines'
-      ]
-    },
-    {
-      id: 'payroll',
-      name: 'Payroll',
-      icon: CurrencyDollarIcon,
-      features: [
-        'Run and hold payroll for individual or group employees',
-        'Create and manage multiple salary templates',
-        'Add and manage employee bonuses and incentives',
-        'Automated tax calculations and deductions',
-        'Generate detailed payslips with customizable components'
-      ]
-    },
+      step: "03",
  
+         title: "Employee Self-Service",
+      description: "Enable employees to manage their profiles, request leaves, view payslips, and access company resources independently.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#EF4444" fillOpacity="0.1"/>
+          <circle cx="32" cy="24" r="8" fill="#EF4444" fillOpacity="0.3"/>
+          <path d="M20 48C20 40 25.6 34 32 34C38.4 34 44 40 44 48" fill="#EF4444" fillOpacity="0.3"/>
+          <circle cx="32" cy="24" r="4" fill="#EF4444"/>
+          <rect x="28" y="40" width="8" height="8" rx="2" fill="#EF4444"/>
+          <path d="M30 44L32 46L36 42" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      color: "#EF4444"
+    },
+    {
+      step: "04",
+        title: "Performance Tracking",
+      description: "Monitor employee performance, set goals, conduct reviews, and track KPIs with comprehensive analytics dashboards.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#06B6D4" fillOpacity="0.1"/>
+          <rect x="16" y="20" width="32" height="24" rx="2" fill="#06B6D4" fillOpacity="0.2"/>
+          <path d="M20 36L26 30L30 34L40 24" stroke="#06B6D4" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="26" cy="30" r="2" fill="#06B6D4"/>
+          <circle cx="30" cy="34" r="2" fill="#06B6D4"/>
+          <circle cx="40" cy="24" r="2" fill="#06B6D4"/>
+          <rect x="44" y="16" width="4" height="8" fill="#06B6D4"/>
+          <rect x="44" y="28" width="4" height="16" fill="#06B6D4"/>
+        </svg>
+      ),
+      color: "#06B6D4"
+     
+    },
+     {
+      step: "05",
+            title: "Payroll & Compliance",
+      description: "Automate payroll processing, tax calculations, and ensure compliance with labor laws and regulatory requirements.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#84CC16" fillOpacity="0.1"/>
+          <rect x="20" y="16" width="24" height="32" rx="4" fill="#84CC16" fillOpacity="0.2"/>
+          <circle cx="32" cy="28" r="6" fill="#84CC16" fillOpacity="0.3"/>
+          <path d="M29 28L31 30L35 26" stroke="#84CC16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <rect x="24" y="36" width="16" height="2" fill="#84CC16"/>
+          <rect x="24" y="40" width="12" height="2" fill="#84CC16"/>
+          <circle cx="32" cy="28" r="3" fill="#84CC16"/>
+        </svg>
+      ),
+      color: "#84CC16"
+   
+    },
+      {
+      step: "06",
+      
+     title: "Configure Workflows",
+      description: "Set up automated approval processes, leave policies, and payroll configurations tailored to your business needs.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#8B5CF6" fillOpacity="0.1"/>
+          <circle cx="20" cy="20" r="6" fill="#8B5CF6" fillOpacity="0.3"/>
+          <circle cx="44" cy="20" r="6" fill="#8B5CF6" fillOpacity="0.3"/>
+          <circle cx="32" cy="44" r="6" fill="#8B5CF6" fillOpacity="0.3"/>
+          <path d="M26 20L38 20" stroke="#8B5CF6" strokeWidth="2"/>
+          <path d="M20 26L32 38" stroke="#8B5CF6" strokeWidth="2"/>
+          <path d="M44 26L32 38" stroke="#8B5CF6" strokeWidth="2"/>
+          <circle cx="20" cy="20" r="3" fill="#8B5CF6"/>
+          <circle cx="44" cy="20" r="3" fill="#8B5CF6"/>
+          <circle cx="32" cy="44" r="3" fill="#8B5CF6"/>
+        </svg>
+      ),
+      color: "#8B5CF6"
+    
+    },
+
+      {
+      step: "07",
+            title: "Go Live & Manage",
+      description: "Launch your HR operations with confidence and manage your workforce through intelligent automation and analytics.",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#F59E0B" fillOpacity="0.1"/>
+          <path d="M32 8L36 20L48 20L39 29L43 41L32 35L21 41L25 29L16 20L28 20L32 8Z" fill="#F59E0B" fillOpacity="0.3"/>
+          <circle cx="32" cy="32" r="8" fill="#F59E0B"/>
+          <path d="M28 32L30 34L36 28" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      color: "#F59E0B"
+
+    },
+   
+ 
+         {
+      step: "08",
+       title: "Full HR Ecosystem",
+      description: " Manage everything from core HR processes to notices, events and grievance reports within one unified platform. ",
+      svgIcon: (
+        <svg className="w-16 h-16 mx-auto" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#a89456" fillOpacity="0.1"/>
+          <circle cx="32" cy="32" r="20" fill="#a89456" fillOpacity="0.2"/>
+          <circle cx="32" cy="20" r="4" fill="#a89456"/>
+          <circle cx="44" cy="32" r="4" fill="#a89456"/>
+          <circle cx="32" cy="44" r="4" fill="#a89456"/>
+          <circle cx="20" cy="32" r="4" fill="#a89456"/>
+          <circle cx="38" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="38" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="26" cy="38" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="26" cy="26" r="3" fill="#a89456" fillOpacity="0.7"/>
+          <circle cx="32" cy="32" r="6" fill="#a89456"/>
+          <path d="M29 32L31 34L35 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      color: "#a89456"
+    },
+   
+  
+   
   ];
 
-  const activeModuleData = modules.find(module => module.id === activeModule);
-
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
-      {/* Page Title */}
-      <div className="text-center py-8">
-        <h1 className="text-4xl font-bold text-[#111826] mb-2">
-          Explore All <span className="text-[#a89456]">HRMS Features</span>
-        </h1>
-        <p className="text-gray-600">Comprehensive HR management tools in one platform</p>
+    <section id="how-it-works" className="py-24 bg-gradient-to-br from-gray-50  to-white relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-24 h-24 bg-purple-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-green-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-yellow-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '3s'}}></div>
       </div>
 
-      {/* Primary Card Container */}
-      <div className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* HRMS Interface Layout - Compact */}
-          <div className="flex h-[600px]">
-            {/* Compact Sidebar */}
-            <div className="w-64 bg-[#111826] text-white flex flex-col">
-              {/* Sidebar Header */}
-              <div className="p-4 border-b border-gray-700">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-[#a89456] rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">HR</span>
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold">HRMS</h2>
-                    <p className="text-gray-400 text-xs">Dashboard</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Navigation Menu - Compact */}
-              <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-                {modules.map((module) => {
-                  const IconComponent = module.icon;
-                  return (
-                    <button
-                      key={module.id}
-                      onClick={() => setActiveModule(module.id)}
-                      className={`w-full flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 text-left text-sm ${
-                        activeModule === module.id
-                          ? 'bg-[#a89456] text-white shadow-lg'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                      }`}
-                    >
-                      <IconComponent className="w-4 h-4 flex-shrink-0" />
-                      <span className="font-medium truncate">{module.name}</span>
-                    </button>
-                  );
-                })}
-              </nav>
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        {/* Header Section with Lottie */}
+        <div className="flex flex-col items-center text-center mb-20">
+          {/* Header Content */}
+          <div className="flex flex-col items-center">
+            <RevealAnimation>
+              <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
+                 <span className="text-blue-600 font-semibold text-sm">COMPLETE PROCESS</span>
+               </div>
+             </RevealAnimation>
+            <RevealAnimation delay={0.2}>
+              <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+                How It <span style={{color: '#a89456'}}>Works</span>
+              </h2>
+            </RevealAnimation>
+            <RevealAnimation delay={0.4}>
+              <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7280'}}>
+                Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
+              </p>
+            </RevealAnimation>
+          </div>
+          
+          {/* Right side - Lottie Animation */}
+          {/* <div className="flex-shrink-0 ml-8">
+            <div className="w-80 h-80">
+              <DotLottieReact
+                src="https://lottie.host/f869e15a-06d5-4be8-9b31-c28167cd8113/QlcT28Ro9M.lottie"
+                loop
+                autoplay
+              />
             </div>
+          </div> */}
+        </div>
+        </div>
 
-            {/* Main Content Area - Compact */}
+        {/* Process Flow */}
+ {/* Process Flow */}
+<div className="max-w-7xl mx-auto px-4 relative">
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+    {(isMobile ? [...steps.slice(0, 4), steps[7], steps[6], steps[5], steps[4]] : steps).map((step, index) => (
+      <RevealAnimation key={index} delay={index * 0.1}>
+        <div className="group relative">
+          {/* Step Card - Fixed Height */}
+          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative h-80 flex flex-col">
+            
+            {/* Step Number Badge */}
+            <div 
+              className="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-30"
+              style={{ backgroundColor: step.color }}
+            >
+              {step.step}
+            </div>
+            
+            {/* Icon */}
+            <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+              {step.svgIcon}
+            </div>
+            
+            {/* Content - Flexible */}
             <div className="flex-1 flex flex-col">
-              {/* Module Header */}
-              <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-[#111826] flex items-center">
-                      {React.createElement(activeModuleData?.icon, { className: "w-5 h-5 mr-2 text-[#a89456]" })}
-                      {activeModuleData?.name}
-                    </h2>
-                    <p className="text-gray-600 text-sm">Module Overview</p>
-                  </div>
-           
-                </div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#111826' }}>
+                {step.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed text-sm flex-1">
+                {step.description}
+              </p>
+            </div>
+            
+            {/* Progress Indicator - Fixed at bottom */}
+            <div className="mt-6 flex items-center flex-shrink-0">
+              <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full rounded-full transition-all duration-1000 ease-out"
+                  style={{
+                    backgroundColor: step.color,
+                    width: '100%',
+                    transform: 'translateX(-100%)',
+                    animation: `slideIn 1s ease-out ${index * 0.2}s forwards`
+                  }}
+                ></div>
               </div>
-
-              {/* Content Area */}
-              <div className="flex-1 p-6 overflow-y-auto">
-                <div className="grid lg:grid-cols-6 gap-6 h-full">
-                  {/* Screenshot Area - Increased to 4 columns */}
-                  <div className="lg:col-span-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center relative overflow-hidden group">
-                    <div className="text-center p-6 w-full">
-                      <h3 className="text-lg font-bold text-gray-700 mb-4">{activeModuleData?.name}</h3>
-                      <div className="bg-white/50 rounded-lg p-4">
-                        <div className="relative h-[380px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden">
-                          {activeModule === 'onboarding' ? (
-                            <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/emp-onb.png" 
-                                alt="Employee Onboarding" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/emp-view.png" 
-                                alt="Employee View" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/man-emp.png" 
-                                alt="Employee Management" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'recruitment' ? (
-                            <div className="flex w-[100%] [380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/JO-Notice.png" 
-                                alt="Job Opening Notice" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/all-job.png" 
-                                alt="All Jobs" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/job-view.png" 
-                                alt="Job View" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/applicant.png" 
-                                alt="Applicant List" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/appli-view.png" 
-                                alt="Applicant View" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'attendance' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/all-atd.png" 
-                                alt="All Attendance" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/id-qr.png" 
-                                alt="ID QR Code" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/face-qr.png" 
-                                alt="Face Recognition" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'payroll' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/run-payroll.png" 
-                                alt="Run Payroll" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/hold-payroll.png" 
-                                alt="Hold Payroll" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/bonus.png" 
-                                alt="Bonus Management" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'user-management' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/add-users.png" 
-                                alt="Add Users" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/users.png" 
-                                alt="Manage Users" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'leave-management' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/all-leave.png" 
-                                alt="All Leave Requests" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/accept-leave.png" 
-                                alt="Accept Leave" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'performance' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/all-task.png" 
-                                alt="All Tasks" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/view-task.png" 
-                                alt="View Task" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : activeModule === 'grievance' ? (
-                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
-                              <img 
-                                src="/all-grv.png" 
-                                alt="All Grievances" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                              <img 
-                                src="/all-grv.png" 
-                                alt="Grievance Details" 
-                                className="w-full h-full object-contain flex-shrink-0"
-                              />
-                            </div>
-                          ) : (
-                            <img 
-                              src="/hrms-dash.png" 
-                              alt="HRMS Dashboard" 
-                              className="w-full h-full object-contain"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Book Demo Modal */}
-                  <BookDemoModal 
-                    isOpen={isModalOpen} 
-                    onClose={() => setIsModalOpen(false)} 
-                  />
-
-                  {/* Features List - Decreased to 2 columns */}
-                  <div className="lg:col-span-2 flex flex-col">
-                    {/* Key Features Section */}
-                    <div className="flex-grow">
-                      <h3 className="text-base font-bold text-[#111826] flex items-center mb-4">
-                        <span className="w-5 h-5 bg-[#a89456] rounded-lg flex items-center justify-center mr-2">
-                          <span className="text-white font-bold text-xs">✓</span>
-                        </span>
-                        Key Features
-                      </h3>
-                      <div className="space-y-2">
-                        {activeModuleData?.features.map((feature, index) => (
-                          <div key={index} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
-                            <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                            </div>
-                            <p className="text-gray-700 text-sm leading-relaxed">{feature}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    {(activeModule === 'dashboard' || activeModule === 'onboarding' || activeModule === 'recruitment' || activeModule === 'attendance' || activeModule === 'payroll' || activeModule === 'user-management' || activeModule === 'leave-management' || activeModule === 'performance' || activeModule === 'grievance') && (
-                      <div className="mt-4">
-                        <h4 className="text-xs font-medium text-gray-500 mb-2">Description</h4>
-                        <p className="text-gray-600 text-xs p-2 bg-gray-50 rounded-lg">
-                          {activeModule === 'onboarding' ? (
-                            "Streamline your employee onboarding process with our comprehensive system. From initial data collection to ID card generation, manage employee profiles efficiently with full control over access and permissions."
-                          ) : activeModule === 'recruitment' ? (
-                            "Efficiently manage your recruitment process from job posting to hiring. Post job openings on your company website, track applications, conduct multi-round interviews, evaluate candidates, and generate offer letters - all in one integrated system."
-                          ) : activeModule === 'payroll' ? (
-                            "Comprehensive payroll management system with flexible control over employee compensation. Process payroll runs, manage salary templates, handle bonuses, and automate tax calculations. Hold or release payroll for specific employees or groups while maintaining accurate records and generating detailed payslips."
-                          ) : activeModule === 'user-management' ? (
-                            "Centralized user management system for controlling HRMS access. Create and manage user accounts, set permissions, handle password resets, and monitor user activities. Maintain system security by controlling user access and managing authentication settings."
-                          ) : activeModule === 'leave-management' ? (
-                            "Comprehensive leave management system for HR to efficiently handle employee leave requests. View all leave applications, check available balances, and make informed decisions on approvals or rejections. Track leave history and generate reports for better workforce planning."
-                          ) : activeModule === 'performance' ? (
-                            "Advanced performance management system for tracking employee tasks and evaluating work quality. HR can assign tasks with deadlines, monitor progress, provide ratings and feedback, and generate comprehensive performance reports. The system helps maintain clear performance standards and facilitates employee development."
-                          ) : activeModule === 'grievance' ? (
-                            "Comprehensive grievance management system that enables HR to efficiently handle employee complaints and concerns. View all grievances, track their status, escalate issues when needed, and ensure timely resolution. The system maintains confidentiality while facilitating effective communication between all parties involved."
-                          ) : activeModule === 'dashboard' ? (
-                            "Centralized dashboard providing quick access to essential HR functions and real-time insights. Features module-wise widgets for creating jobs, tracking attendance, and managing notices. Includes HR analytics, quick action buttons, team calendar, and a resource center for document management. Streamlines daily HR operations with an intuitive interface."
-                          ) : (
-                            "Advanced attendance tracking system with multiple check-in methods including QR code scanning and facial recognition. Monitor attendance records, manage breaks, and generate detailed reports with CSV export functionality."
-                          )}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <span className="ml-3 text-xs font-semibold" style={{ color: step.color }}>
+                Step {step.step}
+              </span>
             </div>
           </div>
-
-          {/* Bottom CTA */}
-                       {/* Module Header */}
-              <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-[#111826] flex items-center">
-                      {React.createElement(activeModuleData?.icon, { className: "w-5 h-5 mr-2 text-[#a89456]" })}
-                      {activeModuleData?.name}
-                    </h2>
-                    <p className="text-gray-600 text-sm">Module Overview</p>
-                  </div>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="bg-[#a89456] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02]"
-                  >
-                    Book Demo
-                  </button>
-                </div>
-              </div>
         </div>
-      </div>
+      </RevealAnimation>
+    ))}
+  </div>
+</div>
+ 
 
-      {/* Book Demo Modal */}
-      <BookDemoModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
-    </div>
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0%);
+          }
+        }
+      `}</style>
+    </section>
   );
 };
 
-export default FeaturesShowcase;
+export default HowItWorks;

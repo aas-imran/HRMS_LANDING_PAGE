@@ -1,9 +1,18 @@
 "use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import RevealAnimation from './RevealAnimation';
+import Loader from './Loader';
 
 const HeroSection = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+
+  const handleLoadComplete = () => {
+    setIsLoading(false);
+    // Add a small delay before showing content with reveal animations
+    setTimeout(() => setShowContent(true), 100);
+  };
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
     if (featuresSection) {
@@ -15,6 +24,9 @@ const HeroSection = () => {
   };
 
   return (
+    <>
+      {isLoading && <Loader onLoadComplete={handleLoadComplete} />}
+      {showContent && (
     <section id="hero" className="text-black pt-20 pb-16" style={{background: `#eeeff1`}}>
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -71,6 +83,8 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
+      )}
+    </>
   );
 };
 

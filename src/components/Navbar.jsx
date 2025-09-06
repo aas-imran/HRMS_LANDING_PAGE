@@ -72,10 +72,10 @@ const Navbar = () => {
                 <div className="flex items-center flex-shrink-0">
                   <button 
                     onClick={() => handleSmoothScroll('hero')}
-                    className="text-4xl font-bold cursor-pointer transition-all duration-300 hover:scale-105"
+                    className="text-2xl md:text-4xl font-bold cursor-pointer transition-all duration-300 hover:scale-105"
                     style={{color: '#a89456'}}
                   >
-                    HRMS
+                    Hrms
                   </button>
                 </div>
                 
@@ -116,7 +116,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Right Side Buttons */}
-                <div className="flex items-center space-x-4">
+                <div className="hidden md:flex items-center space-x-4">
                   {/* Login Button */}
                   <a 
                     href="https://hr.aasint.com/" 
@@ -146,21 +146,41 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                {/* Mobile menu button */}
-                <div className="md:hidden">
+                {/* Mobile Buttons */}
+                <div className="md:hidden flex items-center space-x-2">
+                  <a 
+                    href="https://hr.aasint.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="border border-[#a89456] text-[#a89456] h-8 px-3 rounded-full hover:bg-[#a89456] hover:text-white transition-all duration-300 flex items-center justify-center text-sm font-medium"
+                  >
+                    Login
+                  </a>
+                  <button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-[#a89456] text-white h-8 px-3 rounded-full hover:bg-[#a89456]/90 transition-all duration-300 flex items-center justify-center text-sm font-medium"
+                  >
+                    Demo
+                  </button>
+                </div>
+
+                {/* Modern Mobile menu button */}
+                <div className="md:hidden ml-2">
                   <button 
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="text-gray-700 hover:text-[#a89456] transition-colors duration-300 p-2"
+                    className="text-gray-700 hover:text-[#a89456] transition-colors duration-300 p-2 relative group"
                   >
                     {isMobileMenuOpen ? (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     ) : (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     )}
+                    <span className="absolute -bottom-1 left-1/2 w-1 h-1 bg-[#a89456] rounded-full transform -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-300"></span>
                   </button>
                 </div>
               </div>

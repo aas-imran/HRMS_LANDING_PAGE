@@ -39,7 +39,8 @@ const BlogPage = () => {
       ],
       
       intro: 'When Simran, an HR manager at a fast-growing startup, logs in each morning, her day begins with a flood of leave requests, payroll queries, and compliance updates. By the time she\'s done juggling spreadsheets and emails, there\'s hardly any room left for what truly matters—building a stronger workplace culture.',
-      conclusion: 'For HR managers like Simran, these challenges don\'t disappear—but with HRMS, they no longer define the job. Instead of drowning in administration, HR leaders can finally focus on what matters most: people, performance, and progress.'
+      conclusion: 'For HR managers like Simran, these challenges don\'t disappear—but with HRMS, they no longer define the job. Instead of drowning in administration, HR leaders can finally focus on what matters most: people, performance, and progress.',
+      author: 'Imran Ansari'
     },
     {
       id: 2,
@@ -58,7 +59,8 @@ const BlogPage = () => {
           text: 'And what’s the ultimate goal? It’s not just efficiency—it’s trust and strategic growth. When employees see that salaries and benefits are handled flawlessly, confidence in the organization rises. When HR no longer spends hours on repetitive calculations, they can focus on building policies, driving engagement, and shaping the future workforce.'
         }
       ],
-      conclusion: 'In short, automated payroll management isn\'t about replacing HR—it\'s about empowering them. It transforms payroll from a monthly burden into a strategic advantage, where accuracy, compliance, and employee satisfaction work hand in hand.'
+      conclusion: 'In short, automated payroll management isn\'t about replacing HR—it\'s about empowering them. It transforms payroll from a monthly burden into a strategic advantage, where accuracy, compliance, and employee satisfaction work hand in hand.',
+      author: 'Ashish Kumar shahoo'
     },
     {
       id: 3,
@@ -85,7 +87,8 @@ const BlogPage = () => {
           text: ' Ultimately, making mental health a priority isn\'t only about preventing burnout—it\'s about creating workplaces where people thrive. When employees trust that their well-being matters, they are more engaged, more loyal, and more productive. For HR leaders, this is not just a responsibility—<span className="font-bold text-black">it\'s an opportunity to transform mental health from a silent drain into a source of strength.</span>'
         }
       ],
-      conclusion: ''
+      conclusion: '',
+      author: 'sawagt nayak'
     }
   ];
 
@@ -146,6 +149,11 @@ const BlogPage = () => {
                   {blogPosts[activeTab].conclusion}
                 </p>
               )}
+              
+              {/* Author name */}
+              <div className="mt-8 text-right">
+                <p className="text-gray-600 italic">Author :   {blogPosts[activeTab].author}</p>
+              </div>
               
             </article>
           </div>

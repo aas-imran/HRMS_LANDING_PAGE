@@ -75,7 +75,7 @@ const Navbar = () => {
                     className="text-2xl md:text-4xl font-bold cursor-pointer transition-all duration-300 hover:scale-105"
                     style={{color: '#a89456'}}
                   >
-                    Hrms
+                    HRMS
                   </button>
                 </div>
                 

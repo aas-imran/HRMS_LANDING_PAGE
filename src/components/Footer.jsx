@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import {
   FaLinkedin,
-  FaTwitter,
+  FaInstagram,
   FaFacebook,
   FaYoutube
 } from 'react-icons/fa';
@@ -18,28 +18,27 @@ import RevealAnimation from './RevealAnimation';
 const Footer = () => {
   const footerLinks = {
     product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#pricing' },
-     
+      { name: 'Requisition Software', href: '/products/requisition-software' },
+      { name: 'Blueprint Software', href: '/products/blueprint-software' },
     ],
     company: [
-      { name: 'About Us', href: '#about' },
+      { name: 'About Us', href: '/about' },
      
 
-      { name: 'Contact', href: '#contact' }
+      { name: 'Contact', href: '#contact-us' }
     ],
     resources: [
-      { name: 'Help Center', href: '#help' },
+      // { name: 'Help Center', href: '#help' },
       { name: 'Blog', href: '/blog' },
       { name: 'Case Studies', href: '/case-studies' }
     ]
   };
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: FaLinkedin, href: '#linkedin' },
-    { name: 'Twitter', icon: FaTwitter, href: '#twitter' },
-    { name: 'Facebook', icon: FaFacebook, href: '#facebook' },
-    { name: 'YouTube', icon: FaYoutube, href: '#youtube' }
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://www.linkedin.com/company/103358844' },
+    { name: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/aasintpvtltd?igsh=MWd0MjJnYmppdDRseg==' },
+    { name: 'Facebook', icon: FaFacebook, href: 'https://www.facebook.com/profile.php?id=61577197466248' },
+    { name: 'YouTube', icon: FaYoutube, href: 'https://www.youtube.com/@AASInternationalOfficial' }
   ];
 
   return (
@@ -71,6 +70,8 @@ const Footer = () => {
                     className="text-2xl hover:transform hover:-translate-y-1 hover:scale-110 transition-all duration-300"
                     style={{color: '#a89456'}}
                     aria-label={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <IconComponent />
                   </a>
@@ -231,7 +232,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="">
               <p className="text-base" style={{color: '#9ca3af'}}>
-                &copy; 2024 HRMS. All rights reserved.
+                &copy; 2025 HRMS. All rights reserved.
               </p>
             </div>
             <div className="flex flex-wrap gap-8">

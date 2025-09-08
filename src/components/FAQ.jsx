@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import RevealAnimation from './RevealAnimation';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
 
   const faqs = [
     {
@@ -93,11 +94,16 @@ const FAQ = () => {
                 Our team is here to help you find the right solution for your business.
               </p>
               <div className="space-y-3">
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300">
+                {/* <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300">
                   Contact Support
-                </button>
-                <button className="w-full border-2 border-blue-600 text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300">
-                  Schedule a Call
+                </button> */}
+                <button 
+                  className="w-full border-2 border-blue-600 text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
+                  onMouseEnter={() => setShowPhoneNumber(true)}
+                  onMouseLeave={() => setShowPhoneNumber(false)}
+                  onClick={() => setShowPhoneNumber(true)}
+                >
+                  {showPhoneNumber ? '+91 674257 1111' : 'Schedule a Call'}
                 </button>
               </div>
             </div>

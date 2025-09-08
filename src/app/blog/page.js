@@ -60,7 +60,7 @@ const BlogPage = () => {
         }
       ],
       conclusion: 'In short, automated payroll management isn\'t about replacing HR—it\'s about empowering them. It transforms payroll from a monthly burden into a strategic advantage, where accuracy, compliance, and employee satisfaction work hand in hand.',
-      author: 'Ashish Kumar shahoo'
+      author: 'Ashish Kumar Sahoo'
     },
     {
       id: 3,
@@ -88,7 +88,7 @@ const BlogPage = () => {
         }
       ],
       conclusion: '',
-      author: 'sawagt nayak'
+      author: 'Swagat Nayak'
     }
   ];
 
@@ -150,9 +150,11 @@ const BlogPage = () => {
                 </p>
               )}
               
-              {/* Author name */}
-              <div className="mt-8 text-right">
-                <p className="text-gray-600 italic">Author :   {blogPosts[activeTab].author}</p>
+              {/* Author info */}
+              <div className="mt-8 text-right space-y-2">
+                <p className="text-gray-600 italic">Author: {blogPosts[activeTab].author}</p>
+                <p className="text-gray-500 text-sm">Place :  Bhubaneswar</p>
+                <p className="text-gray-500 text-sm">Date :  01/09/2025</p>
               </div>
               
             </article>

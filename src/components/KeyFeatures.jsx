@@ -117,7 +117,7 @@ const KeyFeatures = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <RevealAnimation delay={0.6}>
+          <RevealAnimation delay={0.2}>
             <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-50 rounded-full">
             <span className="text-gray-600">Want to see more features?</span>
             <a href="/features" className="font-semibold transition-colors duration-300 hover:text-opacity-80" style={{color: '#a89456'}}>

@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
+import { PhoneIcon } from '@heroicons/react/24/outline';
 import BookDemoModal from './BookDemoModal';
 
 const Navbar = () => {
@@ -48,7 +49,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Features', href: '/features', id: 'features' },
     // { name: 'How It Works', href: '#how-it-works', id: 'how-it-works' },
-    { name: 'Contact', href: '#contact-us', id: 'contact-us' }
+    { name: 'Contact', href: '/contact', id: 'contact' }
   ];
 
   // Additional navigation items that open in new tab
@@ -59,8 +60,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full">
-        <div className="w-full">
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden">
+        <div className="w-full overflow-x-hidden">
           <div className="bg-opacity-5 backdrop-blur-[120px] border-opacity-20 shadow-md relative overflow-hidden w-full">
             {/* Enhanced Glass morphism overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 backdrop-blur-3xl"></div>
@@ -86,7 +87,7 @@ const Navbar = () => {
                       <li key={item.id}>
                         <button
                           onClick={() => handleNavigation(item)}
-                          className="font-medium transition-all duration-300 relative group"
+                          className="font-medium transition-all duration-300 relative group cursor-pointer"
                           style={{color: '#111826'}}
                         >
                           {item.name}
@@ -95,7 +96,7 @@ const Navbar = () => {
                       </li>
                     ))}
                     <li>
-                      <Link href="/pricing" className="font-medium transition-all duration-300 relative group" style={{color: '#111826'}}>
+                      <Link href="/pricing" className="font-medium transition-all duration-300 relative group cursor-pointer" style={{color: '#111826'}}>
                         Pricing
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full" style={{backgroundColor: '#a89456'}}></span>
                       </Link>
@@ -104,7 +105,7 @@ const Navbar = () => {
                       <li key={item.id}>
                         <Link 
                           href={item.href}
-                          className="font-medium transition-all duration-300 relative group"
+                          className="font-medium transition-all duration-300 relative group cursor-pointer"
                           style={{color: '#111826'}}
                         >
                           {item.name}
@@ -133,16 +134,11 @@ const Navbar = () => {
                     onClick={() => setIsModalOpen(true)}
                     className="bg-[#a89456] text-white h-12 px-6 rounded-[30px] hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group flex items-center justify-center min-w-[140px] font-medium"
                   >
-                    <span className="relative z-10 flex items-center">
-                      Book Demo
-                      <span className="ml-2 flex space-x-1">
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
-                        <span className="w-1 h-1 bg-white rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
-                      </span>
+                    <span className="relative z-10 flex items-center space-x-2">
+                      <PhoneIcon className="w-5 h-5" />
+                      <span>Book Demo</span>
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-[#a89456] to-[#a89456] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-2 right-2 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-ping"></div>
                   </button>
                 </div>
 
@@ -158,9 +154,10 @@ const Navbar = () => {
                   </a>
                   <button 
                     onClick={() => setIsModalOpen(true)}
-                    className="bg-[#a89456] text-white h-8 px-3 rounded-full hover:bg-[#a89456]/90 transition-all duration-300 flex items-center justify-center text-sm font-medium"
+                    className="bg-[#a89456] text-white h-8 px-3 rounded-full hover:bg-[#a89456]/90 transition-all duration-300 flex items-center justify-center space-x-1 text-sm font-medium"
                   >
-                    Demo
+                    <PhoneIcon className="w-4 h-4" />
+                    <span>Demo</span>
                   </button>
                 </div>
 

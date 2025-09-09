@@ -59,7 +59,7 @@ const Footer = () => {
             </RevealAnimation>
             
             {/* Social Media Icons */}
-            <RevealAnimation delay={0.4}>
+            <RevealAnimation delay={0.3}>
               <div className="flex space-x-6">
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
@@ -84,7 +84,7 @@ const Footer = () => {
           
           {/* Product Links */}
           <div className="">
-            <RevealAnimation delay={0.2}>
+            <RevealAnimation delay={0.3}>
               <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Product</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link, index) => (
@@ -144,7 +144,7 @@ const Footer = () => {
           
           {/* Resources Links */}
           <div className="">
-            <RevealAnimation delay={0.4}>
+            <RevealAnimation delay={0.3}>
               <h4 className="text-xl font-bold mb-6" style={{color: '#a89456'}}>Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
@@ -175,10 +175,10 @@ const Footer = () => {
         
         {/* Our Offices Section */}
         <div className="mb-12">
-          <RevealAnimation delay={0.6}>
+          <RevealAnimation delay={0.4}>
             <h4 className="text-2xl font-bold text-center mb-8" style={{color: '#a89456'}}>Our Offices</h4>
           <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-600">
-            <RevealAnimation delay={0.7}>
+            <RevealAnimation delay={0.4}>
               <div className="px-6 py-4">
               <div className="flex items-center mb-4">
                 <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
@@ -195,6 +195,7 @@ const Footer = () => {
             </div>
             </RevealAnimation>
             <div className="px-6 py-4">
+              <RevealAnimation delay={0.4}>
               <div className="flex items-center mb-4">
                 <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
                   <MapPinIcon className="w-6 h-6 text-white" />
@@ -207,8 +208,10 @@ const Footer = () => {
               <p className="text-sm leading-relaxed" style={{color: '#9ca3af'}}>
                 Plot 52, 2nd floor, Bapuji Nagar, Unit 1 Main St, above State Bank of India BHADRASAHI, Forest Park, Bhubaneswar, Odisha 751009
               </p>
+              </RevealAnimation>
             </div>
             <div className="px-6 py-4">
+              <RevealAnimation delay={0.4}>
               <div className="flex items-center mb-4">
                 <div className="p-3 rounded-lg" style={{backgroundColor: '#a89456'}}>
                   <GlobeAltIcon className="w-6 h-6 text-white" />
@@ -221,6 +224,7 @@ const Footer = () => {
               <p className="text-sm leading-relaxed" style={{color: '#9ca3af'}}>
                 176 Ras Al Khor Rd - Ras Al Khor Industrial Area - Ras Al Khor Industrial Area 2 - Dubai - United Arab Emirates - 45371
               </p>
+              </RevealAnimation>
             </div>
           </div>
           </RevealAnimation>

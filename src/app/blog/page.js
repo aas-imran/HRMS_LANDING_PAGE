@@ -2,15 +2,19 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const BlogPage = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState(0);
+
 
   const blogPosts = [
     {
       id: 1,
       title: 'Top Challenges HR Managers Face and How HRMS Solves Them',
+      image: '/hr.jpg',
+      category: 'HR/Technology',
       content: [
         {
           heading: '1. Endless Administrative Tasks',
@@ -45,6 +49,8 @@ const BlogPage = () => {
     {
       id: 2,
       title: 'Employee Benefits and Payroll Management: Why Automation Matters',
+      image: '/emp-ben.jpg',
+      category: 'Employee Benefits',
       intro: 'When we talk about payroll management, the question isn\'t whether it\'s important - it\'s why it\'s still one of the most complex and error-prone processes inside organizations. Why do HR teams, despite having clear policies and structured benefits, still struggle every month to deliver accurate salaries on time?',
       content: [
         {
@@ -65,6 +71,8 @@ const BlogPage = () => {
     {
       id: 3,
       title: 'Why Mental Health Should Be a Priority in HR Strategies',
+      image: '/mental.jpg',
+      category: 'Mental Health',
       intro: 'When we talk about workplace performance, we often think about salaries, perks, and promotions. But beneath it all lies a factor that silently shapes productivity—employee mental health. Recent studies are sounding the alarm, and the numbers paint a story no HR leader can ignore.',
       content: [
         {
@@ -93,71 +101,61 @@ const BlogPage = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-24 bg-white" >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div className="min-h-screen pt-36 relative" >
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/bg2.jpg"
+          alt="Background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
+      <div className="relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="p-8 mb-8">
           <h1 className="text-4xl font-bold text-center mb-12" style={{ color: '#111826' }}>
             Our <span style={{ color: '#a89456' }}>Blog</span>
           </h1>
 
           {/* Blog Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
             {blogPosts.map((post, index) => (
-              <div
+              <Link
                 key={post.id}
-                onClick={() => {
-                  setActiveTab(index);
-                  router.push(`/blog?post=${index}`);
-                }}
-                className={`cursor-pointer p-6 rounded-lg transition-all duration-300 h-full flex items-center justify-center text-center ${activeTab === index ? 'bg-[#a89456] text-white shadow-lg transform scale-105' : 'bg-[#eeeff1] text-[#111826] hover:bg-[#a89456] hover:text-white'}`}
+                href={`/blog/${post.id}`}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] cursor-pointer block w-full mx-auto"
               >
-                <h3 className="text-lg font-semibold">{post.title}</h3>
-              </div>
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="text-sm text-[#a89456] font-semibold mb-3">{post.category}</div>
+                  <h3 className="text-xl font-bold text-[#111826] mb-4 line-clamp-2 hover:text-[#a89456] transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 line-clamp-3">{post.intro}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">{post.author}</span>
+                    <span className="text-[#a89456] group-hover:underline flex items-center gap-2 cursor-pointer">
+                      Read More
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
 
-          {/* Blog Content */}
-          <div className="p-8">
-            <article className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-serif font-bold mb-8 text-[#111826]">
-                {blogPosts[activeTab].title}
-              </h2>
 
-              {blogPosts[activeTab].intro && (
-                <p className="text-gray-700 mb-8 leading-relaxed text-xl">
-                  {blogPosts[activeTab].intro}
-                </p>
-              )}
-
-              <div className="space-y-12">
-                {blogPosts[activeTab].content.map((section, index) => (
-                  <section key={index} className="mb-12">
-                          {section.heading && (
-                      <h3 className="text-xl font-bold mb-4 text-[#111826]">
-                        {section.heading}
-                      </h3>
-                    )}
-                    <p className="text-gray-700 leading-relaxed text-lg mb-8"
-                       dangerouslySetInnerHTML={{ __html: section.text }}
-                    />
-                  </section>
-                ))}
-              </div>
-
-              {blogPosts[activeTab].conclusion && (
-                <p className="text-gray-700 mt-12 leading-relaxed text-lg">
-                  {blogPosts[activeTab].conclusion}
-                </p>
-              )}
-              
-              {/* Author info */}
-              <div className="mt-8 text-right space-y-2">
-                <p className="text-gray-600 italic">Author: {blogPosts[activeTab].author}</p>
-                <p className="text-gray-500 text-sm">Place :  Bhubaneswar</p>
-                <p className="text-gray-500 text-sm">Date :  01/09/2025</p>
-              </div>
-              
-            </article>
           </div>
         </div>
       </div>

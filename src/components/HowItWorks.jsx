@@ -161,7 +161,8 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-gradient-to-br from-gray-50  to-white relative overflow-hidden">
+    <section id="how-it-works" className="py-24 relative overflow-x-hidden w-full bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg2.jpg")' }}>
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
@@ -170,7 +171,7 @@ const HowItWorks = () => {
         <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-yellow-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '3s'}}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Header Section with Lottie */}
         <div className="flex flex-col items-center text-center mb-20">
           {/* Header Content */}
@@ -186,7 +187,7 @@ const HowItWorks = () => {
               </h2>
             </RevealAnimation>
             <RevealAnimation delay={0.4}>
-              <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7280'}}>
+              <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7291'}}>
                 Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
               </p>
             </RevealAnimation>

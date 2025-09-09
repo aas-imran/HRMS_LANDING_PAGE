@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { LenisContext } from './LenisProvider';
 import Link from 'next/link';
 import ContactSalesModal from './ContactSalesModal';
-import RevealAnimation from './RevealAnimation';
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(true);
@@ -89,7 +88,8 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 relative overflow-hidden" style={{backgroundColor: '#eef1f6'}}>
+    <section id="pricing" className="py-24 relative overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg3.jpg")' }}>
+      <div className="absolute inset-0  bg-white/80 backdrop-blur-sm"></div>
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
@@ -99,27 +99,20 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <RevealAnimation>
-            <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
-              <span className="text-blue-600 font-semibold text-sm">TRANSPARENT PRICING</span>
-            </div>
-          </RevealAnimation>
-          <RevealAnimation delay={0.2}>
-            <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
-              Simple, <span style={{color: '#a89456'}}>Transparent</span> Pricing
-            </h2>
-          </RevealAnimation>
-          <RevealAnimation delay={0.4}>
-            <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
-              Choose the perfect plan for your business. All plans include our core features with no hidden fees.
-            </p>
-          </RevealAnimation>
+          <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
+            <span className="text-blue-600 font-semibold text-sm">TRANSPARENT PRICING</span>
+          </div>
+          <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+            Simple, <span style={{color: '#a89456'}}>Transparent</span> Pricing
+          </h2>
+          <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
+            Choose the perfect plan for your business. All plans include our core features with no hidden fees.
+          </p>
         </div>
 
         {/* Billing Toggle */}
         <div className="flex justify-center mb-12">
-          <RevealAnimation delay={0.6}>
-            <div className="bg-white p-1 rounded-xl shadow-lg border border-gray-200">
+          <div className="bg-white p-1 rounded-xl shadow-lg border border-gray-200">
             <div className="flex items-center">
               <button
                 onClick={() => setIsAnnual(false)}
@@ -146,13 +139,11 @@ const Pricing = () => {
               </button>
             </div>
           </div>
-          </RevealAnimation>
         </div>
 
         {/* Pricing Cards - 4 Cards Layout */}
         <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-16">
           {plans.map((plan, index) => (
-            <RevealAnimation key={index} delay={index * 0.1}>
               <div
                 className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
                 plan.popular ? 'ring-2 ring-[#a89456] scale-105' : 'border border-gray-200'
@@ -213,12 +204,10 @@ const Pricing = () => {
                 </button>
               </div>
               </div>
-            </RevealAnimation>
           ))}
         </div>
 
         {/* Add-ons Section */}
-        <RevealAnimation delay={0.8}>
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
             <div className="text-center mb-8">
             <h3 className="text-3xl font-bold mb-4" style={{color: '#111826'}}>
@@ -231,7 +220,6 @@ const Pricing = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {addOns.map((addon, index) => (
-              <RevealAnimation key={index} delay={index * 0.1}>
                 <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors duration-300">
                 <h4 className="font-semibold mb-2" style={{color: '#111826'}}>
                   {addon.name}
@@ -241,14 +229,11 @@ const Pricing = () => {
                 </p>
                 <p className="text-sm text-gray-600">per employee/month</p>
                 </div>
-              </RevealAnimation>
             ))}
           </div>
         </div>
-        </RevealAnimation>
 
         {/* FAQ Section */}
-        <RevealAnimation delay={1}>
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-6" style={{color: '#111826'}}>
               Questions About Pricing?
@@ -268,7 +253,6 @@ const Pricing = () => {
             </Link>
           </div>
         </div>
-        </RevealAnimation>
       </div>
 
       {/* Contact Sales Modal */}

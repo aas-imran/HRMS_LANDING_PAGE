@@ -3,10 +3,10 @@
 const CaseStudiesPage = () => {
   const caseStudies = [
     {
-      title: 'Fogle – Automating Shift Scheduling and High-Volume Attendance',
+      title: 'Fogle Pvt Ltd\n Automating Shift Scheduling and High-Volume Attendance',
       industry: 'Manufacturing',
       employeeCount: '250+',
-      location: 'Bhubaneswar',
+      location: 'Jagatsinghpur',
       date: '01/09/2025',
       challenge: 'Fogle struggled with managing complex multi-shift schedules across departments, often facing overlap issues and poor visibility into workforce allocation. Additionally, large groups of workers queued at entry points during shift changes, slowing down attendance marking and causing operational delays.',
       solution: 'We implemented custom shift workflow configurations that allowed dynamic scheduling and department-wise planning. To manage high footfall at entry gates, facial recognition-based biometric attendance with geofencing was deployed, enabling fast, contactless check-ins and real-time visibility.',
@@ -16,11 +16,11 @@ const CaseStudiesPage = () => {
       ]
     },
     {
-      title: 'AAS Mines & Minerals – Structuring Petty Cash Handling on Field Sites',
+      title: 'AAS International Pvt Ltd\n Mines & Minerals – Structuring Petty Cash Handling on Field Sites',
       industry: 'Mining & Minerals',
       employeeCount: '200+ (on-site + admin)',
-      location: 'Bhubaneswar',
-      date: '01/09/2025',
+      location: 'Khurdha',
+      date: '20/08/2025',
       challenge: 'At remote mining sites, small daily expenses were handled informally, often without receipts or accountability. This lack of structure made it difficult to track expenses, verify legitimacy, and maintain audit trails — increasing the risk of disputes and financial leakage.',
       solution: 'We introduced a dedicated reimbursement workflow within the HRMS. Employees could now either raise advance requests for planned expenditures or submit claims post-spending with receipt uploads. The process was linked with hierarchical approvals and digital records for full traceability.',
       results: [
@@ -32,8 +32,9 @@ const CaseStudiesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen py-38 px-4" style={{ backgroundColor: '#f8f9fa' }}>
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen py-38 px-4 bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg2.jpg")',  }}>
+      <div className="absolute inset-0backdrop-blur-sm"></div>
+      <div className="max-w-7xl mx-auto relative z-10">
         <h1 className="text-5xl font-bold text-center mb-4" style={{ color: '#111826' }}>
           Success <span style={{ color: '#a89456' }}>Stories</span>
         </h1>
@@ -47,24 +48,30 @@ const CaseStudiesPage = () => {
                  style={{ backgroundColor: '#ffffff' }}>
               <div className="p-8 flex flex-col h-full">
                 {/* Header Section */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
                   <div className="inline-block rounded-lg px-3 py-1" 
                        style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
                     {study.industry}
                   </div>
-                  <div className="flex flex-col items-end">
-                    <div className="text-sm font-medium text-gray-500 mb-1">
-                      {study.employeeCount} Employees
-                    </div>
-                    <div className="text-sm text-gray-500">{study.location}</div>
-                    <div className="text-sm text-gray-500">{study.date}</div>
-                  </div>
                 </div>
                 
                 {/* Title */}
-                <h2 className="text-2xl font-semibold mb-6" style={{ color: '#111826' }}>
-                  {study.title}
+                <h2 className="text-2xl font-semibold mb-4 whitespace-pre-line">
+                  <span style={{ color: '#a89456' }}>{study.title.split('\n')[0]}</span>
                 </h2>
+
+                <div className="flex justify-between items-center mb-6">
+                  <div className="text-sm font-medium text-gray-500">
+                    {study.employeeCount} Employees
+                  </div>
+                  <div className="flex gap-2 text-sm text-gray-500">
+                    <span>{study.location}</span>
+                    <span>|</span>
+                    <span>{study.date}</span>
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-700 mb-6">{study.title.split('\n')[1]}</p>
                 
                 {/* Content Sections */}
                 <div className="space-y-6 flex-grow">

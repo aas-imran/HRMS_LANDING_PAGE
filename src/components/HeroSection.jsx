@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import RevealAnimation from './RevealAnimation';
 import Loader from './Loader';
+import Image from 'next/image';
+import { BoltIcon, BanknotesIcon, ClockIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,8 +29,18 @@ const HeroSection = () => {
     <>
       {isLoading && <Loader onLoadComplete={handleLoadComplete} />}
       {showContent && (
-    <section id="hero" className="text-black pt-20 pb-16" style={{background: `#eeeff1`}}>
-      <div className="max-w-6xl mx-auto px-4 py-16">
+    <section id="hero" className="text-black pt-20 pb-16 relative overflow-x-hidden w-full">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Hero Background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
+      <div className="relative z-10 ">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <RevealAnimation direction="left">
@@ -59,14 +71,10 @@ const HeroSection = () => {
                 </span>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{background: '#a89456'}}></div>
               </button>
-              {/* <button className="border-2 px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group" style={{borderColor: '#a89456', color: '#111826', backgroundColor: 'transparent'}}>
-                <span className="relative z-10 flex items-center justify-center group-hover:text-white transition-colors duration-300">
-                  Watch Demo
-                </span>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{backgroundColor: '#a89456'}}></div>
-              </button> */}
             </div>
           </RevealAnimation>
+
+        
           </div>
            <div className="flex justify-center">
             <RevealAnimation direction="right">
@@ -80,8 +88,62 @@ const HeroSection = () => {
             </div>
             </RevealAnimation>
           </div>
+            {/* Stats Section */}
+         
+        </div>
+        
+      </div>
+     <RevealAnimation>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
+        {/* Stats Section */}
+        <div className="bg-[#f6f8fc] p-12 rounded-3xl border border-gray-100 shadow-xl">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-bold text-black mb-4">
+         ⚡ Powerful Performance Metrics
+            </h3>
+            <p className="text-[#a89456] text-lg max-w-2xl mx-auto font-medium">
+              Experience the revolutionary transformation through our interconnected ecosystem.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { value: "10x", label: "Faster Processing", icon: BoltIcon, color: "#a89456" },
+              { value: "50%", label: "Cost Reduction", icon: BanknotesIcon, color: "#a89456" },
+              { value: "99.9%", label: "Uptime Guarantee", icon: ShieldCheckIcon, color: "#a89456" },
+              { value: "24/7", label: "Real-time Support", icon: ClockIcon, color: "#a89456" }
+            ].map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={index} className="text-center group">
+                  <RevealAnimation>
+                  <div className="bg-white p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 transform group-hover:-translate-y-2 border border-gray-200 relative overflow-hidden shadow-lg">
+                    {/* Subtle background accent */}
+                    <div 
+                      className="absolute inset-0 opacity-5"
+                      style={{
+                        background: `radial-gradient(circle, ${stat.color}40 0%, transparent 70%)`
+                      }}
+                    ></div>
+                    
+                    <div className="relative z-10">
+                      <div className="w-16 h-16 mx-auto mb-4 bg-[#a89456] rounded-full flex items-center justify-center">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-4xl font-bold text-black mb-2">{stat.value}</div>
+                      <div className="text-[#a89456] text-sm font-medium">{stat.label}</div>
+                    </div>
+                  </div>
+                  </RevealAnimation>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
+      </RevealAnimation>
+      </div>
+      
     </section>
       )}
     </>

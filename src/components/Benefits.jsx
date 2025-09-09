@@ -29,7 +29,7 @@ const Benefits = () => {
     },
     {
       title: "Ensure Compliance",
-      description: "Stay compliant with payroll, tax, and labor regulations through automated and up-to-date processes. ",
+      description: "Stay compliant with payroll, tax, and labor regulations through automated and up-to-date processes. Minimize compliance risks with real-time updates.",
       metric: "100% Compliance",
       icon: ShieldCheckIcon,
       color: "bg-blue-500"
@@ -50,7 +50,7 @@ const Benefits = () => {
     },
     {
       title: "Enhanced Security & Privacy",
-      description: "Protect sensitive data with enterprise-level encryption, role-based access, and privacy compliance. ",
+      description: "Protect sensitive data with enterprise-level encryption, role-based access, and privacy compliance. Ensure data safety with advanced security measures.",
       metric: "Bank-level Security",
       icon: LockClosedIcon,
       color: "bg-cyan-500"
@@ -58,8 +58,9 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-16 lg:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 relative overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg3.jpg")' }}>
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
           <RevealAnimation>
@@ -86,7 +87,7 @@ const Benefits = () => {
             return (
               <RevealAnimation key={index} delay={index * 0.1}>
                 <div
-                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100 min-h-[380px] min-w-[300px]"
+                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100 min-h-[380px] w-full"
                 >
                 {/* Number Badge */}
                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#a89456] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
@@ -121,7 +122,7 @@ const Benefits = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <RevealAnimation delay={0.6}>
+          <RevealAnimation delay={0.4}>
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Ready to Experience These Benefits?

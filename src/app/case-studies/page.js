@@ -16,7 +16,7 @@ const CaseStudiesPage = () => {
       ]
     },
     {
-      title: 'AAS International Pvt Ltd\n Mines & Minerals – Structuring Petty Cash Handling on Field Sites',
+      title: 'AAS Mines & Minerals  Pvt Ltd\n Structuring Petty Cash Handling on Field Sites',
       industry: 'Mining & Minerals',
       employeeCount: '200+ (on-site + admin)',
       location: 'Khurdha',

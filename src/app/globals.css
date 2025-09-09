@@ -37,6 +37,30 @@ body {
   font-style: normal;
 }
 
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 148, 86, 0.3);
+  border-radius: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(168, 148, 86, 0.5);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 148, 86, 0.3) transparent;
+  -ms-overflow-style: none;
+}
+
 /* Theme Color Utility Classes */
 .text-primary {
   color: #111826;

@@ -172,7 +172,7 @@ const HowItWorks = () => {
           priority
         />
       </div>
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-[1]"></div>
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-[1]"></div>
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full z-[2]">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>

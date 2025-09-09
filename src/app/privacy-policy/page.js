@@ -121,16 +121,16 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[21cm] mx-auto bg-white shadow-lg rounded-lg overflow-hidden relative">
+      <div className="max-w-[21cm] mx-auto mt-12 bg-white shadow-lg rounded-lg overflow-hidden relative">
         <div className="absolute top-4 right-4 flex space-x-4">
-          <Link href="/" className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200">
+          <Link href="/" className=" rounded-full hover:bg-gray-100 transition-colors duration-200">
             <XMarkIcon className="w-6 h-6 text-gray-500" />
           </Link>
         </div>
         <div className="p-8 sm:p-12" style={{ minHeight: '29.7cm' }}>
           {renderPageContent()}
           
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 bg-white rounded-lg shadow-lg px-4 py-2">
+          <div className="mt-8 flex items-center justify-center space-x-4 bg-white rounded-lg shadow-lg px-4 py-2 w-fit mx-auto">
             {currentPage > 1 && (
               <button
                 onClick={() => setCurrentPage(currentPage - 1)}

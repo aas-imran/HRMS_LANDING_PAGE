@@ -17,6 +17,30 @@ import {
 
 import BookDemoModal from './BookDemoModal';
 
+// Custom scrollbar styles
+const scrollbarStyles = `
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 3px;
+  }
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: #f3f4f6;
+  }
+`;
+
 const FeaturesShowcase = () => {
   const [activeModule, setActiveModule] = useState('dashboard');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -202,7 +226,9 @@ const FeaturesShowcase = () => {
   const activeModuleData = modules.find(module => module.id === activeModule);
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+      <div className="pt-20 min-h-screen bg-gray-50">
       {/* Page Title */}
       <div className="text-center py-8">
         <h1 className="text-4xl font-bold text-[#111826] mb-2">
@@ -212,11 +238,59 @@ const FeaturesShowcase = () => {
       </div>
 
       {/* Primary Card Container */}
-      <div className="max-w-7xl mx-auto px-6 pb-8">
-        <div className="bg-white rounded-4xl shadow-xl overflow-hidden">
-          {/* HRMS Interface Layout - Compact */}
-          <div className="flex h-[600px]">
-            {/* Compact Sidebar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8">
+        <div className="bg-white rounded-2xl sm:rounded-4xl shadow-xl overflow-hidden">
+          {/* Mobile Navigation - Horizontal Scrollable */}
+          <div className="block lg:hidden bg-[#111826] p-4">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-[#a89456] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">HR</span>
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-white">HRMS</h2>
+                  <p className="text-gray-400 text-xs">Dashboard</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setIsModalOpen(true);
+                }}
+                className="bg-[#a89456] text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-[#a89456]/90 transition-all duration-300 touch-manipulation"
+              >
+                Book Demo
+              </button>
+            </div>
+            
+            {/* Horizontal Scrollable Menu */}
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex space-x-2 pb-2">
+                {modules.map((module) => {
+                  const IconComponent = module.icon;
+                  return (
+                    <button
+                      key={module.id}
+                      onClick={() => setActiveModule(module.id)}
+                      className={`flex-shrink-0 flex flex-col items-center space-y-1 px-3 py-2 rounded-lg transition-all duration-200 min-w-[80px] ${
+                        activeModule === module.id
+                          ? 'bg-[#a89456] text-white shadow-lg'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                      }`}
+                    >
+                      <IconComponent className="w-5 h-5 flex-shrink-0" />
+                      <span className="font-medium text-xs text-center leading-tight">{module.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden lg:flex h-[600px]">
+            {/* Desktop Sidebar */}
             <div className="w-64 bg-[#111826] text-white flex flex-col">
               {/* Sidebar Header */}
               <div className="p-4 border-b border-gray-700">
@@ -253,7 +327,7 @@ const FeaturesShowcase = () => {
               </nav>
             </div>
 
-            {/* Main Content Area - Compact */}
+            {/* Desktop Main Content Area */}
             <div className="flex-1 flex flex-col">
               {/* Module Header */}
               <div className="bg-[#eeef] border-b border-gray-200 px-6 py-4">
@@ -265,7 +339,16 @@ const FeaturesShowcase = () => {
                     </h2>
                     <p className="text-gray-600 text-sm">Module Overview</p>
                   </div>
-           
+                  {/* <button
+                    onClick={() => setIsModalOpen(true)}
+                    onTouchEnd={(e) => {
+                      e.preventDefault();
+                      setIsModalOpen(true);
+                    }}
+                    className="bg-[#a89456] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02] touch-manipulation"
+                  >
+                    Book Demo
+                  </button> */}
                 </div>
               </div>
 
@@ -481,30 +564,160 @@ const FeaturesShowcase = () => {
             </div>
           </div>
 
-          {/* Bottom CTA */}
-                       {/* Module Header */}
-              <div className="bg-gray-50 border-b border-gray-200 px-6 py-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-[#111826] flex items-center">
-                      {React.createElement(activeModuleData?.icon, { className: "w-5 h-5 mr-2 text-[#a89456]" })}
-                      {activeModuleData?.name}
-                    </h2>
-                    <p className="text-gray-600 text-sm">Module Overview</p>
+          {/* Mobile Content Layout */}
+          <div className="block lg:hidden">
+            {/* Mobile Module Header */}
+            <div className="bg-[#eeef] border-b border-gray-200 px-4 py-3">
+              <div className="text-center">
+                <h2 className="text-lg font-bold text-[#111826] flex items-center justify-center">
+                  {React.createElement(activeModuleData?.icon, { className: "w-5 h-5 mr-2 text-[#a89456]" })}
+                  {activeModuleData?.name}
+                </h2>
+                <p className="text-gray-600 text-sm">Module Overview</p>
+              </div>
+            </div>
+
+            {/* Mobile Content */}
+            <div className="p-4 space-y-6">
+              {/* Mobile Image Showcase */}
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden">
+                <div className="p-4">
+                  <h3 className="text-base font-bold text-gray-700 mb-3 text-center">{activeModuleData?.name}</h3>
+                  <div className="bg-white/50 rounded-lg p-3">
+                    <div className="relative h-[250px] sm:h-[300px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden">
+                      {activeModule === 'onboarding' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/emp-onb.png" alt="Employee Onboarding" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/emp-view.png" alt="Employee View" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/man-emp.png" alt="Employee Management" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'recruitment' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/JO-Notice.png" alt="Job Opening Notice" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/all-job.png" alt="All Jobs" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/job-view.png" alt="Job View" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/applicant.png" alt="Applicant List" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/appli-view.png" alt="Applicant View" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'attendance' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/all-atd.png" alt="All Attendance" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/id-qr.png" alt="ID QR Code" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/face-qr.png" alt="Face Recognition" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'payroll' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/run-payroll.png" alt="Run Payroll" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/hold-payroll.png" alt="Hold Payroll" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/bonus.png" alt="Bonus Management" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'user-management' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/add-users.png" alt="Add Users" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/users.png" alt="Manage Users" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'leave-management' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/all-leave.png" alt="All Leave Requests" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/accept-leave.png" alt="Accept Leave" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'performance' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/all-task.png" alt="All Tasks" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/view-task.png" alt="View Task" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : activeModule === 'grievance' ? (
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/all-grv.png" alt="All Grievances" className="w-full h-full object-contain flex-shrink-0" />
+                          <img src="/all-grv.png" alt="Grievance Details" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
+                      ) : (
+                        <img src="/hrms-dash.png" alt="HRMS Dashboard" className="w-full h-full object-contain" />
+                      )}
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="bg-[#a89456] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02]"
-                  >
-                    Book Demo
-                  </button>
                 </div>
               </div>
+
+              {/* Mobile Key Features */}
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h3 className="text-base font-bold text-[#111826] flex items-center mb-3">
+                  <span className="w-5 h-5 bg-[#a89456] rounded-lg flex items-center justify-center mr-2">
+                    <span className="text-white font-bold text-xs">✓</span>
+                  </span>
+                  Key Features
+                </h3>
+                <div className="max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
+                  <div className="space-y-2">
+                    {activeModuleData?.features.map((feature, index) => (
+                      <div key={index} className="flex items-start space-x-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0 mt-1.5"></div>
+                        <p className="text-gray-700 text-sm">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Description */}
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="text-base font-medium text-gray-500 mb-3">Description</h4>
+                <div className="max-h-[150px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {activeModule === 'onboarding' ? (
+                      "Streamline your employee onboarding process with our comprehensive system. From initial data collection to ID card generation, manage employee profiles efficiently with full control over access and permissions."
+                    ) : activeModule === 'recruitment' ? (
+                      "Efficiently manage your recruitment process from job posting to hiring. Post job openings on your company website, track applications, conduct multi-round interviews, evaluate candidates, and generate offer letters - all in one integrated system."
+                    ) : activeModule === 'payroll' ? (
+                      "Comprehensive payroll management system with flexible control over employee compensation. Process payroll runs, manage salary templates, handle bonuses, and automate tax calculations. Hold or release payroll for specific employees or groups while maintaining accurate records and generating detailed payslips."
+                    ) : activeModule === 'user-management' ? (
+                      "Centralized user management system for controlling HRMS access. Create and manage user accounts, set permissions, handle password resets, and monitor user activities. Maintain system security by controlling user access and managing authentication settings."
+                    ) : activeModule === 'leave-management' ? (
+                      "Comprehensive leave management system for HR to efficiently handle employee leave requests. View all leave applications, check available balances, and make informed decisions on approvals or rejections. Track leave history and generate reports for better workforce planning."
+                    ) : activeModule === 'performance' ? (
+                      "Advanced performance management system for tracking employee tasks and evaluating work quality. HR can assign tasks with deadlines, monitor progress, provide ratings and feedback, and generate comprehensive performance reports. The system helps maintain clear performance standards and facilitates employee development."
+                    ) : activeModule === 'grievance' ? (
+                      "Comprehensive grievance management system that enables HR to efficiently handle employee complaints and concerns. View all grievances, track their status, escalate issues when needed, and ensure timely resolution. The system maintains confidentiality while facilitating effective communication between all parties involved."
+                    ) : activeModule === 'dashboard' ? (
+                      "Centralized dashboard providing quick access to essential HR functions and real-time insights. Features module-wise widgets for creating jobs, tracking attendance, and managing notices. Includes HR analytics, quick action buttons, team calendar, and a resource center for document management. Streamlines daily HR operations with an intuitive interface."
+                    ) : (
+                      "Advanced attendance tracking system with multiple check-in methods including QR code scanning and facial recognition. Monitor attendance records, manage breaks, and generate detailed reports with CSV export functionality."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA Section - Restored */}
+          <div className="bg-gray-50 border-t border-gray-200 px-4 sm:px-6 py-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <h2 className="text-lg sm:text-xl font-bold text-[#111826] flex items-center justify-center sm:justify-start">
+                  {React.createElement(activeModuleData?.icon, { className: "w-5 h-5 mr-2 text-[#a89456]" })}
+                  {activeModuleData?.name}
+                </h2>
+                <p className="text-gray-600 text-sm">Module Overview</p>
+              </div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                onTouchEnd={(e) => {
+                  e.preventDefault();
+                  setIsModalOpen(true);
+                }}
+                className="bg-[#a89456] text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-[#a89456]/90 transition-all duration-300 transform hover:scale-[1.02] shadow-lg touch-manipulation"
+              >
+                Book Demo
+              </button>
+            </div>
+          </div>
+ 
         </div>
       </div>
 
-    </div>
-  );
+      </div>
+     </>
+   );
 };
 
 export default FeaturesShowcase;

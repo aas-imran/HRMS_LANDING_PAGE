@@ -68,15 +68,19 @@ const BookDemoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center" style={{ touchAction: 'none' }}>
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
+        onTouchEnd={(e) => {
+          e.preventDefault();
+          onClose();
+        }}
       ></div>
       
       {/* Modal Content */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <h3 className="text-2xl font-bold text-[#111826]">
@@ -84,7 +88,11 @@ const BookDemoModal = ({ isOpen, onClose }) => {
           </h3>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              onClose();
+            }}
+            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 touch-manipulation"
           >
             <XMarkIcon className="w-5 h-5 text-gray-500" />
           </button>

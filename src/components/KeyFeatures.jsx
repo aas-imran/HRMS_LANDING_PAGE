@@ -80,7 +80,7 @@ const KeyFeatures = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <RevealAnimation key={index} delay={index * 0.05}>
+              <RevealAnimation key={index} delay={index * 0.1}>
                 <div 
                   className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
                 >
@@ -114,7 +114,7 @@ const KeyFeatures = () => {
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <RevealAnimation delay={0.1}>
+          <RevealAnimation delay={0.3}>
             <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-50 rounded-full">
             <span className="text-gray-600">Want to see more features?</span>
             <a href="/features" className="font-semibold transition-colors duration-300 hover:text-opacity-80" style={{color: '#a89456'}}>

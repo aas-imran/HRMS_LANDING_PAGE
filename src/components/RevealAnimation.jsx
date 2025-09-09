@@ -1,8 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import { useContext } from 'react';
+import { LenisContext } from './LenisProvider';
 
 const RevealAnimation = ({ children, direction = 'bottom', delay = 0 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const lenis = useContext(LenisContext);
+  
   const variants = {
     hidden: {
       opacity: 0,
@@ -21,11 +28,18 @@ const RevealAnimation = ({ children, direction = 'bottom', delay = 0 }) => {
     },
   };
 
+  useEffect(() => {
+    if (lenis && isInView) {
+      // Trigger Lenis to recalculate scroll when element comes into view
+      lenis.resize();
+    }
+  }, [isInView, lenis]);
+
   return (
     <motion.div
+      ref={ref}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? "visible" : "hidden"}
       variants={variants}
     >
       {children}

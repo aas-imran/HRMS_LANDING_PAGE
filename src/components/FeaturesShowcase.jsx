@@ -228,7 +228,7 @@ const FeaturesShowcase = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
-      <div className="pt-20 min-h-screen bg-gray-50">
+      <div className="pt-20 min-h-screen  bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/bg2.jpg)'}}>
       {/* Page Title */}
       <div className="text-center py-8">
         <h1 className="text-4xl font-bold text-[#111826] mb-2">

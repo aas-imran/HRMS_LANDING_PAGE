@@ -13,7 +13,7 @@ const HeroSection = () => {
   const handleLoadComplete = () => {
     setIsLoading(false);
     // Add a small delay before showing content with reveal animations
-    setTimeout(() => setShowContent(true), 100);
+    setTimeout(() => setShowContent(true), 50);
   };
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
@@ -32,7 +32,7 @@ const HeroSection = () => {
     <section id="hero" className="text-black pt-20 pb-16 relative overflow-x-hidden w-full">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/hero-bg.jpg"
+          src="/bg2.jpg"
           alt="Hero Background"
           fill
           style={{ objectFit: 'cover' }}
@@ -115,27 +115,26 @@ const HeroSection = () => {
             ].map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <div key={index} className="text-center group">
-                  <RevealAnimation>
-                  <div className="bg-white p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 transform group-hover:-translate-y-2 border border-gray-200 relative overflow-hidden shadow-lg">
-                    {/* Subtle background accent */}
-                    <div 
-                      className="absolute inset-0 opacity-5"
-                      style={{
-                        background: `radial-gradient(circle, ${stat.color}40 0%, transparent 70%)`
-                      }}
-                    ></div>
-                    
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 mx-auto mb-4 bg-[#a89456] rounded-full flex items-center justify-center">
-                        <IconComponent className="w-8 h-8 text-white" />
+                <RevealAnimation key={index} delay={index * 0.1}>
+                  <div className="text-center group">
+                    <div className="bg-white p-6 rounded-2xl hover:bg-gray-50 transition-all duration-300 transform group-hover:-translate-y-2 border border-gray-200 relative overflow-hidden shadow-lg">
+                      <div 
+                        className="absolute inset-0 opacity-5"
+                        style={{
+                          background: `radial-gradient(circle, ${stat.color}40 0%, transparent 70%)`
+                        }}
+                      ></div>
+                      
+                      <div className="relative z-10">
+                        <div className="w-16 h-16 mx-auto mb-4 bg-[#a89456] rounded-full flex items-center justify-center">
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        <div className="text-4xl font-bold text-black mb-2">{stat.value}</div>
+                        <div className="text-[#a89456] text-sm font-medium">{stat.label}</div>
                       </div>
-                      <div className="text-4xl font-bold text-black mb-2">{stat.value}</div>
-                      <div className="text-[#a89456] text-sm font-medium">{stat.label}</div>
                     </div>
                   </div>
-                  </RevealAnimation>
-                </div>
+                </RevealAnimation>
               );
             })}
           </div>

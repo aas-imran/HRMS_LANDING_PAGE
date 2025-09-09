@@ -63,21 +63,21 @@ const Benefits = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <RevealAnimation>
+         
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
               <span className="text-blue-600 font-semibold text-sm">✨ Benefits for Businesses</span>
             </div>
-          </RevealAnimation>
-          <RevealAnimation delay={0.2}>
+        
+         
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Transform Your Business with Our <span className="text-[#a89456]">HRMS Software</span>
             </h2>
-          </RevealAnimation>
-          <RevealAnimation delay={0.4}>
+         
+      
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Discover how our comprehensive HRMS solution delivers measurable results and drives business growth
             </p>
-          </RevealAnimation>
+          
         </div>
 
         {/* Benefits Grid */}
@@ -85,7 +85,7 @@ const Benefits = () => {
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
-              <RevealAnimation key={index} delay={index * 0.1}>
+             
                 <div
                   className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100 min-h-[380px] w-full"
                 >
@@ -115,14 +115,14 @@ const Benefits = () => {
                    </div>
                  </div>
                </div>
-              </RevealAnimation>
+             
             );
           })}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <RevealAnimation delay={0.4}>
+         
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Ready to Experience These Benefits?
@@ -137,7 +137,7 @@ const Benefits = () => {
               </button>
             </Link>
           </div>
-          </RevealAnimation>
+         
         </div>
       </div>
     </section>

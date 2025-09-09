@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { 
   PhoneIcon, 
   EnvelopeIcon, 
@@ -92,8 +93,18 @@ const ContactUs = () => {
   ];
 
   return (
-    <section id="contact-us" className="py-20 bg-[#eef1f6]">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="contact-us" className="py-20 relative">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/bg2.jpg"
+          alt="Contact Background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
+      <div className="absolute inset-0  backdrop-blur-sm z-[1]"></div>
+      <div className="max-w-7xl mx-auto px-4 relative z-[2]">
         <RevealAnimation>
           <div className="flex items-center justify-center gap-8 mb-16">
             <div className="text-center">

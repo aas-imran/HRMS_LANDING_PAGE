@@ -1,6 +1,7 @@
 import React from 'react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import RevealAnimation from './RevealAnimation';
+import Image from 'next/image';
 
 const HowItWorks = () => {
   // No need for mobile detection since we're using a fixed order
@@ -161,35 +162,42 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 relative overflow-x-hidden w-full bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg2.jpg")' }}>
-      <div className="absolute inset-0 backdrop-blur-sm"></div>
+    <section id="how-it-works" className="py-24 relative overflow-x-hidden w-full">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/bg2.jpg"
+          alt="How It Works Background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-[1]"></div>
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full z-[2]">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-24 h-24 bg-purple-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '1s'}}></div>
         <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-green-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
         <div className="absolute top-1/3 right-1/4 w-20 h-20 bg-yellow-100 rounded-full opacity-20 animate-pulse" style={{animationDelay: '3s'}}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[3] w-full">
         {/* Header Section with Lottie */}
         <div className="flex flex-col items-center text-center mb-20">
           {/* Header Content */}
           <div className="flex flex-col items-center">
             <RevealAnimation>
-              <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
-                 <span className="text-blue-600 font-semibold text-sm">COMPLETE PROCESS</span>
-               </div>
-             </RevealAnimation>
-            <RevealAnimation delay={0.2}>
-              <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
-                How It <span style={{color: '#a89456'}}>Works</span>
-              </h2>
-            </RevealAnimation>
-            <RevealAnimation delay={0.4}>
-              <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7291'}}>
-                Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
-              </p>
+              <div>
+                <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
+                  <span className="text-blue-600 font-semibold text-sm">COMPLETE PROCESS</span>
+                </div>
+                <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+                  How It <span style={{color: '#a89456'}}>Works</span>
+                </h2>
+                <p className="text-xl max-w-2xl leading-relaxed mx-auto" style={{color: '#6b7291'}}>
+                  Transform your HR operations in 8 comprehensive steps. From setup to complete ecosystem management.
+                </p>
+              </div>
             </RevealAnimation>
           </div>
           
@@ -209,10 +217,9 @@ const HowItWorks = () => {
         {/* Process Flow */}
  {/* Process Flow */}
 <div className="max-w-7xl mx-auto px-4 relative">
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-[3]">
     {[...steps.slice(0, 4), steps[4], steps[5], steps[6], steps[7]].map((step, index) => (
-      <RevealAnimation key={index} delay={index * 0.1}>
-        <div className="group relative">
+        <div key={step.step} className="group relative">
           {/* Step Card - Fixed Height */}
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative h-80 flex flex-col">
             
@@ -258,23 +265,14 @@ const HowItWorks = () => {
             </div>
           </div>
         </div>
-      </RevealAnimation>
+     
     ))}
   </div>
 </div>
  
 
       {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes slideIn {
-          from {
-            transform: translateX(-100%);
-          }
-          to {
-            transform: translateX(0%);
-          }
-        }
-      `}</style>
+    
     </section>
   );
 };

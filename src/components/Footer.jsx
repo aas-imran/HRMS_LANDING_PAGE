@@ -177,7 +177,7 @@ const Footer = () => {
         <div className="mb-12">
           <RevealAnimation delay={0.4}>
             <h4 className="text-2xl font-bold text-center mb-8" style={{color: '#a89456'}}>Our Offices</h4>
-          <div className="grid md:grid-cols-3 gap-0 divide-x divide-gray-600">
+          <div className="grid md:grid-cols-3 gap-0 md:divide-x divide-gray-600">
             <RevealAnimation delay={0.4}>
               <div className="px-6 py-4">
               <div className="flex items-center mb-4">

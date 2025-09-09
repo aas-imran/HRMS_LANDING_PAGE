@@ -17,13 +17,13 @@ const Loader = ({ onLoadComplete }) => {
     // Message rotation effect
     const messageInterval = setInterval(() => {
       setCurrentMessageIndex((prev) => (prev + 1) % marketingMessages.length);
-    }, 500);
+    }, 800);
 
     // Simulate minimum loading time of 2.5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
       onLoadComplete();
-    }, 2500);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);
@@ -35,31 +35,31 @@ const Loader = ({ onLoadComplete }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#111826] to-[#1c2637]">
-      <div className="relative w-full max-w-lg p-8 text-center">
+      <div className="relative w-full max-w-3xl p-8 text-center mx-auto">
         {/* Brand Logo Animation */}
-        <div className="mb-8 relative">
+        <div className="mb-12 relative">
           <DotLottieReact
             src="https://lottie.host/d4e391d9-6a05-49c2-9abd-83a040b38dfc/uYqPEi8MYN.lottie"
             loop
             autoplay
-            style={{ width: '100%', height: '180px' }}
+            style={{ width: '100%', height: '240px' }}
           />
         </div>
         
         {/* Animated Marketing Messages */}
-        <div className="mt-4 h-32">
+        <div className="mt-4 h-40">
           <div className="transform transition-all duration-500 ease-in-out">
-            <h2 className="text-3xl font-bold text-white mb-3 animate-fade-in">
+            <h2 className="text-4xl font-bold text-white mb-4 animate-fade-in">
               {marketingMessages[currentMessageIndex].title}
             </h2>
-            <p className="text-[#a89456] text-lg animate-fade-in">
+            <p className="text-[#a89456] text-xl animate-fade-in">
               {marketingMessages[currentMessageIndex].subtitle}
             </p>
           </div>
         </div>
 
         {/* Enhanced Loading Progress Bar */}
-        <div className="mt-8">
+        <div className="mt-4">
           <div className="w-full h-2 bg-gray-700/30 rounded-full overflow-hidden">
             <div 
               className="h-full bg-gradient-to-r from-[#a89456] to-[#d4b872] rounded-full transition-all duration-1000 ease-out"
@@ -83,12 +83,12 @@ const Loader = ({ onLoadComplete }) => {
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
         :global(.animate-fade-in) {
-          animation: fadeIn 0.5s ease-out forwards;
+          animation: fadeIn 0.8s ease-out forwards;
         }
       `}</style>
     </div>

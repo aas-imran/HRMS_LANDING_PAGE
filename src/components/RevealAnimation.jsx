@@ -14,9 +14,9 @@ const RevealAnimation = ({ children, direction = 'bottom', delay = 0 }) => {
       y: 0,
       x: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         delay: delay,
-        ease: 'easeOut',
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };
@@ -25,7 +25,7 @@ const RevealAnimation = ({ children, direction = 'bottom', delay = 0 }) => {
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: '-50px' }}
       variants={variants}
     >
       {children}

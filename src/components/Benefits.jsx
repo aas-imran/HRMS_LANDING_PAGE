@@ -59,7 +59,7 @@ const Benefits = () => {
 
   return (
     <section className="py-16 lg:py-24 relative overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg3.jpg")' }}>
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-xs"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -74,7 +74,7 @@ const Benefits = () => {
             </h2>
          
       
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-black/80 max-w-3xl mx-auto">
               Discover how our comprehensive HRMS solution delivers measurable results and drives business growth
             </p>
           
@@ -87,31 +87,46 @@ const Benefits = () => {
             return (
              
                 <div
-                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-2 border border-gray-100 min-h-[380px] w-full"
+                  className="group relative rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 min-h-[400px] w-full overflow-hidden"
+                  style={{
+                    background: index === 0 ? 'linear-gradient(135deg, #ff6b9d 0%, #ff8a80 50%, #ffab40 100%)' :
+                               index === 1 ? 'linear-gradient(135deg, #ffd54f 0%, #ffb74d 50%, #ff8a65 100%)' :
+                               index === 2 ? 'linear-gradient(135deg, #42a5f5 0%, #26c6da 50%, #66bb6a 100%)' :
+                               index === 3 ? 'linear-gradient(135deg, #ab47bc 0%, #7e57c2 50%, #5c6bc0 100%)' :
+                               index === 4 ? 'linear-gradient(135deg, #ef5350 0%, #ec407a 50%, #e91e63 100%)' :
+                               'linear-gradient(135deg, #26c6da 0%, #00acc1 50%, #00838f 100%)'
+                  }}
                 >
+                  {/* Geometric Background Pattern */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-4 right-4 w-24 h-24 bg-white/20 rounded-full"></div>
+                    <div className="absolute top-12 right-12 w-16 h-16 bg-white/10 rounded-lg rotate-45"></div>
+                    <div className="absolute bottom-8 left-8 w-20 h-20 bg-white/15 rounded-full"></div>
+                    <div className="absolute bottom-16 left-16 w-12 h-12 bg-white/10 rounded-lg rotate-12"></div>
+                  </div>
                 {/* Number Badge */}
-                 <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#a89456] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                 <div className="absolute -top-2 -left-2 w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/40">
                    {index + 1}
                  </div>
  
                  {/* Icon */}
-                 <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/30 relative z-10">
                    <IconComponent className="w-8 h-8 text-white" />
                  </div>
  
                  {/* Content */}
-                 <div>
-                   <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+                 <div className="relative z-10">
+                   <h3 className="text-xl font-bold text-white mb-4 leading-tight">
                      {benefit.title}
                    </h3>
-                   <p className="text-gray-600 mb-6 leading-relaxed">
+                   <p className="text-white/90 mb-6 leading-relaxed">
                      {benefit.description}
                    </p>
                    
                    {/* Metric Badge */}
-                   <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full">
+                   <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
                      <span className="text-2xl mr-2">✨</span>
-                     <span className="font-bold text-gray-900">{benefit.metric}</span>
+                     <span className="font-bold text-white">{benefit.metric}</span>
                    </div>
                  </div>
                </div>
@@ -123,7 +138,7 @@ const Benefits = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
          
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-[#a89456]/60 to-[#a89456] rounded-3xl p-8 md:p-12 shadow-2xl border max-w-7xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               Ready to Experience These Benefits?
             </h3>

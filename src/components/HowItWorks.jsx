@@ -172,7 +172,7 @@ const HowItWorks = () => {
           priority
         />
       </div>
-      <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-[1]"></div>
+      <div className="absolute inset-0  backdrop-blur-sm z-[1]"></div>
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full z-[2]">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20 animate-pulse"></div>
@@ -221,7 +221,13 @@ const HowItWorks = () => {
     {[...steps.slice(0, 4), steps[4], steps[5], steps[6], steps[7]].map((step, index) => (
         <div key={step.step} className="group relative">
           {/* Step Card - Fixed Height */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 relative h-80 flex flex-col">
+          <div 
+            className="p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border  relative h-80 flex flex-col"
+            style={{
+              background: `linear-gradient(135deg, ${step.color}08, ${step.color}15)`,
+              backdropFilter: 'blur(10px)'
+            }}
+          >
             
             {/* Step Number Badge */}
             <div 

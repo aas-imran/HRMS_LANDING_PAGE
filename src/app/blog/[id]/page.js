@@ -3,6 +3,7 @@
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaUser } from 'react-icons/fa';
 
 const BlogPost = () => {
   const router = useRouter();
@@ -124,26 +125,36 @@ const BlogPost = () => {
           Back to Blog
         </Link>
 
-        <div className="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
+        <div className="relative w-full mb-8 rounded-xl overflow-hidden">
           <Image
             src={post.image}
             alt={post.title}
-            fill
-            style={{ objectFit: 'contain', backgroundColor: '#f3f4f6' }}
+            width={900}
+            height={300}
+            className="w-full h-[400px] object-cover"
+            style={{ backgroundColor: '#f3f4f6' }}
             priority
           />
         </div>
 
         <article className="prose prose-lg max-w-none">
           <div className="mb-8">
-            <span className="text-sm text-[#a89456] font-semibold">{post.category}</span>
+            {/* Category Chip */}
+            <div className="mb-4">
+              <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
+                post.category === 'HR/Technology' ? 'bg-blue-100 text-blue-800' :
+                post.category === 'Employee Benefits' ? 'bg-green-100 text-green-800' :
+                post.category === 'Mental Health' ? 'bg-purple-100 text-purple-800' :
+                'bg-gray-100 text-gray-800'
+              }`}>
+                {post.category}
+              </span>
+            </div>
             <h1 className="text-4xl font-bold text-[#111826] mt-2 mb-4">{post.title}</h1>
             <div className="flex items-center text-gray-500 text-sm space-x-4">
               <span className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-[#a89456]" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
-                By {post.author}
+                <FaUser className="h-5 w-5 mr-2 text-[#a89456]" />
+                Author by: {post.author}
               </span>
               <span>•</span>
               <span>{post.place}</span>

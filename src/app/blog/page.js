@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaUser } from 'react-icons/fa';
 
 const BlogPage = () => {
   const router = useRouter();
@@ -15,6 +16,8 @@ const BlogPage = () => {
       title: 'Top Challenges HR Managers Face and How HRMS Solves Them',
       image: '/hr.jpg',
       category: 'HR/Technology',
+      date: '29/08/2025',
+      place: 'Cuttack, India',
       content: [
         {
           heading: '1. Endless Administrative Tasks',
@@ -51,6 +54,8 @@ const BlogPage = () => {
       title: 'Employee Benefits and Payroll Management: Why Automation Matters',
       image: '/emp-ben.jpg',
       category: 'Employee Benefits',
+      date: '01/09/2025',
+      place: 'Bhubaneswar, India',
       intro: 'When we talk about payroll management, the question isn\'t whether it\'s important - it\'s why it\'s still one of the most complex and error-prone processes inside organizations. Why do HR teams, despite having clear policies and structured benefits, still struggle every month to deliver accurate salaries on time?',
       content: [
         {
@@ -73,6 +78,8 @@ const BlogPage = () => {
       title: 'Why Mental Health Should Be a Priority in HR Strategies',
       image: '/mental.jpg',
       category: 'Mental Health',
+      date: '05/09/2025',
+      place: 'Puri, India',
       intro: 'When we talk about workplace performance, we often think about salaries, perks, and promotions. But beneath it all lies a factor that silently shapes productivity—employee mental health. Recent studies are sounding the alarm, and the numbers paint a story no HR leader can ignore.',
       content: [
         {
@@ -126,24 +133,44 @@ const BlogPage = () => {
                 href={`/blog/${post.id}`}
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] cursor-pointer block w-full mx-auto"
               >
-                <div className="relative h-48 w-full">
+                <div className="relative w-full">
                   <Image
                     src={post.image}
                     alt={post.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-300 hover:scale-105"
+                    width={400}
+                    height={200}
+                    className="w-full h-[200px] object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
-                  <div className="text-sm text-[#a89456] font-semibold mb-3">{post.category}</div>
+                  {/* Category Chip */}
+                  <div className="mb-3">
+                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
+                      post.category === 'HR/Technology' ? 'bg-blue-100 text-blue-800' :
+                      post.category === 'Employee Benefits' ? 'bg-green-100 text-green-800' :
+                      post.category === 'Mental Health' ? 'bg-purple-100 text-purple-800' :
+                      'bg-gray-100 text-gray-800'
+                    }`}>
+                      {post.category}
+                    </span>
+                  </div>
                   <h3 className="text-xl font-bold text-[#111826] mb-4 line-clamp-2 hover:text-[#a89456] transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-gray-600 mb-4 line-clamp-3">{post.intro}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">{post.author}</span>
-                    <span className="text-[#a89456] group-hover:underline flex items-center gap-2 cursor-pointer">
+                  <div className="flex items-start justify-between">
+                    {/* Author with User Icon and Date/Place */}
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <FaUser className="text-[#a89456] text-lg" />
+                        <span className="text-sm text-gray-700 font-medium">by: {post.author}</span>
+                      </div>
+                      <div className="flex items-center gap-6 text-xs text-gray-500">
+                        <span>{post.date}</span>
+                        <span>{post.place}</span>
+                      </div>
+                    </div>
+                    <span className="text-[#a89456] group-hover:underline flex items-center gap-2 cursor-pointer mt-1">
                       Read More
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

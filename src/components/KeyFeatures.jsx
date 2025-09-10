@@ -8,6 +8,7 @@ import {
   PresentationChartLineIcon 
 } from '@heroicons/react/24/outline';
 import RevealAnimation from './RevealAnimation';
+import Image from 'next/image';
 
 const KeyFeatures = () => {
   const features = [
@@ -15,7 +16,7 @@ const KeyFeatures = () => {
       title: "Employee Management",
       description: "Centralized employee database with complete profiles, documents, and history tracking.",
       icon: UsersIcon,
-      gradient: "from-blue-500 to-blue-600"
+      gradient: "from-blue-600 to-blue-800"
     },
     {
       title: "Payroll Processing",
@@ -50,7 +51,16 @@ const KeyFeatures = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-white relative overflow-hidden">
+    <section id="features" className="py-24  relative overflow-hidden">
+       <div className="absolute bg-white/60 inset-0 z-0 overflow-hidden">
+        <Image
+          src="/bg3.jpg"
+          alt="Hero Background"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-32 h-32 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
@@ -65,10 +75,10 @@ const KeyFeatures = () => {
               <div className="inline-flex items-center px-4 py-2 bg-gray-50 rounded-full mb-6">
                 <span className="font-semibold text-sm" style={{color: '#a89456'}}>KEY FEATURES</span>
               </div>
-              <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
+              <h2 className="text-5xl font-bold mb-6" style={{color: '#ffffff'}}>
                 Powerful <span style={{color: '#a89456'}}>Features</span> for Modern HR
               </h2>
-              <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
+              <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#fff'}}>
                 Everything you need to manage your workforce efficiently with cutting-edge technology
               </p>
             </div>
@@ -84,8 +94,8 @@ const KeyFeatures = () => {
                 <div 
                   className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
                 >
-                {/* Gradient Background on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Medium Gradient Background by Default and Enhanced on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-15 transition-opacity duration-500`}></div>
                 
                 {/* Icon Container */}
                 <div className="relative z-10 mb-6">

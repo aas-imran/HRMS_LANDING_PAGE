@@ -52,7 +52,7 @@ const KeyFeatures = () => {
 
   return (
     <section id="features" className="py-24  relative overflow-hidden">
-       <div className="absolute bg-white/60 inset-0 z-0 overflow-hidden">
+       <div className="absolute  inset-0 z-0 overflow-hidden">
         <Image
           src="/bg3.jpg"
           alt="Hero Background"
@@ -62,12 +62,12 @@ const KeyFeatures = () => {
         />
       </div>
       {/* Background Elements */}
-      <div className="absolute inset-0">
+      <div className="absolute bg-white/60 backdrop-blur-sm inset-0">
         <div className="absolute top-20 right-20 w-32 h-32 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full opacity-5" style={{backgroundColor: '#111826'}}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4  relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
           <RevealAnimation>

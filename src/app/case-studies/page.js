@@ -42,64 +42,78 @@ const CaseStudiesPage = () => {
           Discover how our HRMS solution transforms businesses and empowers growth
         </p>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {caseStudies.map((study, index) => (
-            <div key={index} className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-gold-400 flex flex-col" 
-                 style={{ backgroundColor: '#ffffff' }}>
-              <div className="p-8 flex flex-col h-full">
-                {/* Header Section */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="inline-block rounded-lg px-3 py-1" 
-                       style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
-                    {study.industry}
-                  </div>
+        <div className="space-y-12 max-w-7xl mx-auto">
+          {caseStudies.map((study, index) => {
+            const imageSrc = index === 0 ? '/tissue.jpg' : '/minerals.jpg';
+            
+            return (
+              <div key={index} className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-gold-400 flex flex-col lg:flex-row" 
+                   style={{ backgroundColor: '#ffffff' }}>
+                {/* Image Section */}
+                <div className="lg:w-1/2 h-64 lg:h-auto">
+                  <img 
+                    src={imageSrc} 
+                    alt={study.title.split('\n')[0]} 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
-                {/* Title */}
-                <h2 className="text-2xl font-semibold mb-4 whitespace-pre-line">
-                  <span style={{ color: '#a89456' }}>{study.title.split('\n')[0]}</span>
-                </h2>
-
-                <div className="flex justify-between items-center mb-6">
-                  <div className="text-sm font-medium text-gray-500">
-                    {study.employeeCount} Employees
-                  </div>
-                  <div className="flex gap-2 text-sm text-gray-500">
-                    <span>{study.location}</span>
-                    <span>|</span>
-                    <span>{study.date}</span>
-                  </div>
-                </div>
-
-                <p className="text-lg text-gray-700 mb-6">{study.title.split('\n')[1]}</p>
-                
-                {/* Content Sections */}
-                <div className="space-y-6 flex-grow">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="text-base font-medium mb-3" style={{ color: '#a89456' }}>Challenge</h3>
-                    <p className="text-gray-600 leading-relaxed">{study.challenge}</p>
+                {/* Content Section */}
+                <div className="lg:w-1/2 p-8 flex flex-col justify-center">
+                  {/* Header Section */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="inline-block rounded-lg px-3 py-1" 
+                         style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
+                      {study.industry}
+                    </div>
                   </div>
                   
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="text-base font-medium mb-3" style={{ color: '#a89456' }}>Solution</h3>
-                    <p className="text-gray-600 leading-relaxed">{study.solution}</p>
+                  {/* Title */}
+                  <h2 className="text-3xl font-bold mb-4">
+                    <span style={{ color: '#a89456' }}>{study.title.split('\n')[0]}</span>
+                  </h2>
+
+                  <div className="flex justify-between items-center mb-6">
+                    <div className="text-sm font-medium text-gray-500">
+                      {study.employeeCount} Employees
+                    </div>
+                    <div className="flex gap-2 text-sm text-gray-500">
+                      <span>{study.location}</span>
+                      <span>|</span>
+                      <span>{study.date}</span>
+                    </div>
                   </div>
+
+                  <p className="text-lg text-gray-700 mb-6 font-medium">{study.title.split('\n')[1]}</p>
                   
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="text-base font-medium mb-3" style={{ color: '#a89456' }}>Key Results</h3>
-                    <ul className="space-y-2">
-                      {study.results.map((result, idx) => (
-                        <li key={idx} className="flex items-start space-x-2">
-                          <span className="text-gold-400 mt-1">•</span>
-                          <span className="text-gray-600 flex-grow">{result}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Content Sections */}
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Challenge</h3>
+                      <p className="text-gray-600 leading-relaxed">{study.challenge}</p>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Solution</h3>
+                      <p className="text-gray-600 leading-relaxed">{study.solution}</p>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Key Results</h3>
+                      <ul className="space-y-2">
+                        {study.results.map((result, idx) => (
+                          <li key={idx} className="flex items-start space-x-2">
+                            <span className="text-gold-400 mt-1 font-bold">•</span>
+                            <span className="text-gray-600 flex-grow">{result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

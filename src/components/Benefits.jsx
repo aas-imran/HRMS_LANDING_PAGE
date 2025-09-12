@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   CurrencyDollarIcon, 
   FaceSmileIcon, 
@@ -18,42 +19,60 @@ const Benefits = () => {
       description: "Automate routine HR tasks and reduce manual paperwork by up to 80%. Streamline processes and eliminate redundant workflows.",
       metric: "80% Less Paperwork",
       icon: CurrencyDollarIcon,
-      color: "bg-emerald-500"
+      color: "bg-emerald-500",
+      image: "/reduce.png",
+      bgColor: "#f0fdf4",
+      accentColor: "#10b981"
     },
     {
       title: "Improve Employee Satisfaction",
       description: "Self-service portals and transparent processes lead to happier employees. Empower your workforce with easy access to information.",
       metric: "95% Satisfaction",
       icon: FaceSmileIcon,
-      color: "bg-amber-500"
+      color: "bg-amber-500",
+      image: "/satisfaction.png",
+      bgColor: "#fffbeb",
+      accentColor: "#f59e0b"
     },
     {
       title: "Ensure Compliance",
       description: "Stay compliant with payroll, tax, and labor regulations through automated and up-to-date processes. Minimize compliance risks with real-time updates.",
       metric: "100% Compliance",
       icon: ShieldCheckIcon,
-      color: "bg-blue-500"
+      color: "bg-blue-500",
+      image: "/compl.png",
+      bgColor: "#eff6ff",
+      accentColor: "#3b82f6"
     },
     {
       title: "Data-Driven Decisions",
       description: "Make informed decisions with comprehensive analytics and reporting. Transform raw data into actionable business insights.",
       metric: "Real-time Insights",
       icon: ChartBarIcon,
-      color: "bg-purple-500"
+      color: "bg-purple-500",
+      image: "/data.png",
+      bgColor: "#f5f3ff",
+      accentColor: "#8b5cf6"
     },
     {
       title: "Scale Effortlessly",
       description: "Grow your business without worrying about HR system limitations. Our platform adapts to your expanding needs seamlessly.",
       metric: "Unlimited Growth",
       icon: ArrowTrendingUpIcon,
-      color: "bg-red-500"
+      color: "bg-red-500",
+      image: "/scale.png",
+      bgColor: "#fef2f2",
+      accentColor: "#ef4444"
     },
     {
       title: "Enhanced Security & Privacy",
       description: "Protect sensitive data with enterprise-level encryption, role-based access, and privacy compliance. Ensure data safety with advanced security measures.",
       metric: "Bank-level Security",
       icon: LockClosedIcon,
-      color: "bg-cyan-500"
+      color: "bg-cyan-500",
+      image: "/secure.png",
+      bgColor: "#ecfeff",
+      accentColor: "#06b6d4"
     }
   ];
 
@@ -87,48 +106,48 @@ const Benefits = () => {
             return (
              
                 <div
-                  className="group relative rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 min-h-[400px] w-full overflow-hidden"
+                  className="group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 min-h-[400px] w-full"
                   style={{
-                    background: index === 0 ? 'linear-gradient(135deg, #ff6b9d 0%, #ff8a80 50%, #ffab40 100%)' :
-                               index === 1 ? 'linear-gradient(135deg, #ffd54f 0%, #ffb74d 50%, #ff8a65 100%)' :
-                               index === 2 ? 'linear-gradient(135deg, #42a5f5 0%, #26c6da 50%, #66bb6a 100%)' :
-                               index === 3 ? 'linear-gradient(135deg, #ab47bc 0%, #7e57c2 50%, #5c6bc0 100%)' :
-                               index === 4 ? 'linear-gradient(135deg, #ef5350 0%, #ec407a 50%, #e91e63 100%)' :
-                               'linear-gradient(135deg, #26c6da 0%, #00acc1 50%, #00838f 100%)'
+                    background: `linear-gradient(135deg, white, #f9fafb, #f3f4f6, white)`,
+                    backgroundSize: '400% 400%',
+                    animation: 'gradient 15s ease infinite'
                   }}
                 >
-                  {/* Geometric Background Pattern */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-4 right-4 w-24 h-24 bg-white/20 rounded-full"></div>
-                    <div className="absolute top-12 right-12 w-16 h-16 bg-white/10 rounded-lg rotate-45"></div>
-                    <div className="absolute bottom-8 left-8 w-20 h-20 bg-white/15 rounded-full"></div>
-                    <div className="absolute bottom-16 left-16 w-12 h-12 bg-white/10 rounded-lg rotate-12"></div>
+                  <div className="absolute inset-0 opacity-10" style={{
+                    backgroundImage: `radial-gradient(circle at 20% 30%, rgba(200, 200, 200, 0.4) 0%, transparent 8%), 
+                                     radial-gradient(circle at 70% 60%, rgba(200, 200, 200, 0.4) 0%, transparent 12%), 
+                                     radial-gradient(circle at 40% 80%, rgba(200, 200, 200, 0.4) 0%, transparent 10%), 
+                                     radial-gradient(circle at 80% 10%, rgba(200, 200, 200, 0.4) 0%, transparent 8%)`,
+                  }}></div>
+                  
+                  <div className="p-8 relative z-10">
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className="text-xl font-bold mb-4 leading-tight" style={{ color: benefit.accentColor }}>
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-800 mb-6 leading-relaxed font-medium">
+                        {benefit.description}
+                      </p>
+                      
+                      {/* Metric Badge */}
+                      <div className="inline-flex items-center px-4 py-2 rounded-full shadow-sm" style={{ backgroundColor: `${benefit.accentColor}20`, border: `1px solid ${benefit.accentColor}40` }}>
+                        <span className="text-sm mr-2">✨</span>
+                        <span className="font-bold text-sm" style={{ color: benefit.accentColor }}>{benefit.metric}</span>
+                      </div>
+                    </div>
                   </div>
-                {/* Number Badge */}
-                 <div className="absolute -top-2 -left-2 w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg border border-white/40">
-                   {index + 1}
-                 </div>
- 
-                 {/* Icon */}
-                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/30 relative z-10">
-                   <IconComponent className="w-8 h-8 text-white" />
-                 </div>
- 
-                 {/* Content */}
-                 <div className="relative z-10">
-                   <h3 className="text-xl font-bold text-white mb-4 leading-tight">
-                     {benefit.title}
-                   </h3>
-                   <p className="text-white/90 mb-6 leading-relaxed">
-                     {benefit.description}
-                   </p>
-                   
-                   {/* Metric Badge */}
-                   <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                     <span className="text-2xl mr-2">✨</span>
-                     <span className="font-bold text-white">{benefit.metric}</span>
-                   </div>
-                 </div>
+                  
+                  {/* Image Section */}
+                  <div className="h-48 relative mt-auto">
+                    <Image 
+                      src={benefit.image} 
+                      alt={benefit.title}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      className="p-4"
+                    />
+                  </div>
                </div>
              
             );

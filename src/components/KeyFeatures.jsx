@@ -54,7 +54,7 @@ const KeyFeatures = () => {
     <section id="features" className="py-24  relative overflow-hidden">
        <div className="absolute  inset-0 z-0 overflow-hidden">
         <Image
-          src="/bg3.jpg"
+          src="/bg7.jpg"
           alt="Hero Background"
           fill
           style={{ objectFit: 'cover' }}
@@ -62,7 +62,7 @@ const KeyFeatures = () => {
         />
       </div>
       {/* Background Elements */}
-      <div className="absolute bg-white/60 backdrop-blur-sm inset-0">
+      <div className="absolute bg-white/10 backdrop-blur-sm inset-0">
         <div className="absolute top-20 right-20 w-32 h-32 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full opacity-5" style={{backgroundColor: '#111826'}}></div>
       </div>
@@ -75,10 +75,10 @@ const KeyFeatures = () => {
               <div className="inline-flex items-center px-4 py-2 bg-gray-50 rounded-full mb-6">
                 <span className="font-semibold text-sm" style={{color: '#a89456'}}>KEY FEATURES</span>
               </div>
-              <h2 className="text-5xl font-bold mb-6" style={{color: '#ffffff'}}>
+              <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
                 Powerful <span style={{color: '#a89456'}}>Features</span> for Modern HR
               </h2>
-              <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#fff'}}>
+              <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{color: '#111826'}}>
                 Everything you need to manage your workforce efficiently with cutting-edge technology
               </p>
             </div>
@@ -92,7 +92,7 @@ const KeyFeatures = () => {
             return (
               <RevealAnimation key={index} delay={index * 0.1}>
                 <div 
-                  className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
+                  className="group bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
                 >
                 {/* Medium Gradient Background by Default and Enhanced on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-15 transition-opacity duration-500`}></div>
@@ -115,7 +115,7 @@ const KeyFeatures = () => {
                 </div>
 
                 {/* Hover Border Effect */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-opacity-20 rounded-2xl transition-all duration-300" style={{borderColor: '#a89456'}}></div>
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-opacity-20 rounded-2xl transition-all duration-300"></div>
               </div>
               </RevealAnimation>
             );

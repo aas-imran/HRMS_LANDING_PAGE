@@ -11,6 +11,7 @@ import BookDemoModal from './BookDemoModal';
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -52,17 +53,17 @@ const Navbar = () => {
     { name: 'Contact', href: '/contact', id: 'contact' }
   ];
 
-  // Additional navigation items that open in new tab
-  const externalNavItems = [
+  // Dropdown menu items
+  const dropdownItems = [
     { name: 'Blog', href: '/blog', id: 'blog' },
     { name: 'Case Studies', href: '/case-studies', id: 'case-studies' }
   ];
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden">
-        <div className="w-full overflow-x-hidden">
-          <div className="bg-opacity-5 backdrop-blur-[120px] border-opacity-20 shadow-md relative overflow-hidden w-full">
+      <nav className="fixed top-0 left-0 right-0 z-50 w-full">
+        <div className="w-full">
+          <div className="bg-opacity-5 backdrop-blur-[120px] border-opacity-20 shadow-md relative w-full">
             {/* Enhanced Glass morphism overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/20 to-white/10 backdrop-blur-3xl"></div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent"></div>
@@ -97,22 +98,53 @@ const Navbar = () => {
                     ))}
                     <li>
                       <Link href="/pricing" className="font-medium transition-all duration-300 relative group cursor-pointer" style={{color: '#111826'}}>
-                        Pricing
+                        Solution
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full" style={{backgroundColor: '#a89456'}}></span>
                       </Link>
                     </li>
-                    {externalNavItems.map((item) => (
-                      <li key={item.id}>
-                        <Link 
-                          href={item.href}
-                          className="font-medium transition-all duration-300 relative group cursor-pointer"
-                          style={{color: '#111826'}}
-                        >
-                          {item.name}
-                          <span className="absolute left-0 bottom-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full" style={{backgroundColor: '#a89456'}}></span>
-                        </Link>
-                      </li>
-                    ))}
+                    <li className="relative group">
+                      <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        className={`font-medium transition-all duration-300 relative cursor-pointer flex items-center space-x-1 ${isDropdownOpen ? 'text-[#a89456]' : ''}`}
+                        style={{color: isDropdownOpen ? '#a89456' : '#111826'}}
+                      >
+                        <span>Resources</span>
+                        <svg className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                        <span className={`absolute left-0 bottom-0 h-0.5 transition-all duration-300 ${isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'}`} style={{backgroundColor: '#a89456'}}></span>
+                      </button>
+                      
+                      {/* Dropdown Menu */}
+                      <div 
+                        className={`absolute top-full left-0 mt-2 w-56 bg-white/98 backdrop-blur-xl border border-gray-200/50 rounded-xl shadow-2xl z-[9998] transition-all duration-300 transform ${isDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                      >
+                        <div className="py-3">
+                          {dropdownItems.map((item, index) => (
+                            <Link
+                              key={item.id}
+                              href={item.href}
+                              className="group/item block px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-[#a89456]/10 hover:to-[#a89456]/5 hover:text-[#a89456] transition-all duration-300 font-medium relative overflow-hidden"
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <span className="relative z-10 flex items-center justify-between">
+                                {item.name}
+                                <svg className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </span>
+                              <span className="absolute bottom-0 left-5 right-5 h-0.5 bg-[#a89456] transform scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300 origin-left"></span>
+                              {index < dropdownItems.length - 1 && (
+                                <div className="absolute bottom-0 left-5 right-5 h-px bg-gray-100"></div>
+                              )}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </li>
                   </ul>
                 </div>
 
@@ -205,18 +237,21 @@ const Navbar = () => {
                 className="block text-black hover:text-[#a89456] transition-colors duration-300 font-medium text-lg py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
+                Solution
               </Link>
-              {externalNavItems.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="block text-black hover:text-[#a89456] transition-colors duration-300 font-medium text-lg py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <p className="text-gray-500 text-sm font-medium mb-2 px-2">Resources</p>
+                {dropdownItems.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    className="block text-black hover:text-[#a89456] transition-colors duration-300 font-medium text-lg py-2 pl-4"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
               <button 
                 className="w-full bg-[#a89456] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#a89456]/90 transition-all duration-300 mt-4"
                 onClick={() => {

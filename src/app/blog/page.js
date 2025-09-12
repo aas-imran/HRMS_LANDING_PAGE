@@ -52,7 +52,7 @@ const BlogPage = () => {
     {
       id: 2,
       title: 'Employee Benefits and Payroll Management: Why Automation Matters',
-      image: '/emp-ben.jpg',
+      image: '/benefit.jpg',
       category: 'Employee Benefits',
       date: '01/09/2025',
       place: 'Bhubaneswar, India',
@@ -163,7 +163,7 @@ const BlogPage = () => {
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-2">
                         <FaUser className="text-[#a89456] text-lg" />
-                        <span className="text-sm text-gray-700 font-medium">by: {post.author}</span>
+                        <span className="text-sm text-gray-700 font-medium">{post.author}</span>
                       </div>
                       <div className="flex items-center gap-6 text-xs text-gray-500">
                         <span>{post.date}</span>

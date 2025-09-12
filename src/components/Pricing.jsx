@@ -2,89 +2,74 @@ import React, { useState, useContext } from 'react';
 import { LenisContext } from './LenisProvider';
 import Link from 'next/link';
 import ContactSalesModal from './ContactSalesModal';
+import { FaServer, FaCloud, FaCog, FaPalette, FaRainbow, FaSync, FaLock, FaPaintBrush, FaRocket,FaBullseye,FaQuestionCircle, } from 'react-icons/fa';
 
 const Pricing = () => {
-  const [isAnnual, setIsAnnual] = useState(true);
   const [isContactSalesModalOpen, setIsContactSalesModalOpen] = useState(false);
   const lenis = useContext(LenisContext);
 
-  const plans = [
+  const solutions = [
     {
-      name: "Basic",
-      description: "Essential features for small teams",
-      monthlyPrice: 2000,
-      annualPrice: 1600,
+      name: "On-Premise Solution",
+      description: "Software deployed on your office server with our complete support",
+      icon: FaServer,
       features: [
-        "Up to 15 employees",
-        "Basic HR management",
-        "Employee profiles",
-        "Time tracking",
-        "Basic reporting",
-        "Email support"
+        "Deployed on your office server",
+        "Complete data control & security",
+        "Full customization available",
+        "On-site installation & setup",
+        "Dedicated technical support",
+        "Regular maintenance & updates",
+        "Custom feature development",
+        "Training & documentation",
+        "24/7 helpdesk support"
       ],
       popular: false,
-      color: "#6B7280"
+      color: "#3B82F6",
+      gradient: "from-blue-500 to-indigo-600"
     },
     {
-      name: "Standard",
-      description: "Perfect for growing businesses",
-      monthlyPrice: 3500,
-      annualPrice: 2800,
+      name: "Managed Cloud Solution",
+      description: "Software deployed on our secure cloud with full management",
+      icon: FaCloud,
       features: [
-        "Up to 50 employees",
-        "Advanced HR management",
-        "Employee self-service portal",
-        "Time & attendance tracking",
-        "Payroll basics",
-        "Advanced reporting",
-        "Priority support"
-      ],
-      popular: false,
-      color: "#3B82F6"
-    },
-    {
-      name: "Premium",
-      description: "Most popular for established companies",
-      monthlyPrice: 5000,
-      annualPrice: 4000,
-      features: [
-        "Up to 200 employees",
-        "Full HR suite",
-        "Advanced payroll processing",
-        "Performance management",
-        "Advanced analytics",
-        "API access",
-        "Custom workflows",
-        "24/7 support"
+        "Deployed on our secure cloud",
+        "99.9% uptime guarantee",
+        "Automatic backups & updates",
+        "Scalable infrastructure",
+        "Advanced security protocols",
+        "Real-time monitoring",
+        "Multi-device accessibility",
+        "Cloud-based integrations",
+        "24/7 technical support"
       ],
       popular: true,
-      color: "#a89456"
-    },
-    {
-      name: "Enterprise",
-      description: "Complete solution for large organizations",
-      monthlyPrice: 7500,
-      annualPrice: 6000,
-      features: [
-        "Unlimited employees",
-        "Complete HR platform",
-        "Advanced payroll & benefits",
-        "Multi-location support",
-        "Custom integrations",
-        "Dedicated account manager",
-        "White-label options",
-        "Advanced security & compliance"
-      ],
-      popular: false,
-      color: "#111826"
+      color: "#a89456",
+      gradient: "from-yellow-500 to-orange-600"
     }
   ];
 
-  const addOns = [
-    { name: "Advanced Analytics", price: 500 },
-    { name: "Custom Integrations", price: 750 },
-    { name: "Training & Onboarding", price: 1000 },
-    { name: "Compliance Management", price: 600 }
+  const customizationServices = [
+    { 
+      name: "Custom Feature Development", 
+      icon: FaCog,
+      description: "Add new features or modify existing ones"
+    },
+    { 
+      name: "Brand Customization", 
+      icon: FaPalette,
+      description: "Complete UI/UX design matching your brand"
+    },
+    { 
+      name: "Color Theme Customization", 
+      icon: FaRainbow,
+      description: "Custom color schemes throughout the system"
+    },
+    { 
+      name: "Workflow Customization", 
+      icon: FaSync,
+      description: "Tailor workflows to match your processes"
+    }
   ];
 
   return (
@@ -99,98 +84,94 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full mb-6">
-            <span className="text-blue-600 font-semibold text-sm">TRANSPARENT PRICING</span>
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-50 to-orange-50 rounded-full mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-600 font-semibold text-sm">DEPLOYMENT SOLUTIONS</span>
           </div>
           <h2 className="text-5xl font-bold mb-6" style={{color: '#111826'}}>
-            Simple, <span style={{color: '#a89456'}}>Transparent</span> Pricing
+            Flexible <span style={{color: '#a89456'}}>Solutions</span> for Every Business
           </h2>
-          <p className="text-xl max-w-2xl mx-auto leading-relaxed" style={{color: '#6b7280'}}>
-            Choose the perfect plan for your business. All plans include our core features with no hidden fees.
+          <p className="text-xl max-w-3xl mx-auto leading-relaxed mb-8" style={{color: '#6b7280'}}>
+            Choose between On-Premise or Cloud deployment. Both solutions include full customization options for features, design, and colors to match your business needs.
           </p>
-        </div>
-
-        {/* Billing Toggle */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-white p-1 rounded-xl shadow-lg border border-gray-200">
-            <div className="flex items-center">
-              <button
-                onClick={() => setIsAnnual(false)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  !isAnnual 
-                    ? 'bg-blue-600 text-white shadow-md' 
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setIsAnnual(true)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 relative ${
-                  isAnnual 
-                    ? 'bg-blue-600 text-white shadow-md' 
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                Annual
-                <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                  20% OFF
-                </span>
-              </button>
+          
+          {/* Customization Highlight */}
+          <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-orange-50 rounded-2xl p-6 max-w-6xl mx-auto border border-gray-200">
+            <div className="flex items-center justify-center mb-4">
+              <FaPaintBrush className="text-3xl mr-3" style={{color: '#a89456'}} />
+              <h3 className="text-2xl font-bold" style={{color: '#111826'}}>Fully <span style={{color: '#a89456'}}>Customizable</span></h3>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4 text-center">
+              <div className="flex flex-col items-center">
+                <FaCog className="text-2xl mb-2" style={{color: '#a89456'}} />
+                <span className="font-semibold text-gray-700">Custom Features</span>
+                <span className="text-sm text-gray-600">Add or modify any functionality</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <FaPalette className="text-2xl mb-2" style={{color: '#a89456'}} />
+                <span className="font-semibold text-gray-700">Custom Design</span>
+                <span className="text-sm text-gray-600">Match your brand identity</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <FaRainbow className="text-2xl mb-2" style={{color: '#a89456'}} />
+                <span className="font-semibold text-gray-700">Custom Colors</span>
+                <span className="text-sm text-gray-600">Your brand colors throughout</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Pricing Cards - 4 Cards Layout */}
-        <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 mb-16">
-          {plans.map((plan, index) => (
-              <div
-                className={`relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
-                plan.popular ? 'ring-2 ring-[#a89456] scale-105' : 'border border-gray-200'
+
+
+        {/* Solution Cards - 2 Cards Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
+          {solutions.map((solution, index) => {
+            const IconComponent = solution.icon;
+            return (
+            <div
+              key={index}
+              className={`relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-visible ${
+                solution.popular ? 'border-4' : 'border-2 border-gray-100'
               }`}
+              style={{
+                 borderColor: solution.popular ? '#a89456' : undefined
+               }}
             >
               {/* Popular Badge */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg" style={{background: '#a89456'}}>
-                    Most Popular
+              {solution.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-50">
+                  <div className="text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg" style={{backgroundColor: '#a89456'}}>
+                    ⭐ Most Popular
                   </div>
                 </div>
               )}
 
-              <div className="p-6">
-                {/* Plan Header */}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold mb-2" style={{color: '#111826'}}>
-                    {plan.name}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-sm">{plan.description}</p>
-                  
-                  {/* Price */}
-                  <div className="mb-4">
-                    <div className="flex items-baseline justify-center">
-                      <span className="text-3xl font-bold" style={{color: plan.color}}>
-                        ₹{isAnnual ? plan.annualPrice : plan.monthlyPrice}
-                      </span>
-                      <span className="text-gray-600 ml-1 text-sm">/employee/month</span>
-                    </div>
-                    {isAnnual && (
-                      <p className="text-xs text-green-600 mt-1">
-                        Save ₹{(plan.monthlyPrice - plan.annualPrice) * 12}/employee/year
-                      </p>
-                    )}
+              {/* Gradient Background */}
+              <div className="absolute inset-0 rounded-3xl" style={{background: 'linear-gradient(135deg, rgba(168, 148, 86, 0.1) 0%, rgba(168, 148, 86, 0.05) 100%)'}}></div>
+              
+              <div className="relative p-8">
+                {/* Solution Header */}
+                <div className="text-center mb-8">
+                  <div className="flex justify-center mb-4">
+                    <IconComponent className="text-6xl" style={{color: solution.color}} />
                   </div>
+                  <h3 className="text-2xl font-bold mb-3" style={{color: '#111826'}}>
+                    {solution.name}
+                  </h3>
+                  <p className="text-gray-600 mb-6 text-base leading-relaxed">{solution.description}</p>
                 </div>
 
                 {/* Features */}
-                <div className="mb-6">
-                  <ul className="space-y-2">
-                    {plan.features.map((feature, featureIndex) => (
+                <div className="mb-8">
+                  <h4 className="text-lg font-semibold mb-4 text-center" style={{color: '#111826'}}>What's Included:</h4>
+                  <ul className="space-y-3">
+                    {solution.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
-                        <svg className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-700 text-sm">{feature}</span>
+                        <div className="w-5 h-5 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0" style={{backgroundColor: solution.color}}>
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-700 text-base font-medium">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -198,59 +179,141 @@ const Pricing = () => {
 
                 {/* CTA Button */}
                 <button
-                  className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 text-sm ${plan.popular ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-[#2c3346] text-[#a89456] shadow-lg hover:shadow-xl' : 'border-2 border-[#a89456] text-[#a89456] hover:bg-gradient-to-br hover:from-gray-900 hover:via-gray-800 hover:to-[#2c3346] hover:border-transparent hover:text-[#a89456] hover:shadow-lg'}`}
+                  onClick={() => setIsContactSalesModalOpen(true)}
+                  className="w-full py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl text-white"
+                  style={{
+                    backgroundColor: '#111826'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = '#a89456';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = '#111826';
+                  }}
                 >
-                  {plan.popular ? 'Buy Now' : 'Get Started'}
+                  {solution.popular ? 'Choose This Solution' : 'Contact for Demo'}
                 </button>
               </div>
-              </div>
-          ))}
+            </div>
+            );
+          })}
         </div>
 
-        {/* Add-ons Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
-            <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold mb-4" style={{color: '#111826'}}>
-              Optional <span style={{color: '#a89456'}}>Add-ons</span>
+        {/* Customization Services Section */}
+        <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl shadow-xl p-10 mb-16 border border-gray-200">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 font-bold text-sm">🎨 CUSTOMIZATION SERVICES</span>
+            </div>
+            <h3 className="text-4xl font-bold mb-4" style={{color: '#111826'}}>
+              Make It <span style={{color: '#a89456'}}>Truly Yours</span>
             </h3>
-            <p className="text-gray-600">
-              Enhance your HRMS with these powerful additional features
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Transform our HRMS to perfectly match your business needs, brand identity, and workflows. Every aspect can be customized to your requirements.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {addOns.map((addon, index) => (
-                <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors duration-300">
-                <h4 className="font-semibold mb-2" style={{color: '#111826'}}>
-                  {addon.name}
-                </h4>
-                <p className="text-2xl font-bold" style={{color: '#a89456'}}>
-                  +₹{addon.price}
-                </p>
-                <p className="text-sm text-gray-600">per employee/month</p>
+            {customizationServices.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="text-center">
+                  <div className="flex justify-center mb-4">
+                    <IconComponent className="text-4xl" style={{color: '#a89456'}} />
+                  </div>
+                  <h4 className="font-bold mb-3 text-lg" style={{color: '#111826'}}>
+                    {service.name}
+                  </h4>
+                  <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
-            ))}
+              </div>
+              );
+            })}
+          </div>
+          
+          {/* Customization CTA */}
+          <div className="text-center mt-10">
+            <div className=" rounded-2xl p-8 " >
+              <h4 className="text-2xl font-bold mb-4" style={{color: '#111826'}}>
+                Need Something Specific? 🤔
+              </h4>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                We understand every business is unique. Our team can customize any feature, design element, or workflow to match your exact requirements.
+              </p>
+              <button 
+                onClick={() => setIsContactSalesModalOpen(true)}
+                className="text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                style={{
+                  backgroundColor: '#111826'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#a89456';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#111826';
+                }}
+              >
+                💬 Discuss Custom Requirements
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* FAQ Section */}
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-6" style={{color: '#111826'}}>
-              Questions About Pricing?
+        {/* Solutions FAQ Section */}
+        <div className="text-center">
+          <div className="bg-white rounded-3xl shadow-xl p-10 border border-gray-200">
+            <h3 className="text-3xl font-bold mb-6" style={{color: '#111826'}}>
+              Ready to Choose Your <span style={{color: '#a89456'}}>Solution</span>?
             </h3>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Our pricing is transparent with no hidden fees. All plans include free setup, data migration, and training.
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Both deployment options include complete customization capabilities, free setup, data migration, training, and ongoing support. No hidden fees, transparent pricing.
             </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => setIsContactSalesModalOpen(true)}
-              className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 cursor-pointer"
-            >
-              Contact Sales
-            </button>
-            <Link href="/#faq" className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300 cursor-pointer inline-block">
-              View FAQ
-            </Link>
+            
+            {/* Key Benefits */}
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="flex flex-col items-center">
+                <div className="text-3xl mb-3">🔒</div>
+                <h4 className="font-bold mb-2" style={{color: '#111826'}}>Secure & Reliable</h4>
+                <p className="text-gray-600 text-sm">Enterprise-grade security for both deployment options</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="text-3xl mb-3">🎨</div>
+                <h4 className="font-bold mb-2" style={{color: '#111826'}}>Fully Customizable</h4>
+                <p className="text-gray-600 text-sm">Tailor every aspect to match your business needs</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="text-3xl mb-3">🚀</div>
+                <h4 className="font-bold mb-2" style={{color: '#111826'}}>Quick Deployment</h4>
+                <p className="text-gray-600 text-sm">Get started within days, not months</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => setIsContactSalesModalOpen(true)}
+                className="text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center gap-2"
+                style={{
+                  backgroundColor: '#2563eb'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#1d4ed8';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#2563eb';
+                }}
+              >
+                <FaBullseye /> Get Custom Quote
+              </button>
+              <Link 
+                href="/#faq" 
+                className="border-2 border-blue-600 text-blue-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 inline-flex items-center gap-2"
+              >
+                <FaQuestionCircle /> View FAQ
+              </Link>
+            </div>
           </div>
         </div>
       </div>

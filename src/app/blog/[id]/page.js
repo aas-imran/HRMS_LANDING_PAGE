@@ -3,7 +3,7 @@
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 const BlogPost = () => {
   const router = useRouter();
@@ -50,7 +50,7 @@ const BlogPost = () => {
     {
       id: 2,
       title: 'Employee Benefits and Payroll Management: Why Automation Matters',
-      image: '/emp-ben.jpg',
+      image: '/benefit.jpg',
       category: 'Employee Benefits',
       intro: 'When we talk about payroll management, the question isn\'t whether it\'s important - it\'s why it\'s still one of the most complex and error-prone processes inside organizations. Why do HR teams, despite having clear policies and structured benefits, still struggle every month to deliver accurate salaries on time?',
       content: [
@@ -154,7 +154,7 @@ const BlogPost = () => {
             <div className="flex items-center text-gray-500 text-sm space-x-4">
               <span className="flex items-center">
                 <FaUser className="h-5 w-5 mr-2 text-[#a89456]" />
-                Author by: {post.author}
+                Author : {post.author}
               </span>
               <span>•</span>
               <span>{post.place}</span>
@@ -190,6 +190,26 @@ const BlogPost = () => {
               {post.conclusion}
             </p>
           )}
+          
+          {/* Navigation Buttons */}
+          <div className="flex justify-end mt-16 space-x-4">
+            {post.id > 1 && (
+              <Link 
+                href={`/blog/${post.id - 1}`}
+                className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition duration-150 ease-in-out"
+              >
+                <FaArrowLeft className="mr-2" /> Previous
+              </Link>
+            )}
+            {post.id < blogPosts.length && (
+              <Link 
+                href={`/blog/${post.id + 1}`}
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#a89456] hover:bg-[#8a7845] transition duration-150 ease-in-out"
+              >
+                Next <FaArrowRight className="ml-2" />
+              </Link>
+            )}
+          </div>
         </article>
       </div>
     </div>

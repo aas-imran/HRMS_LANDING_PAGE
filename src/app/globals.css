@@ -86,6 +86,317 @@ body {
   border-color: #a89456;
 }
 
+/* Tailwind-style Color Classes with Opacity Control */
+
+/* Gold (#a89456) */
+.text-gold {
+  color: #a89456;
+}
+.text-gold-90 {
+  color: rgba(168, 148, 86, 0.9);
+}
+.text-gold-80 {
+  color: rgba(168, 148, 86, 0.8);
+}
+.text-gold-70 {
+  color: rgba(168, 148, 86, 0.7);
+}
+.text-gold-60 {
+  color: rgba(168, 148, 86, 0.6);
+}
+.text-gold-50 {
+  color: rgba(168, 148, 86, 0.5);
+}
+.text-gold-40 {
+  color: rgba(168, 148, 86, 0.4);
+}
+.text-gold-30 {
+  color: rgba(168, 148, 86, 0.3);
+}
+.text-gold-20 {
+  color: rgba(168, 148, 86, 0.2);
+}
+.text-gold-10 {
+  color: rgba(168, 148, 86, 0.1);
+}
+.text-gold-5 {
+  color: rgba(168, 148, 86, 0.05);
+}
+
+.bg-gold {
+  background-color: #a89456;
+}
+.bg-gold-90 {
+  background-color: rgba(168, 148, 86, 0.9);
+}
+.bg-gold-80 {
+  background-color: rgba(168, 148, 86, 0.8);
+}
+.bg-gold-70 {
+  background-color: rgba(168, 148, 86, 0.7);
+}
+.bg-gold-60 {
+  background-color: rgba(168, 148, 86, 0.6);
+}
+.bg-gold-50 {
+  background-color: rgba(168, 148, 86, 0.5);
+}
+.bg-gold-40 {
+  background-color: rgba(168, 148, 86, 0.4);
+}
+.bg-gold-30 {
+  background-color: rgba(168, 148, 86, 0.3);
+}
+.bg-gold-20 {
+  background-color: rgba(168, 148, 86, 0.2);
+}
+.bg-gold-10 {
+  background-color: rgba(168, 148, 86, 0.1);
+}
+.bg-gold-5 {
+  background-color: rgba(168, 148, 86, 0.05);
+}
+
+.border-gold {
+  border-color: #a89456;
+}
+.border-gold-90 {
+  border-color: rgba(168, 148, 86, 0.9);
+}
+.border-gold-80 {
+  border-color: rgba(168, 148, 86, 0.8);
+}
+.border-gold-70 {
+  border-color: rgba(168, 148, 86, 0.7);
+}
+.border-gold-60 {
+  border-color: rgba(168, 148, 86, 0.6);
+}
+.border-gold-50 {
+  border-color: rgba(168, 148, 86, 0.5);
+}
+.border-gold-40 {
+  border-color: rgba(168, 148, 86, 0.4);
+}
+.border-gold-30 {
+  border-color: rgba(168, 148, 86, 0.3);
+}
+.border-gold-20 {
+  border-color: rgba(168, 148, 86, 0.2);
+}
+.border-gold-10 {
+  border-color: rgba(168, 148, 86, 0.1);
+}
+.border-gold-5 {
+  border-color: rgba(168, 148, 86, 0.05);
+}
+
+/* Dark Blue/Black (#111826) */
+.text-dark {
+  color: #111826;
+}
+.text-dark-90 {
+  color: rgba(17, 24, 38, 0.9);
+}
+.text-dark-80 {
+  color: rgba(17, 24, 38, 0.8);
+}
+.text-dark-70 {
+  color: rgba(17, 24, 38, 0.7);
+}
+.text-dark-60 {
+  color: rgba(17, 24, 38, 0.6);
+}
+.text-dark-50 {
+  color: rgba(17, 24, 38, 0.5);
+}
+.text-dark-40 {
+  color: rgba(17, 24, 38, 0.4);
+}
+.text-dark-30 {
+  color: rgba(17, 24, 38, 0.3);
+}
+.text-dark-20 {
+  color: rgba(17, 24, 38, 0.2);
+}
+.text-dark-10 {
+  color: rgba(17, 24, 38, 0.1);
+}
+.text-dark-5 {
+  color: rgba(17, 24, 38, 0.05);
+}
+
+.bg-dark {
+  background-color: #111826;
+}
+.bg-dark-90 {
+  background-color: rgba(17, 24, 38, 0.9);
+}
+.bg-dark-80 {
+  background-color: rgba(17, 24, 38, 0.8);
+}
+.bg-dark-70 {
+  background-color: rgba(17, 24, 38, 0.7);
+}
+.bg-dark-60 {
+  background-color: rgba(17, 24, 38, 0.6);
+}
+.bg-dark-50 {
+  background-color: rgba(17, 24, 38, 0.5);
+}
+.bg-dark-40 {
+  background-color: rgba(17, 24, 38, 0.4);
+}
+.bg-dark-30 {
+  background-color: rgba(17, 24, 38, 0.3);
+}
+.bg-dark-20 {
+  background-color: rgba(17, 24, 38, 0.2);
+}
+.bg-dark-10 {
+  background-color: rgba(17, 24, 38, 0.1);
+}
+.bg-dark-5 {
+  background-color: rgba(17, 24, 38, 0.05);
+}
+
+.border-dark {
+  border-color: #111826;
+}
+.border-dark-90 {
+  border-color: rgba(17, 24, 38, 0.9);
+}
+.border-dark-80 {
+  border-color: rgba(17, 24, 38, 0.8);
+}
+.border-dark-70 {
+  border-color: rgba(17, 24, 38, 0.7);
+}
+.border-dark-60 {
+  border-color: rgba(17, 24, 38, 0.6);
+}
+.border-dark-50 {
+  border-color: rgba(17, 24, 38, 0.5);
+}
+.border-dark-40 {
+  border-color: rgba(17, 24, 38, 0.4);
+}
+.border-dark-30 {
+  border-color: rgba(17, 24, 38, 0.3);
+}
+.border-dark-20 {
+  border-color: rgba(17, 24, 38, 0.2);
+}
+.border-dark-10 {
+  border-color: rgba(17, 24, 38, 0.1);
+}
+.border-dark-5 {
+  border-color: rgba(17, 24, 38, 0.05);
+}
+
+/* Light Gray (#eeeff1) */
+.text-light {
+  color: #eeeff1;
+}
+.text-light-90 {
+  color: rgba(238, 239, 241, 0.9);
+}
+.text-light-80 {
+  color: rgba(238, 239, 241, 0.8);
+}
+.text-light-70 {
+  color: rgba(238, 239, 241, 0.7);
+}
+.text-light-60 {
+  color: rgba(238, 239, 241, 0.6);
+}
+.text-light-50 {
+  color: rgba(238, 239, 241, 0.5);
+}
+.text-light-40 {
+  color: rgba(238, 239, 241, 0.4);
+}
+.text-light-30 {
+  color: rgba(238, 239, 241, 0.3);
+}
+.text-light-20 {
+  color: rgba(238, 239, 241, 0.2);
+}
+.text-light-10 {
+  color: rgba(238, 239, 241, 0.1);
+}
+.text-light-5 {
+  color: rgba(238, 239, 241, 0.05);
+}
+
+.bg-light {
+  background-color: #eeeff1;
+}
+.bg-light-90 {
+  background-color: rgba(238, 239, 241, 0.9);
+}
+.bg-light-80 {
+  background-color: rgba(238, 239, 241, 0.8);
+}
+.bg-light-70 {
+  background-color: rgba(238, 239, 241, 0.7);
+}
+.bg-light-60 {
+  background-color: rgba(238, 239, 241, 0.6);
+}
+.bg-light-50 {
+  background-color: rgba(238, 239, 241, 0.5);
+}
+.bg-light-40 {
+  background-color: rgba(238, 239, 241, 0.4);
+}
+.bg-light-30 {
+  background-color: rgba(238, 239, 241, 0.3);
+}
+.bg-light-20 {
+  background-color: rgba(238, 239, 241, 0.2);
+}
+.bg-light-10 {
+  background-color: rgba(238, 239, 241, 0.1);
+}
+.bg-light-5 {
+  background-color: rgba(238, 239, 241, 0.05);
+}
+
+.border-light {
+  border-color: #eeeff1;
+}
+.border-light-90 {
+  border-color: rgba(238, 239, 241, 0.9);
+}
+.border-light-80 {
+  border-color: rgba(238, 239, 241, 0.8);
+}
+.border-light-70 {
+  border-color: rgba(238, 239, 241, 0.7);
+}
+.border-light-60 {
+  border-color: rgba(238, 239, 241, 0.6);
+}
+.border-light-50 {
+  border-color: rgba(238, 239, 241, 0.5);
+}
+.border-light-40 {
+  border-color: rgba(238, 239, 241, 0.4);
+}
+.border-light-30 {
+  border-color: rgba(238, 239, 241, 0.3);
+}
+.border-light-20 {
+  border-color: rgba(238, 239, 241, 0.2);
+}
+.border-light-10 {
+  border-color: rgba(238, 239, 241, 0.1);
+}
+.border-light-5 {
+  border-color: rgba(238, 239, 241, 0.05);
+}
+
 /* CTA Button Styles */
 .btn-cta {
   background-color: #2563eb;
@@ -96,6 +407,19 @@ body {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .btn-cta:hover {

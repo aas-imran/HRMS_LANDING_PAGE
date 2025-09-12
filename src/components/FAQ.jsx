@@ -55,7 +55,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-20" style={{ backgroundImage: 'url("/bg2.jpg")' }}>
+    <section id="faq" className="py-20  bg-[#eeeff1]" >
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
@@ -90,27 +90,27 @@ const FAQ = () => {
               
               return (
                 <RevealAnimation key={index} delay={index * 0.05}>
-                  <div className={`${bgColors[index % bgColors.length]} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 backdrop-blur-sm overflow-hidden`}>
+                  <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden">
                     <div 
-                      className="p-6 cursor-pointer hover:bg-white/20 transition-all duration-300 flex justify-between items-center group"
+                      className="p-6 cursor-pointer hover:bg-gray-50 transition-all duration-300 flex justify-between items-center group"
                       onClick={() => toggleFAQ(index)}
                     >
                       <h3 className="text-lg font-semibold pr-4 group-hover:text-gray-800 transition-colors" style={{color: '#111826'}}>{faq.question}</h3>
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'bg-white/80 rotate-180' : 'bg-white/60 hover:bg-white/80'} shadow-md`}>
-                        <svg 
-                          className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`} 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                          style={{color: '#a89456'}}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border border-gray-200 ${isActive ? 'bg-gray-100' : 'bg-white'}`}>
+                        {isActive ? (
+                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                          </svg>
+                        ) : (
+                          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                          </svg>
+                        )}
                       </div>
                     </div>
                     <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                      <div className="px-6 pb-6">
-                        <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-white/30">
+                      <div className="px-6 pb-5 mt-2">
+                        <div className=" rounded-xl p-4 ">
                           <p className="text-gray-700 leading-relaxed font-medium">{faq.answer}</p>
                         </div>
                       </div>
@@ -122,21 +122,20 @@ const FAQ = () => {
           </div>
           <div className="lg:col-span-1">
             <RevealAnimation delay={0.1}>
-              <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-8 rounded-2xl shadow-xl border border-white/50 backdrop-blur-sm text-center sticky top-8 hover:shadow-2xl transition-all duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 text-center sticky top-8 hover:shadow-xl transition-all duration-300">
                 {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-xl"></div>
-                <div className="absolute bottom-4 left-4 w-12 h-12 bg-gradient-to-br from-blue-200/30 to-indigo-200/30 rounded-full blur-lg"></div>
+                <div className="absolute top-4 right-4 w-16 h-16 bg-blue-100/30 rounded-full blur-xl"></div>
+                <div className="absolute bottom-4 left-4 w-12 h-12 bg-blue-100/30 rounded-full blur-lg"></div>
                 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#a89456] to-orange-500/40
-                   rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   
-                  <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#a89456] to-orange-500/40 bg-clip-text text-transparent">
+                  <h3 className="text-2xl font-bold mb-4 text-blue-600">
                     Still have questions?
                   </h3>
                   
@@ -146,7 +145,7 @@ const FAQ = () => {
                   
                   <div className="space-y-3">
                     <button 
-                      className="w-full bg-gradient-to-r from-[#a89456] to-orange-500/40 text-white py-4 px-6 rounded-xl font-semibold hover:from-[#111826] hover:to-[#a89456] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                      className="w-full bg-blue-600 text-white py-4 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
                       onMouseEnter={() => setShowPhoneNumber(true)}
                       onMouseLeave={() => setShowPhoneNumber(false)}
                       onClick={() => setShowPhoneNumber(true)}

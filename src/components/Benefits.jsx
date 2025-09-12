@@ -1,8 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import RevealAnimation from './RevealAnimation';
 import { 
   CurrencyDollarIcon, 
   FaceSmileIcon, 
@@ -19,6 +18,18 @@ import {
 } from '@heroicons/react/24/outline';
 
 const Benefits = () => {
+  const [expandedCards, setExpandedCards] = useState(new Set());
+
+  const toggleCard = (index) => {
+    const newExpandedCards = new Set(expandedCards);
+    if (newExpandedCards.has(index)) {
+      newExpandedCards.delete(index);
+    } else {
+      newExpandedCards.add(index);
+    }
+    setExpandedCards(newExpandedCards);
+  };
+
   const benefits = [
     {
       title: "Reduce Administrative Costs",
@@ -122,18 +133,18 @@ const Benefits = () => {
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             const HoverIconComponent = benefit.hoverIcon;
+            const isExpanded = expandedCards.has(index);
             return (
-              <RevealAnimation key={index} delay={index * 100}>
-                <div className="group relative h-[320px] w-full">
+                <div key={index} className="group relative h-[350px] w-full cursor-pointer">
                   {/* Card Container */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-3xl shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 group-hover:scale-102 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-102 overflow-hidden">
                     
-                    {/* Hover Border Effect - Positioned correctly */}
-                    <div className={`absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-opacity-50 transition-all duration-300 pointer-events-none`} 
+                    {/* Border Effect - Shows when expanded */}
+                    <div className={`absolute inset-0 rounded-3xl border-2 transition-all duration-300 pointer-events-none ${isExpanded ? 'border-opacity-50' : 'border-transparent'}`} 
                          style={{ borderColor: benefit.accentColor }}></div>
                     
                     {/* Background Pattern */}
-                    <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+                    <div className={`absolute inset-0 transition-opacity duration-300 ${isExpanded ? 'opacity-10' : 'opacity-5'}`}>
                       <div className="absolute inset-0" style={{
                         backgroundImage: `radial-gradient(circle at 20% 30%, ${benefit.accentColor} 0%, transparent 20%), 
                                          radial-gradient(circle at 70% 60%, ${benefit.accentColor} 0%, transparent 25%), 
@@ -142,7 +153,7 @@ const Benefits = () => {
                     </div>
 
                     {/* Gradient Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgColor} opacity-60 group-hover:opacity-80 transition-opacity duration-300`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgColor} transition-opacity duration-300 ${isExpanded ? 'opacity-80' : 'opacity-60'}`}></div>
 
                     {/* Content Container */}
                     <div className="relative z-10 h-full flex flex-col p-6">
@@ -150,18 +161,21 @@ const Benefits = () => {
                       {/* Header Section */}
                       <div className="flex-shrink-0 mb-4">
                         {/* Icon Container */}
-                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 mb-4`}>
-                          <IconComponent className="w-8 h-8 text-white group-hover:hidden transition-all duration-300" />
-                          <HoverIconComponent className="w-8 h-8 text-white hidden group-hover:block transition-all duration-300" />
+                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 mb-4`}>
+                          {isExpanded ? (
+                            <HoverIconComponent className="w-8 h-8 text-white transition-all duration-300" />
+                          ) : (
+                            <IconComponent className="w-8 h-8 text-white transition-all duration-300" />
+                          )}
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors duration-300 leading-tight mb-2">
+                        <h3 className={`text-xl font-bold transition-colors duration-300 leading-tight mb-2 ${isExpanded ? 'text-gray-800' : 'text-gray-900'}`}>
                           {benefit.title}
                         </h3>
 
                         {/* Metric Badge */}
-                        <div className="inline-flex items-center px-3 py-1.5 rounded-full shadow-sm group-hover:shadow-md transition-all duration-300" 
+                        <div className={`inline-flex items-center px-3 py-1.5 rounded-full shadow-sm transition-all duration-300 ${isExpanded ? 'shadow-md' : ''}`} 
                              style={{ backgroundColor: `${benefit.accentColor}15`, border: `2px solid ${benefit.accentColor}30` }}>
                           <span className="text-xs mr-1">✨</span>
                           <span className="font-bold text-xs" style={{ color: benefit.accentColor }}>{benefit.metric}</span>
@@ -169,14 +183,14 @@ const Benefits = () => {
                       </div>
 
                       {/* Description - Default State */}
-                      <div className="flex-grow group-hover:hidden transition-all duration-300">
-                        <p className="text-gray-700 leading-relaxed text-sm font-medium">
+                      <div className={`flex-grow transition-all duration-300 ${isExpanded ? 'hidden' : 'block'}`}>
+                        <p className="text-gray-700 leading-relaxed text-sm font-medium mb-4">
                           {benefit.description}
                         </p>
                       </div>
 
-                      {/* Features List - Hover State */}
-                      <div className="flex-grow hidden group-hover:block transition-all duration-300">
+                      {/* Features List - Expanded State */}
+                      <div className={`flex-grow transition-all duration-300 ${isExpanded ? 'block' : 'hidden'}`}>
                         <h4 className="text-base font-semibold text-gray-800 mb-3" style={{ color: benefit.accentColor }}>
                           Key Features:
                         </h4>
@@ -190,13 +204,39 @@ const Benefits = () => {
                         </ul>
                       </div>
 
-                      {/* Bottom Section - Empty for now */}
+                      {/* Bottom Section */}
                       <div className="flex-shrink-0 mt-4">
+                        {/* Know More Text - Clickable */}
+                        <div className={`transition-all duration-300 ${isExpanded ? 'hidden' : 'block'}`}>
+                          <p 
+                            className="text-sm font-medium cursor-pointer hover:underline transition-all duration-300"
+                            style={{ color: benefit.accentColor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleCard(index);
+                            }}
+                          >
+                            Know More
+                          </p>
+                        </div>
+                        
+                        {/* Close Text - When Expanded */}
+                        <div className={`transition-all duration-300 ${isExpanded ? 'block' : 'hidden'}`}>
+                          <p 
+                            className="text-sm font-medium cursor-pointer hover:underline transition-all duration-300"
+                            style={{ color: benefit.accentColor }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleCard(index);
+                            }}
+                          >
+                            Show Less
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </RevealAnimation>
             );
           })}
         </div>

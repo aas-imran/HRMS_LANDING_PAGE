@@ -52,7 +52,7 @@ const KeyFeatures = () => {
 
   return (
     <section id="features" className="py-24  relative overflow-hidden">
-       <div className="absolute  inset-0 z-0 overflow-hidden">
+       {/* <div className="absolute  inset-0 z-0 overflow-hidden">
         <Image
           src="/bg7.jpg"
           alt="Hero Background"
@@ -60,9 +60,9 @@ const KeyFeatures = () => {
           style={{ objectFit: 'cover' }}
           priority
         />
-      </div>
+      </div> */}
       {/* Background Elements */}
-      <div className="absolute bg-white/10 backdrop-blur-sm inset-0">
+      <div className="absolute bg-white/99 backdrop-blur-lg   inset-0">
         <div className="absolute top-20 right-20 w-32 h-32 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full opacity-5" style={{backgroundColor: '#111826'}}></div>
       </div>
@@ -92,7 +92,7 @@ const KeyFeatures = () => {
             return (
               <RevealAnimation key={index} delay={index * 0.1}>
                 <div 
-                  className="group bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
+                  className="group bg-white rounded-2xl p-8 sahdow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
                 >
                 {/* Medium Gradient Background by Default and Enhanced on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-15 transition-opacity duration-500`}></div>

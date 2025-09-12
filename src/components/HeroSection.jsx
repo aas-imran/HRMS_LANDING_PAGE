@@ -55,7 +55,7 @@ const HeroSection = () => {
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                        Dynamic HRMS{" "}
                       <span style={{ color: "#a89456" }}>customizable</span> for
-                      your <span style={{ color: "#a89456" }}>needs</span>.
+                      your <span style={{ color: "#a89456" }}>needs</span>
                     </h1>
                   </RevealAnimation>
                   <RevealAnimation direction="left" delay={0.2}>

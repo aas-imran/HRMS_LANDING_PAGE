@@ -1,6 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 const CaseStudiesPage = () => {
+  const [selectedStudy, setSelectedStudy] = useState(null);
   const caseStudies = [
     {
       title: 'Fogle Pvt Ltd\n Automating Shift Scheduling and High-Volume Attendance',
@@ -33,7 +36,7 @@ const CaseStudiesPage = () => {
 
   return (
     <div className="min-h-screen py-38 px-4 bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg2.jpg")',  }}>
-      <div className="absolute inset-0backdrop-blur-sm"></div>
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <h1 className="text-5xl font-bold text-center mb-4" style={{ color: '#111826' }}>
           Success <span style={{ color: '#a89456' }}>Stories</span>
@@ -41,80 +44,156 @@ const CaseStudiesPage = () => {
         <p className="text-center mb-16 text-lg" style={{ color: '#4b5563' }}>
           Discover how our HRMS solution transforms businesses and empowers growth
         </p>
-        
-        <div className="space-y-12 max-w-7xl mx-auto">
-          {caseStudies.map((study, index) => {
-            const imageSrc = index === 0 ? '/tissue.jpg' : '/minerals.jpg';
-            
-            return (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-gold-400 flex flex-col lg:flex-row" 
-                   style={{ backgroundColor: '#ffffff' }}>
-                {/* Image Section */}
-                <div className="lg:w-1/2 h-64 lg:h-auto">
-                  <img 
-                    src={imageSrc} 
-                    alt={study.title.split('\n')[0]} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                {/* Content Section */}
-                <div className="lg:w-1/2 p-8 flex flex-col justify-center">
-                  {/* Header Section */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="inline-block rounded-lg px-3 py-1" 
-                         style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
-                      {study.industry}
-                    </div>
+
+        {/* Back Button - Only show when a study is selected */}
+        {selectedStudy && (
+          <div className="mb-8">
+            <button
+              onClick={() => setSelectedStudy(null)}
+              className="flex items-center gap-2 text-[#a89456] hover:text-[#111826] transition-colors duration-200 font-medium"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Case Studies
+            </button>
+          </div>
+        )}
+
+        {/* Overview Cards - Show when no study is selected */}
+        {!selectedStudy && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {caseStudies.map((study, index) => {
+              const imageSrc = index === 0 ? '/tissue.jpg' : '/minerals.jpg';
+              
+              return (
+                <div 
+                  key={index} 
+                  onClick={() => setSelectedStudy(study)}
+                  className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl border border-gray-100 hover:border-[#a89456] cursor-pointer transform hover:scale-[1.02]"
+                >
+                  {/* Image Section */}
+                  <div className="h-48">
+                    <img 
+                      src={imageSrc} 
+                      alt={study.title.split('\n')[0]} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
-                  {/* Title */}
-                  <h2 className="text-3xl font-bold mb-4">
-                    <span style={{ color: '#a89456' }}>{study.title.split('\n')[0]}</span>
-                  </h2>
-
-                  <div className="flex justify-between items-center mb-6">
-                    <div className="text-sm font-medium text-gray-500">
-                      {study.employeeCount} Employees
+                  {/* Content Section */}
+                  <div className="p-6">
+                    {/* Industry Badge */}
+                    <div className="mb-4">
+                      <div className="inline-block rounded-lg px-3 py-1 text-sm font-semibold" 
+                           style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
+                        {study.industry}
+                      </div>
                     </div>
-                    <div className="flex gap-2 text-sm text-gray-500">
+                    
+                    {/* Company Name */}
+                    <h2 className="text-2xl font-bold mb-2" style={{ color: '#111826' }}>
+                      {study.title.split('\n')[0]}
+                    </h2>
+                    
+                    {/* Subtitle */}
+                    <p className="text-lg text-gray-700 mb-4 font-medium">
+                      {study.title.split('\n')[1]}
+                    </p>
+
+                    {/* Stats */}
+                    <div className="flex justify-between items-center mb-4 text-sm text-gray-500">
+                      <span>{study.employeeCount} Employees</span>
                       <span>{study.location}</span>
-                      <span>|</span>
-                      <span>{study.date}</span>
                     </div>
-                  </div>
 
-                  <p className="text-lg text-gray-700 mb-6 font-medium">{study.title.split('\n')[1]}</p>
-                  
-                  {/* Content Sections */}
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Challenge</h3>
-                      <p className="text-gray-600 leading-relaxed">{study.challenge}</p>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Solution</h3>
-                      <p className="text-gray-600 leading-relaxed">{study.solution}</p>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Key Results</h3>
-                      <ul className="space-y-2">
-                        {study.results.map((result, idx) => (
-                          <li key={idx} className="flex items-start space-x-2">
-                            <span className="text-gold-400 mt-1 font-bold">•</span>
-                            <span className="text-gray-600 flex-grow">{result}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Challenge Preview */}
+                    <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+                      {study.challenge}
+                    </p>
+
+                    {/* Read More */}
+                    <div className="flex items-center text-[#a89456] font-medium">
+                      <span>Read Full Case Study</span>
+                      <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Detailed View - Show when a study is selected */}
+        {selectedStudy && (
+          <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 shadow-xl border border-gray-100 flex flex-col lg:flex-row" 
+               style={{ backgroundColor: '#ffffff' }}>
+            {/* Image Section */}
+            <div className="lg:w-1/2 h-64 lg:h-auto">
+              <img 
+                src={selectedStudy.title.includes('Fogle') ? '/tissue.jpg' : '/minerals.jpg'} 
+                alt={selectedStudy.title.split('\n')[0]} 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Content Section */}
+            <div className="lg:w-1/2 p-8 flex flex-col justify-center">
+              {/* Header Section */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="inline-block rounded-lg px-3 py-1" 
+                     style={{ backgroundColor: '#a89456', color: '#ffffff' }}>
+                  {selectedStudy.industry}
                 </div>
               </div>
-            );
-          })}
-        </div>
+              
+              {/* Title */}
+              <h2 className="text-3xl font-bold mb-4">
+                <span style={{ color: '#a89456' }}>{selectedStudy.title.split('\n')[0]}</span>
+              </h2>
+
+              <div className="flex justify-between items-center mb-6">
+                <div className="text-sm font-medium text-gray-500">
+                  {selectedStudy.employeeCount} Employees
+                </div>
+                <div className="flex gap-2 text-sm text-gray-500">
+                  <span>{selectedStudy.location}</span>
+                  <span>|</span>
+                  <span>{selectedStudy.date}</span>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-700 mb-6 font-medium">{selectedStudy.title.split('\n')[1]}</p>
+              
+              {/* Content Sections */}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Challenge</h3>
+                  <p className="text-gray-600 leading-relaxed">{selectedStudy.challenge}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Solution</h3>
+                  <p className="text-gray-600 leading-relaxed">{selectedStudy.solution}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#a89456' }}>Key Results</h3>
+                  <ul className="space-y-2">
+                    {selectedStudy.results.map((result, idx) => (
+                      <li key={idx} className="flex items-start space-x-2">
+                        <span className="text-[#a89456] mt-1 font-bold">•</span>
+                        <span className="text-gray-600 flex-grow">{result}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

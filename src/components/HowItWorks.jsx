@@ -165,7 +165,7 @@ const HowItWorks = () => {
       {/* Enhanced gradient background with visible pattern */}
       <div className="absolute inset-0 z-0">
         {/* Main gradient background */}
-        <div className="absolute inset-0 bg-[#ffffff]"></div>
+        <div className="absolute inset-0 bg-gray-100/90"></div>
         
         {/* Enhanced square bracket pattern */}
         <div 

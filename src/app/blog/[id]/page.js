@@ -45,7 +45,7 @@ const BlogPost = () => {
       conclusion: 'For HR managers like Simran, these challenges don\'t disappear—but with HRMS, they no longer define the job. Instead of drowning in administration, HR leaders can finally focus on what matters most: people, performance, and progress.',
       author: 'Imran Ansari',
       place: 'Cuttack',
-      date: '29/08/2025'
+      date: '29/01/2025'
     },
     {
       id: 2,
@@ -69,7 +69,7 @@ const BlogPost = () => {
       conclusion: 'In short, automated payroll management isn\'t about replacing HR—it\'s about empowering them. It transforms payroll from a monthly burden into a strategic advantage, where accuracy, compliance, and employee satisfaction work hand in hand.',
       author: 'Ashish Kumar Sahoo',
       place: 'Bhubaneswar',
-      date: '01/09/2025'
+      date: '01/04/2025'
     },
     {
       id: 3,
@@ -101,7 +101,7 @@ const BlogPost = () => {
       conclusion: '',
       author: 'Swagat Nayak',
       place: 'Puri',
-      date: '05/09/2025'
+      date: '05/06/2025'
     }
   ];
 

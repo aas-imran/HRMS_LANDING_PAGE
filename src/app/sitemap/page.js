@@ -57,10 +57,10 @@ const SitemapPage = () => {
         ]
       },
       {
-        id: 'pricing',
-        title: 'Pricing',
-        path: '/pricing',
-        description: 'View pricing plans and subscription options',
+        id: 'solution',
+        title: 'Solution',
+        path: '/solution',
+        description: 'View our solutions for your business',
       
       },
       {

@@ -47,15 +47,13 @@ const HeroSection = () => {
               priority
             />
           </div>
-          <div className="relative z-10 ">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+          <div className="relative  z-10 ">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
                   <RevealAnimation direction="left">
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                       Dynamic HRMS{" "}
-                      <span style={{ color: "#a89456" }}>customizable</span> for
-                      your <span style={{ color: "#a89456" }}>needs</span>
+                    <h1 className="text-4xl md:text-5xl font-bold" style={{ lineHeight: "1.20" }}>
+                       Experience <span style={{ color: "#a89456" }}>100%</span> Flexible HRMS Designed Around Your Unique <span style={{ color: "#a89456" }}> Workflow</span>
                     </h1>
                   </RevealAnimation>
                   <RevealAnimation direction="left" delay={0.2}>
@@ -98,9 +96,9 @@ const HeroSection = () => {
                     </div>
                   </RevealAnimation>
                 </div>
-                <div className="flex  justify-center">
+                <div className="flex justify-end">
                   <RevealAnimation direction="right">
-                    <div className=" bg-opacity-10 backdrop-blur-sm rounded-xl h-120 w-full flex items-center justify-center">
+                    <div className=" bg-opacity-10 backdrop-blur-sm rounded-xl h-120 w-full flex items-center justify-center" style={{ marginTop: "-20px" }}>
                       <DotLottieReact
                         src="https://lottie.host/b54a556b-c540-48df-b70c-fc9d08d911c9/miioGUaqcU.lottie"
                         loop
@@ -114,7 +112,7 @@ const HeroSection = () => {
               </div>
             </div>
             <RevealAnimation>
-              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
                 {/* Stats Section */}
                 <div className="bg-[#f6f8fc] p-12 rounded-3xl border border-gray-100 shadow-xl">
                   <div className="text-center mb-12">

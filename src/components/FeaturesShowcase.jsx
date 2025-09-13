@@ -45,6 +45,7 @@ const FeaturesShowcase = () => {
   const [activeModule, setActiveModule] = useState('dashboard');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
+  const [isScreenshotModalOpen, setIsScreenshotModalOpen] = useState(false);
 
   useEffect(() => {
     if (activeModule === 'onboarding') {
@@ -225,9 +226,107 @@ const FeaturesShowcase = () => {
 
   const activeModuleData = modules.find(module => module.id === activeModule);
 
+  // Get images for current module
+  const getModuleImages = (moduleId) => {
+    switch (moduleId) {
+      case 'onboarding':
+        return ['/emp-onb.png', '/emp-view.png', '/man-emp.png'];
+      case 'recruitment':
+        return ['/JO-Notice.png', '/all-job.png', '/job-view.png', '/applicant.png', '/appli-view.png'];
+      case 'attendance':
+        return ['/all-atd.png', '/id-qr.png', '/face-qr.png'];
+      case 'payroll':
+        return ['/run-payroll.png', '/hold-payroll.png', '/bonus.png'];
+      case 'user-management':
+        return ['/add-users.png', '/users.png'];
+      case 'leave-management':
+        return ['/all-leave.png', '/accept-leave.png'];
+      case 'performance':
+        return ['/all-task.png', '/view-task.png'];
+      case 'grievance':
+        return ['/all-grv.png', '/all-grv.png'];
+      default:
+        return ['/hrms-dash.png'];
+    }
+  };
+
+  const currentImages = getModuleImages(activeModule);
+
+  const nextImage = () => {
+    setImageIndex((prev) => (prev + 1) % currentImages.length);
+  };
+
+  const prevImage = () => {
+    setImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length);
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+      
+      {/* Screenshot Modal */}
+      {isScreenshotModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-50 backdrop-blur-lg p-4">
+          <div className="relative bg-white rounded-2xl max-w-6xl max-h-[90vh] w-full overflow-hidden">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsScreenshotModalOpen(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Image Container */}
+            <div className="relative h-[70vh] flex items-center justify-center p-8">
+              <img 
+                src={currentImages[imageIndex]} 
+                alt={`${activeModuleData?.name} Screenshot`}
+                className="max-w-full max-h-full object-contain rounded-lg shadow-lg"
+              />
+            </div>
+
+            {/* Navigation Dots */}
+            {currentImages.length > 1 && (
+              <div className="flex justify-center space-x-2 pb-6">
+                {currentImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setImageIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                      index === imageIndex ? 'bg-[#a89456]' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Navigation Arrows */}
+            {currentImages.length > 1 && (
+              <>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="pt-20 min-h-screen  bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(/bg2.jpg)'}}>
       {/* Page Title */}
       <div className="text-center py-8">
@@ -360,7 +459,20 @@ const FeaturesShowcase = () => {
                     <div className="text-center p-6 w-full">
                       <h3 className="text-lg font-bold text-gray-700 mb-4">{activeModuleData?.name}</h3>
                       <div className="bg-white/50 rounded-lg p-4">
-                        <div className="relative h-[380px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden">
+                        <div 
+                          className="relative h-[380px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group/screenshot"
+                          onClick={() => setIsScreenshotModalOpen(true)}
+                        >
+                          {/* Hover Overlay */}
+                          <div className="absolute inset-0 bg-gray-100 bg-opacity-0 group-hover/screenshot:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover/screenshot:opacity-100 transition-opacity duration-300">
+                              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                <svg className="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
                           {activeModule === 'onboarding' ? (
                             <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
                               <img 
@@ -496,11 +608,13 @@ const FeaturesShowcase = () => {
                               />
                             </div>
                           ) : (
-                            <img 
-                              src="/hrms-dash.png" 
-                              alt="HRMS Dashboard" 
-                              className="w-full h-full object-contain"
-                            />
+                            <div className="flex w-[100%] h-[380px] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                              <img 
+                                src="/hrms-dash.png" 
+                                alt="HRMS Dashboard" 
+                                className="w-full h-full object-contain flex-shrink-0"
+                              />
+                            </div>
                           )}
                         </div>
                       </div>
@@ -584,7 +698,20 @@ const FeaturesShowcase = () => {
                 <div className="p-4">
                   <h3 className="text-base font-bold text-gray-700 mb-3 text-center">{activeModuleData?.name}</h3>
                   <div className="bg-white/50 rounded-lg p-3">
-                    <div className="relative h-[250px] sm:h-[300px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden">
+                    <div 
+                      className="relative h-[250px] sm:h-[300px] bg-white/70 rounded border-2 border-gray-300 overflow-hidden cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group/screenshot"
+                      onClick={() => setIsScreenshotModalOpen(true)}
+                    >
+                      {/* Hover Overlay for Mobile */}
+                      <div className="absolute inset-0 bg-gray-100 bg-opacity-0 group-hover/screenshot:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover/screenshot:opacity-100 transition-opacity duration-300">
+                          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                       {activeModule === 'onboarding' ? (
                         <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
                           <img src="/emp-onb.png" alt="Employee Onboarding" className="w-full h-full object-contain flex-shrink-0" />
@@ -632,7 +759,9 @@ const FeaturesShowcase = () => {
                           <img src="/all-grv.png" alt="Grievance Details" className="w-full h-full object-contain flex-shrink-0" />
                         </div>
                       ) : (
-                        <img src="/hrms-dash.png" alt="HRMS Dashboard" className="w-full h-full object-contain" />
+                        <div className="flex w-[100%] transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${imageIndex * 100}%)` }}>
+                          <img src="/hrms-dash.png" alt="HRMS Dashboard" className="w-full h-full object-contain flex-shrink-0" />
+                        </div>
                       )}
                     </div>
                   </div>

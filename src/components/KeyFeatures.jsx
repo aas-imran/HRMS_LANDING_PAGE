@@ -16,37 +16,43 @@ const KeyFeatures = () => {
       title: "Employee Management",
       description: "Centralized employee database with complete profiles, documents, and history tracking.",
       icon: UsersIcon,
-      gradient: "from-blue-600 to-blue-800"
+      gradient: "from-blue-600 to-blue-800",
+      bgColor: "from-blue-50 to-blue-100"
     },
     {
       title: "Payroll Processing",
       description: "Automated payroll calculations, tax deductions, and salary disbursements.",
       icon: CurrencyDollarIcon,
-      gradient: "from-green-500 to-green-600"
+      gradient: "from-green-500 to-green-600",
+      bgColor: "from-green-50 to-green-100"
     },
     {
       title: "Attendance Tracking",
       description: "Real-time attendance monitoring with biometric integration and leave management.",
       icon: ClockIcon,
-      gradient: "from-purple-500 to-purple-600"
+      gradient: "from-purple-500 to-purple-600",
+      bgColor: "from-purple-50 to-purple-100"
     },
     {
       title: "Performance Management",
       description: "Goal setting, performance reviews, and employee development tracking.",
       icon: ChartBarIcon,
-      gradient: "from-orange-500 to-orange-600"
+      gradient: "from-orange-500 to-orange-600",
+      bgColor: "from-orange-50 to-orange-100"
     },
     {
       title: "Recruitment",
       description: "End-to-end recruitment process from job posting to candidate onboarding.",
       icon: UserPlusIcon,
-      gradient: "from-pink-500 to-pink-600"
+      gradient: "from-pink-500 to-pink-600",
+      bgColor: "from-pink-50 to-pink-100"
     },
     {
       title: "Analytics & Reports",
       description: "Comprehensive HR analytics and customizable reports for data-driven decisions.",
       icon: PresentationChartLineIcon,
-      gradient: "from-indigo-500 to-indigo-600"
+      gradient: "from-indigo-500 to-indigo-600",
+      bgColor: "from-indigo-50 to-indigo-100"
     }
   ];
 
@@ -62,7 +68,18 @@ const KeyFeatures = () => {
         />
       </div> */}
       {/* Background Elements */}
-      <div className="absolute bg-white/99 backdrop-blur-lg   inset-0">
+      <div className="absolute bg-white backdrop-blur-lg inset-0">
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(168, 148, 86, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(168, 148, 86, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px'
+          }}
+        ></div>
         <div className="absolute top-20 right-20 w-32 h-32 rounded-full opacity-5" style={{backgroundColor: '#a89456'}}></div>
         <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full opacity-5" style={{backgroundColor: '#111826'}}></div>
       </div>
@@ -92,30 +109,30 @@ const KeyFeatures = () => {
             return (
               <RevealAnimation key={index} delay={index * 0.1}>
                 <div 
-                  className="group bg-white rounded-2xl p-8 sahdow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative overflow-hidden min-h-[280px] min-w-[300px]"
+                  className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden min-h-[280px] min-w-[300px] border border-gray-100"
                 >
-                {/* Medium Gradient Background by Default and Enhanced on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-10 group-hover:opacity-15 transition-opacity duration-500`}></div>
+                {/* Simple Background with Card Color */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgColor} group-hover:opacity-80 transition-all duration-300`}></div>
                 
-                {/* Icon Container */}
+                {/* Icon Container - Minimal Design */}
                 <div className="relative z-10 mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className="w-8 h-8 text-white" />
+                  <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300`}>
+                    <IconComponent className="w-7 h-7 text-white" />
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* Content - Clean Typography */}
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold mb-4 group-hover:text-opacity-90 transition-colors duration-300" style={{color: '#111826'}}>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="leading-relaxed text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                  <p className="leading-relaxed text-gray-600 text-sm">
                     {feature.description}
                   </p>
                 </div>
 
-                {/* Hover Border Effect */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-opacity-20 rounded-2xl transition-all duration-300"></div>
+                {/* Simple Hover Border */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gray-200 transition-all duration-300"></div>
               </div>
               </RevealAnimation>
             );
